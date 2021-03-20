@@ -1,0 +1,301 @@
+@media screen and (max-width: 767px){
+/*=====================header responsiveness=====================*/
+	#header nav .navbar-nav.menu li.nav-item {
+    margin-left: 0;
+	}
+	#header nav .navbar-nav.menu li a {
+    padding: .55rem 0rem;
+	}
+	#header nav .navbar-nav.menu li a.nav-link.btn.btn-application {
+    margin-top: 18px;
+	}
+	#header nav .navbar-nav.menu li a.nav-link.btn.btn-login {
+    text-align: left;
+    margin-top: 1rem;
+	}
+	/*=====================/header responsiveness=====================*/
+
+
+	.funding-row .funding-details p {
+    font-size: 18px;
+	}
+
+	.funding-row .funding-details h1 {
+    font-size: 32px;
+	}
+	.funding-row .funding-display .fund-services {
+    margin-right: 0;
+	}
+	.application-row .application-details {
+    margin-bottom: 1rem;
+	}
+	.loan-row {
+    margin-top: 2rem;
+	}
+	.loan-row .btn.btn1 {
+    margin: 0rem 0 1rem;
+	}
+
+	/*=================sidebar css================*/
+
+	#page-content {
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 100%;
+	}	
+	#side-bar-content.mobile-hide {
+    display: none;
+	}
+	.card2 .confirmation-details {
+    margin-left: 0;
+	}
+	.mobile-header {
+    margin-top: 1rem;
+	}
+	.mobile-header{
+    display: block;
+	}
+	#side-bar-content {
+    width: 100%;
+    background: transparent;
+    position: unset;
+    height: 100%;
+	}
+	div#side-bar {
+    margin-left: 15px;
+	}
+	.position-sidebar #progressbar {
+    left: -15px;
+	}
+	.close {
+    float: right;
+    font-weight: 600;
+    color: #00405C;
+    text-shadow: none;
+    opacity: 1;
+	}
+	.logo-width a img {
+    width: 130px;
+	}
+	/*=================/sidebar css================*/
+	.card2 .banking-details .authorized-info h5 {
+    font-size: 20px;
+	}
+	.business-title p {
+    font-size: 12px;
+	}
+	.loan-application h5 {
+    font-size: 18px;
+	}
+	.status-details .loan-details p {
+    font-size: 11px;
+	}
+	.business-title.current-details h6 {
+    font-size: 16px;
+	}
+	.brokder-details .nxt-details.view-button {
+    margin-bottom: 1.5rem;
+	}
+	/*============profile css*=============*/
+	.profile-tabs ul {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+	}
+	.profile-tabs ul li{
+		margin-right:-34px;
+	}
+	.profile-tabs ul li a {
+    font-size: 16px;
+	}
+	/*============/profile css*=============*/
+
+	/*============setting (dashboard-broker) css*=============*/
+	
+	
+	.profile-button.profile-block{
+		display: block;
+	}
+	.profile-button button.btn.btn1.btn-link {
+    width: 100%;
+    margin-left: 0;
+	}
+	.profile-button button.btn {
+    color: white;
+    width: 100%;
+	}
+	.profile-button button.btn.btn1.btn-edit {
+    margin-left: 0;
+	}
+	/*============/setting (dashboard-broker) css*=============*/
+	.relation-details.custom-check.step-check {
+    margin: 2rem 0 0 5px;
+	}
+	.brokder-details .notice-details {
+    height: 80px;
+	}
+	.notice-details.total-details h2 {
+    font-size: 28px;
+	}
+
+	/*================step form=============*/
+	#side-bar-content.mobile-sidebar{
+		background-color: #F1F6F9;
+		padding-bottom: 3rem;
+	}
+	.stepper-logo a img {
+    width: 150px;
+	}
+	.datainput label {
+    font-size: 12px;
+	}
+	.previous-page {
+    bottom: -2rem;
+	}
+	.nxt-details {
+    bottom: -6.5rem;
+    right: 0;
+    left: 0;
+	}
+
+	.nxt-details .btn {
+    margin-bottom: 1rem;
+	}
+	.step-button button.btn.btn-getauto {
+    margin-top: 1rem;
+	}
+	.step-button button.btn.btn-authorize {
+    margin-top: 1.5rem;
+	}
+}
+
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 767px)
+and (orientation: landscape){
+	.sidebar-modal.modal.left .modal-dialog.modal-sm, .modal.right .modal-dialog.modal-sm {
+    width: 60%;
+}
+.card1 {
+    min-height: 120vh;
+}
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px){
+	#header nav .navbar-nav.menu li.nav-item {
+    margin-left: 0;
+	}
+	#header nav .navbar-nav.menu li a {
+    padding: .55rem 0rem;
+	}
+	#header nav .navbar-nav.menu li a.nav-link.btn.btn-application {
+    margin-top: 18px;
+	}
+	#header nav .navbar-nav.menu li a.nav-link.btn.btn-login {
+    text-align: left;
+    margin-top: 1rem;
+	}
+	#header nav .navbar-nav.menu li a.nav-link.btn.btn-application {
+    width: 50%;
+	}
+	.funding-row .funding-details p {
+    font-size: 22px;
+	}
+	.funding-row .funding-details h1 {
+    font-size: 40px;
+	}
+	.application-row {
+    margin: 0;
+	}
+	.view-height {
+    min-height: calc(100vh - 110px);
+	}
+	/*=================sidebar css================*/
+	#page-content {
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 100%;
+	}
+	.mobile-header{
+    display: block;
+	}	
+	#side-bar-content.mobile-hide {
+    display: none;
+	}
+	.card2 .confirmation-details {
+    margin-left: 0;
+	}
+	.mobile-header {
+    margin-top: 1rem;
+	}
+	#side-bar-content {
+    width: 50%;
+    background: transparent;
+    position: unset;
+    height: 100%;
+	}
+	div#side-bar {
+    margin-left: 15px;
+	}
+	.position-sidebar #progressbar {
+    left: -15px;
+	}
+	.sidebar-modal.modal.left .modal-dialog.modal-sm, .modal.right .modal-dialog.modal-sm {
+    width: 60%;
+	}
+	/*=================/sidebar css================*/
+
+
+/*=================step bar form css================*/
+	#side-bar-content.mobile-sidebar{
+	height: 100%;
+    background-color: #F1F6F9;
+    position: fixed;
+        width:280px;
+	}
+	#page-content.content {
+    width: calc(100% - 280px);
+    margin-left: 335px;
+    margin-right: 15px;
+	}
+	.step-button button.btn.btn-getauto {
+    margin-top: 1rem;
+	}
+	/*=================/step bar form css================*/
+}
+
+@media screen and (min-device-width: 992px) and (max-device-width: 1024px){
+	#header nav .navbar-nav.menu li.nav-item {
+    margin-left: 20px;
+	}
+	#page-content {
+    width: calc(100% - 380px);
+    margin-left: 460px;
+    margin-right: 70px;
+	}
+	#side-bar-content {
+    width: 385px;
+	}
+	div#side-bar {
+    margin-left: 70px;
+	}
+	.position-sidebar #progressbar {
+    left: 40px;
+	}
+	/*=========dashboard(broker) profile===============*/
+	.profile-button button.btn {
+    margin-left: -1rem;
+    margin-right: 2rem;
+	}
+	/*=========/dashboard(broker) profile===============*/
+	.nxt-details .btn {
+    padding: 8px 13px;
+	}
+	.step-button button.btn.btn-getauto {
+    margin-top: 1rem;
+	}
+}
+@media only screen and (min-width: 1200px){
+
+}

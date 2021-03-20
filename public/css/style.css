@@ -1,0 +1,1619 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
+body{
+	
+}
+.mobile-header{
+    display: none;
+}
+.menubars {
+    font-size: 22px;
+    color: #00405C;
+}
+div#side-bar {
+    margin-left: 125px;
+    margin-top: 25px;
+}
+
+#page-content {
+    width: calc(100% - 460px);
+    margin-left: 535px;
+    margin-right: 125px;
+}
+#side-bar-content {
+    width: 460px;
+    background: #F1F6F9;
+    position: fixed;
+    height: 100%;
+}
+.btn.focus, .btn:focus {
+    box-shadow: none!important;
+}
+.form-control:focus {
+    border-color: #00405C;
+    outline: 0;
+    box-shadow: none;
+}
+.view-height {
+    min-height: calc(100vh - 124px);
+}
+#header img.quadrad {
+    width: 180px;
+}
+.quadrado {
+  animation: crescendo 1.5s alternate infinite ease-in;
+}
+
+@keyframes crescendo {
+  0%   {transform: scale(.6);}
+  100% {transform: scale(1.1);}
+}
+
+#main-background{
+	background-color: #F1F6F9;
+}
+.logo-width a img {
+    width: 150px;
+}
+#header nav ul.navbar-nav.menu.ml-auto {
+    margin-top: 10px;
+}
+#header nav .navbar-nav.menu li.nav-item {
+    margin-left: 30px;
+}
+#header nav .navbar-nav.menu li a{
+	color:#A4AEB4;
+	font-weight:500;
+	padding: .75rem 0rem;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+#header nav .navbar-nav.menu li.active a{
+	color:#00405C;
+    font-weight:600;
+}
+#header nav .navbar-nav.menu li a.nav-link.btn.btn-login {
+    color: #2D8DD6;
+    position: relative;
+}
+#header nav .navbar-nav.menu li a.nav-link.btn.btn-application {
+    background: #30D667;
+    font-weight: 500;
+    color: white;
+    font-size: 16px;
+    padding: 10px 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+#header nav.navbar.navbar-expand-lg {
+    padding: 0.5rem 0;
+}
+.funding-info {
+    padding-top: 2.5rem;
+}
+.funding-row .funding-details h1{
+	font-size:50px;
+	color: #00405C;
+	font-weight: bold;
+	margin-bottom: 1rem;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+.funding-row .funding-details p{
+	font-size:24px;
+	color: #00405C;
+	font-weight:400;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+.funding-row .funding-display{
+	display: flex;
+}
+.funding-row .funding-display .fund-services {
+    margin-right: 70px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+.funding-row .funding-display .fund-services p{
+	font-weight:500;
+	color: #00405C;
+}
+.funding-row .funding-display .fund-services p i{
+	color: #30D667;
+}
+.funding-row .loan-form .form-group .form-control{
+	font-size:14px;
+	height:55px;
+	font-family: Avenir book;
+}
+.funding-row .loan-form .btn.btn-get{
+	font-size:14px;
+	height:55px;
+	background-color: #00405C;
+	border-radius:8px;
+	font-size:14px;
+	color: white;
+	width:100%;
+	transition:0.5s all;
+	font-family: 'Montserrat Alternates', sans-serif;
+	font-weight:500;
+    position: relative;
+}
+.funding-row .loan-form .btn.btn-get:hover{
+	background-color: transparent;
+	border-color: #00405C;
+	color:  #00405C;
+}
+.form-col {
+        margin-top: auto;
+    margin-bottom: auto;
+}
+.application-row .application-details{
+	border:1px solid #A4AEB4;
+	border-radius: 8px;
+	background-color: rgb(255,255,255, 0.5);
+	padding: 1.3rem 1rem;
+	    margin-bottom: 6px;
+
+}
+.application-row .application-details h5{
+	font-size: 16px;
+	color: #00405C;
+	font-weight:bold;
+	font-family: 'Montserrat Alternates', sans-serif;
+	margin-bottom: 5px;
+}
+.application-row .application-details h6{
+	font-size: 16px;
+    color: #00405C;
+    font-weight: 600;
+    font-family: 'Montserrat Alternates', sans-serif;
+    border-bottom: 2px solid #30D667;
+    width: 50px;
+    padding-bottom: 5px;
+}
+.application-row .application-details p{
+	font-size: 12px;	
+	color: #00405C;
+	font-weight:400;
+	margin-bottom:0;
+	font-family: Montserrat;
+}
+.application-row {
+    margin: 2.4rem 1.8rem;
+}
+
+
+
+/*==========footer details===========*/
+#footer{
+	background-color: #E7EDF0;
+	padding: 0.5rem 0;
+}
+#footer .call-details h6{
+	color: #82a2af;
+	margin-bottom:0;
+	font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 13px;
+    font-weight:500;
+}
+#footer .call-details p{
+	color: #82a2af;
+	margin-bottom:0;
+	font-family: 'Montserrat Alternates', sans-serif;
+}
+#footer .social-col .social-details i {
+    width: 32px;
+    height: 32px;
+    background:  #82a2af;
+    text-align: center;
+    border-radius: 50px;
+    line-height: 32px;
+    margin-left: 5px;
+    color: white;
+    cursor: pointer;
+}
+#footer .call-details.social-details h6 {
+    display: inline-block;
+}
+#footer .social-col {
+    text-align: right;
+}
+#footer  .copyright-col {
+    margin: auto;
+    text-align: center;
+}
+
+/*=======================how bidmca work css======================*/
+.bidding-row .works-details{
+	background-color: #ebf2fb;
+	padding: 0rem 1rem 1rem 1rem;
+    border-radius: 4px;
+    margin-top: 2rem;
+}
+.bidding-row .works-details .content-position {
+    margin-top: -43px;
+    margin-left: 10px;
+}
+
+.bidding-row .works-details h1{
+	font-size:45px;
+	font-family: 'Montserrat Alternates', sans-serif;
+	color: #d3e0eb;
+	font-weight:800;
+}
+.bidding-row .works-details h6{
+	font-weight:600;
+	font-family: 'Montserrat Alternates', sans-serif;
+	font-size: 18px;
+	margin-bottom:0;
+}
+.bidding-row .works-details p{
+	    font-family: 'Montserrat';
+    font-size: 13px;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+.main-col {
+    margin: auto;
+}
+.loan-row .btn.btn1{
+    color:white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:500;
+    width: 100%;
+    margin: 2.8rem 0;
+}
+button.btn.btn1.btn-loan {
+    background: #00405C;
+}
+button.btn.btn1.btn-credit {
+    background: #30D667;
+}
+/*=======================/how bidmca work css======================*/
+
+/*=======================Partners page css======================*/
+.form-bg{
+    background-color: white;
+    padding: 1.4rem;
+    margin: 1rem 0;
+    border-radius:8px;
+}
+.form-bg form .process-details h6{
+    color: #00405C;
+    font-weight:600;
+    font-family: 'Montserrat Alternates', sans-serif;
+    margin-bottom:0;
+}
+.form-bg form .process-details p{
+    color: #00405C;
+    font-size:14px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:400;
+}
+.form-bg  .back-title {
+    text-align: right;
+}
+.form-bg  .back-title a{
+     color: #A4AEB4;
+    font-size:12px;
+    margin-bottom: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight:400;
+}
+.form-bg form .relation-details p{
+    color: #A4AEB4;
+    font-size:14px;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 0;
+}
+/*--------------custom radio---------------*/
+.form-bg form .relation-details ul {
+    padding: 0;
+        margin-bottom: 0;
+}
+.form-bg form .relation-details ul li{
+    color: #A4AEB4;
+    display: inline-block;
+    position: relative;
+        margin-right: 2.5rem;
+}
+
+.form-bg form .relation-details ul li input[type=radio]{
+  position: absolute;
+  visibility: hidden;
+}
+
+.form-bg form .relation-details ul li label{
+  display: block;
+  position: relative;
+  font-weight: 500;
+  font-size: 18px;
+    padding-left: 27px;
+  z-index: 9;
+  cursor: pointer;
+  -webkit-transition: all 0.25s linear;
+margin-bottom: 0;
+font-family: 'Montserrat', sans-serif;
+    margin-top: 2px;
+}
+
+
+ul li .check{
+  display: block;
+    position: absolute;
+    border: 2px solid #A4AEB4;
+    border-radius: 3px;
+        height: 18px;
+    width: 18px;
+        top: 6px;
+    left: 0px;
+    z-index: 5;
+    transition: border .25s linear;
+    -webkit-transition: border .25s linear;
+}
+
+.icons {
+    vertical-align: middle;
+}
+
+ul li .check::before {
+  display: block;
+  position: absolute;
+    content: '';
+  height: 12px;
+  width: 12px;
+    top: 1px;
+    left: 1px;
+  margin: auto;
+    transition: background 0.25s linear;
+    -webkit-transition: background 0.25s linear;
+}
+
+input[type=radio]:checked ~ .check {
+  border: 2px solid #00405C;
+}
+
+input[type=radio]:checked ~ .check::before{
+  background: #00405C;
+}
+
+input[type=radio]:checked ~ label{
+  color: #00405C;
+}
+/*-----------checkbox------------*/
+.form-bg form .relation-details.custom-check ul li label{
+    font-size: 14px;
+    font-weight: 500;
+    margin-top:0;
+}
+.custom-check ul li .check{
+    top: 1px;
+}
+.form-bg form .relation-details ul li input[type=checkbox]{
+  position: absolute;
+  visibility: hidden;
+}
+input[type=checkbox]:checked ~ .check {
+  border: 2px solid #00405C;
+}
+
+input[type=checkbox]:checked ~ .check::before{
+  background: #00405C;
+}
+
+input[type=checkbox]:checked ~ label{
+  color: #00405C;
+}/*-----------/checkbox------------*/
+
+/*------------------/custom-radio---------------*/
+
+/*--------------------input and selection field animated form----------------*/
+/*===input field animated-==========*/
+.datainput{
+    position:relative;
+    margin: 20px 0 0px;
+}
+.datainput p{
+    font-size:12px;
+    background:#eee;
+    display:inline-block;
+    padding:5px 15px;
+    border-radius:.5rem;
+}
+.datainput input,.datainput textarea{
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #D5D9DC;
+    padding-bottom: 6px;
+    padding-top: 20px;
+}
+
+.datainput input:focus,.datainput textarea:focus{
+        outline:none;
+}
+.datainput label{
+        color:#A4AEB4;
+        font-size:14px;
+        font-family: 'Montserrat', sans-serif;
+        position:absolute;
+        pointer-events:none;
+        left:0;
+        top:-4px;
+        transition:.2s ease all;
+        font-weight: 500;
+}
+.datainput ::placeholder {
+  color: #00405C;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+}
+.datainput input:focus~label,.datainput input:valid~label,.datainput textarea:focus~label,.datainput textarea:valid~label{
+    top:-10px;
+    font-size:14px;
+    color:#00405C;
+}
+.bar{
+    position:relative;
+    display:block;
+    width:100%;
+}
+.bar:before,.bar:after{
+    content:'';
+    height:2px;
+    width:0;
+    bottom:1px;
+    position:absolute;
+    background:#00405C;
+    transition:.2s ease all;
+}
+.bar:before{
+    left:50%;
+}
+.bar:after{
+    right:50%;
+}
+
+.datainput input:focus~.bar:before,.datainput input:focus~.bar:after,.datainput textarea:focus~.bar:before,.datainput textarea:focus~.bar:after{
+    width:50%;
+}
+
+.datainput input:focus~.highlight,.datainput textarea:focus~.highlight{
+    animation:inputHighlighter .3s ease;
+}
+.datainput input:focus~label,.datainput input:valid~label,.datainput textarea:focus~label,.datainput textarea:valid~label{
+    top:-10px;
+    font-size:13px;
+    color:#00405C;
+}
+/*===/input field animated-==========*/
+/*for selection field animated*/
+.select-text {
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #D5D9DC;
+    padding-bottom: 3px;
+    padding-top: 20px;
+     color: #00405C;
+  font-weight: 600;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+}
+
+/* Remove focus */
+.select-text:focus {
+    outline: none;
+    border-bottom: 1px solid rgba(0,0,0, 0);
+}
+
+    /* Use custom arrow */
+.select .select-text {
+    appearance: none;
+    -webkit-appearance:none
+}
+
+.select:after {
+    position: absolute;
+    top: 31px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    padding: 0;
+    pointer-events: none;
+    vertical-align: .255em;
+    content: "";
+    border-top: .38em solid #00405C;
+    border-right: .38em solid transparent;
+    border-bottom: 0;
+    border-left: .38em solid transparent;
+}
+
+
+
+/* active state */
+.select-text:focus ~ .select-label, .select-text:valid ~ .select-label {
+    color: #2F80ED;
+    top: -20px;
+    transition: 0.2s ease all;
+    font-size: 14px;
+
+}
+
+/* BOTTOM BARS ================================= */
+.select-bar {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.select-bar:before, .select-bar:after {
+    content: '';
+    height: 2px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #00405C;
+    transition: 0.2s ease all;
+}
+
+.select-bar:before {
+    left: 50%;
+}
+
+.select-bar:after {
+    right: 50%;
+}
+
+/* active state */
+.select-text:focus ~ .select-bar:before, .select-text:focus ~ .select-bar:after {
+    width: 50%;
+}
+
+/* HIGHLIGHTER ================================== */
+/*.select-highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 25%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}*/
+/*=======/selection field animated==============*/
+/*--------------------/animated form----------------*/
+.form-group p.note{
+    font-size: 10px;
+   font-family: 'Montserrat', sans-serif;
+    font-weight:300;
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+.submit-button{
+    margin: 1.2rem 0;
+}
+.submit-button button.btn {
+    background-color: #30D667;
+    border: 1px solid #30D667;
+    color: white;
+    padding: 8px 35px;
+    font-weight: 500;
+    font-size: 20px;
+    transition: 0.5s all;
+}
+.submit-button button.btn:hover{
+    background-color: transparent;
+    color: #30D667;
+}
+.business-title p{
+    margin-bottom:0px;
+    font-family: 'Montserrat', sans-serif;
+    color: #A4AEB4;
+    font-weight:400;
+    font-size: 14px;
+}
+.signup-social-details a{
+     color: #2D8DD6;
+     font-weight:400;
+
+}
+.signup-social-details i {
+    background: #0072C6;
+    border:1px solid #0072C6;
+    width: 34px;
+    height: 34px;
+    border-radius: 50px;
+    text-align: center;
+    line-height: 34px;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s all;
+    font-size: 18px;
+    margin-right: 3px;
+}
+.signup-social-details i:hover{
+    background:transparent;
+    color: #0072C6;
+}
+.signin-col {
+    text-align: right;
+    margin-top: auto;
+}
+.form-group.datainput-col {
+    padding-right: 16px;
+}
+.form-group.datainput-col1 {
+    padding-left: 16px;
+}
+/*=======================/Partners page css======================*/
+
+
+/*========================step form css===========================*/
+
+#step-background{
+    background: linear-gradient(to left, white 61%, #F1F6F9 40%);
+}
+.row.step-logo img {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.bottom-quotes {
+    position: absolute;
+    bottom: 1rem;
+    margin-right: 35px;
+}
+.card1 {
+    margin-left: 42px;
+    z-index: 0;
+    min-height:80vh;
+}
+
+.card2 {
+    display: none
+
+
+}
+
+.card2.show {
+    display: block
+}
+
+.social {
+    border-radius: 50%;
+    background-color: #FFCDD2;
+    color: #E53935;
+    height: 47px;
+    width: 47px;
+    padding-top: 16px;
+    cursor: pointer
+}
+
+input,
+select {
+    padding: 2px;
+    border-radius: 0px;
+    box-sizing: border-box;
+    color: #9E9E9E;
+    border: 1px solid #BDBDBD;
+    font-size: 16px;
+    letter-spacing: 1px;
+    height: 50px !important
+}
+
+/*select {
+    width: 100%;
+    margin-bottom: 85px
+}*/
+
+/*input:focus,
+select:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #E53935 !important;
+    outline-width: 0 !important
+}*/
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #E53935
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.form-control-placeholder {
+    position: absolute;
+    top: 0px;
+    padding: 12px 2px 0 2px;
+    transition: all 300ms;
+    opacity: 0.5
+}
+
+.form-control:focus+.form-control-placeholder,
+.form-control:valid+.form-control-placeholder {
+    font-size: 95%;
+    top: 10px;
+    transform: translate3d(0, -100%, 0);
+    opacity: 1;
+    background-color: #fff
+}
+
+
+
+.get-bonus {
+    margin-left: 154px
+}
+
+#progressbar {
+    position: absolute;
+    left: -20px;
+    overflow: hidden;
+    color: #E53935
+}
+
+#progressbar li {
+    list-style-type: none;
+    font-size: 8px;
+    font-weight: 400;
+    margin-bottom: 24px
+}
+
+/*#progressbar li:nth-child(3) {
+    margin-bottom: 88px
+}*/
+
+#progressbar .step0:before {
+    content: "";
+    color: #fff
+}
+
+#progressbar li:before {
+        width: 24px;
+    height: 24px;
+    line-height: 24px;
+    display: block;
+    font-size: 16px;
+    background: #F1F6F9;
+    border: 3px solid #A4AEB4;
+    border-radius: 4px;
+    margin: auto;
+
+}
+
+/*#progressbar li:last-child:before {
+    width: 40px;
+    height: 40px
+}*/
+
+#progressbar li:after {
+    content: '';
+    width: 2px;
+    height: 24px;
+    background: #BDBDBD;
+    position: absolute;
+    z-index: -1;
+
+}
+
+#progressbar li:last-child:after {
+    background:transparent;
+}
+
+#progressbar li.active:last-child:after {
+    background:transparent;
+}
+#progressbar li.active:after {
+    background: #30D667;
+}
+
+#progressbar li.active:before {
+    font-family: FontAwesome;
+    content: "\f0c8";
+    color:#30D667;
+    border-color: #30D667;
+    line-height: 19px;
+}
+
+.tick {
+    width: 100px;
+    height: 100px
+}
+
+.prev {
+    display: block;
+    position: absolute;
+    left: 40px;
+    top: 20px;
+    cursor: pointer
+}
+
+.prev:hover {
+    color: #D50000 !important
+}
+
+@media screen and (max-width: 912px) {
+    .card00 {
+        padding-top: 30px
+    }
+
+    .card1 {
+        border: none;
+        margin-left: 50px
+    }
+
+    .card2 {
+        border-bottom: 1px solid #F5F5F5;
+        margin-bottom: 25px;
+        position: relative;
+    }
+
+    .social {
+        height: 30px;
+        width: 30px;
+        font-size: 15px;
+        padding-top: 8px;
+        margin-top: 7px
+    }
+
+    .get-bonus {
+        margin-top: 40px !important;
+        margin-left: 75px
+    }
+
+    #progressbar {
+        left: -25px
+    }
+}
+
+.card2 .confirmation-details {
+    margin-top: 1rem;
+    margin-left: 8px;
+        min-height: 80vh;
+}
+.card2 .banking-details .authorized-info h5{
+    font-size: 22px;
+    font-weight: bold;
+    font-family: Montserrat Alternates;
+    color: #00405C;
+
+
+}
+
+.card2 .draft {
+    text-align: right;
+}
+.card2 .banking-details {
+    margin-top: 1rem;
+}
+.relation-details.custom-check.step-check {
+    margin: 2rem 0;
+}
+.step-form .form-bg{
+    padding: 0;
+}
+
+.step-button button.btn.btn-authorize {
+    background: #A4AEB4;
+    color: white;
+    width: 100%;
+    padding: 11px;
+    font-family: 'Montserrat', sans-serif;
+}
+.step-button button.btn.btn-getauto {
+    background: #30D667;
+    color: white;
+    width: 100%;
+    padding: 11px;
+    font-family: 'Montserrat', sans-serif;
+        box-shadow: none;
+    border-color: #30D667;
+}
+.step-button .step-note{
+    color: #00405C;
+    font-style: italic;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    margin-top:8px;
+        margin-bottom: 2rem;
+}
+
+.card1 h6 {
+    font-size: 17px;
+    font-weight: 600;
+    font-family: 'Montserrat Alternates';
+    color: #A4AEB4;
+        cursor: pointer;
+}
+.card1 h6.details1.active {
+    /* margin-top: 7px; */
+    padding-top: 3px;
+}
+.card1 a {
+    text-decoration: none;
+}
+.card1 h6.details3 {
+    padding-top: 20px;
+}
+.card1 h6.details4 {
+    margin-top: 28px;
+}
+h6.details2 {
+    padding-top: 19px;
+}
+/*.nxt-details {
+    position: absolute;
+    right: 0;
+    bottom: 1em;
+}*/
+.previous-page{
+    position: absolute;
+    bottom: 1.5rem;
+}
+.nxt-details {
+    
+        position: absolute;
+    bottom: 1rem;
+    right: 10%;
+}
+.nxt-details .btn{
+    border:1px solid #2D8DD6;
+    background: #2D8DD6;
+    color: white;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    padding: 8px 28px;
+    box-shadow: -1px 1px 17px 0px rgba(45,141,214,0.3);
+-webkit-box-shadow: -1px 1px 17px 0px rgba(45,141,214,0.3);
+-moz-box-shadow: -1px 1px 17px 0px rgba(45,141,214,0.3);
+transition: 0.5s all;
+font-weight:500;
+}
+.nxt-details .btn:hover{
+    border:1px solid #2D8DD6;
+    background: transparent;
+    color: #2D8DD6;
+}
+.quotes-icon {
+    position: absolute;
+   top: -13%;
+    z-index: 1;
+   box-shadow: 10px 6px 24px 6px rgba(0,0,0,0.06);
+-webkit-box-shadow: 10px 6px 24px 6px rgba(0,0,0,0.06);
+-moz-box-shadow: 10px 6px 24px 6px rgba(0,0,0,0.06);
+border-radius:3px;
+}
+.quotes-icon i {
+    background: white;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    line-height: 48px;
+    color: #2696E8;
+    border-radius: 3px;
+}
+.quotes-details {
+    background: white;
+    position: relative;
+    padding: 2.5rem 1.5rem 0;
+    margin-left: 12px;
+    box-shadow: 10px 6px 24px -8px rgba(0,0,0,0.06);
+    -webkit-box-shadow: 10px 6px 24px -8px rgba(0,0,0,0.06);
+    -moz-box-shadow: 10px 6px 24px -8px rgba(0,0,0,0.06);
+    border-radius: 4px;
+}
+.quotes-details:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-bottom: 42px solid transparent;
+    border-left: 144px solid #F1F6F9;
+    width: 0;
+    left: 0;
+}
+.quotes-details p{
+    color: #A4AEB4;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-size: 14px;
+
+}
+.quotes-author{
+    display: flex;
+    justify-content: space-between;
+}
+.quotes-author .quotes-text h6{
+    color: #07111B;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+.quotes-author .quotes-text p{
+    color: #A4AEB4;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size:14px;
+} 
+.quotes-author .author-address  h6{
+    font-family: 'Montserrat', sans-serif;
+    font-weight:800;
+    font-size: 26px;
+    margin-bottom:0;
+}
+.quotes-author .author-address  h6 span{
+    color: #2696E8;
+}
+
+/*========================/step form css===========================*/
+
+
+
+/*========================confirmation css===========================*/
+
+.status-details {
+    border: 1px solid #C3CED8;
+    border-radius: 6px;
+    padding: 0.8rem;
+    box-shadow: -1px 1px 17px -2px rgb(0 0 0 / 10%);
+    -webkit-box-shadow: -1px 1px 17px -2px rgb(0 0 0 / 10%);
+    -moz-box-shadow: -1px 1px 17px -2px rgba(0,0,0,0.1);
+    margin: 1.5rem 0;
+}
+.status-details h6{
+    color: #00405C;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-weight:600;
+    font-size:16px;
+}
+.status-details p{
+    font-family: 'Montserrat', sans-serif;
+    font-size:12px;
+}
+.status-details p:nth-child(2){
+    color: #00405C;
+    font-weight:400;
+    margin-bottom:10px;
+}
+.status-details p:nth-child(3){
+    color: #07111B;
+    font-weight:500;
+}
+.status-details p i{
+    margin-right:7px;
+}
+.loan-details h6{
+    font-family: Montserrat Alternates;
+    color: #07111B;
+    font-weight:600;
+    margin-bottom: 4px;
+    text-transform: capitalize;
+        font-size: 14px;
+}
+.loan-details.details1 h6{
+    color: #30D667;
+}
+.status-details .loan-details p {
+    font-weight: 500;
+    color: #A4AEB4;
+     margin-bottom:0;
+         font-size: 12px;
+}
+.signature-details {
+    margin-top: 1rem;
+}
+.signature-details h6{
+    font-family: Montserrat Alternates;
+    font-size:24px;
+    font-weight: bold;
+    color: #07111B;
+}
+.file-upload-wrapper {
+    position: relative;
+    width: 100%;
+    height: 134px;
+    border: 1px solid #959595;
+    border-radius: .25rem;
+        margin-top: 18px;
+    border: 2px dashed #2D8DD6;
+    border-radius: .25rem;
+}
+.file-upload-wrapper:after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    font-size: 14px;
+    padding: 33px 22px;
+    display: block;
+    width: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 20;
+        height: 100%;
+    color: #000000;
+    border-radius: 5px 10px 10px 5px;
+        font-weight: 400;
+    background: #F6FBFF;
+   
+    color: #2D8DD6;
+    text-align: center;
+}
+
+.file-upload-wrapper:hover:before {
+    background: #3d8c63;
+}
+.file-upload-wrapper input {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    height: 100%!important;
+    margin: 0;
+    padding: 0;
+    display: block;
+    cursor: pointer;
+    width: 100%;
+}
+/*========================/confirmation css===========================*/
+
+
+
+
+/*========================dashboard broker===========================*/
+/*================/dashboard css*===========*/
+.follow-details {
+    margin-top: 1rem;
+}
+.loan-application.follow-details i {
+    width: 38px;
+    height: 38px;
+    background: #A4AEB4;
+    text-align: center;
+    line-height: 42px;
+    border-radius: 50px;
+    color: white;
+    margin-right: 8px;
+}
+.brokder-details .notice-details {
+    background:#F1F6F9;
+    border-radius: 8px;
+    padding: 0.5rem;
+    margin: 1.5rem 0;
+}
+.brokder-details .notice-details h6{
+    color:#DD5A5A;
+    font-size:12px;
+     font-family: 'Montserrat', sans-serif;
+     margin-bottom:3px;
+}
+
+.brokder-details .notice-details p{
+    color:#00405C;
+    font-size:12px;
+     font-family: 'Montserrat', sans-serif;
+     margin-bottom:0;
+}
+.loan-application h5{
+    font-family: Montserrat Alternates;
+    color: #A4AEB4;
+    font-weight:500;
+}
+.brokder-details  .nxt-details.view-button {
+        position: static;
+
+        text-align: left;
+    float: none;
+}
+.brokder-details  .nxt-details.view-button .btn {
+    width: auto;
+}
+.brokder-details  .nxt-details.view-button button.btn.view-color {
+    background-color: #D5D9DC;
+    border-color: #D5D9DC;
+    box-shadow: none;
+}
+.business-title.current-details h6 {
+    font-size: 18px;
+}
+.brokder-details  .business-title.current-details {
+    margin-bottom: 1.5rem;
+}
+.business-title.current-details .required {
+    color: #D73613;
+}
+.business-title.current-details .required1 {
+    color: #DD995A;
+}
+.business-title.current-details .required3 {
+    color: #2D8DD6;
+}
+.business-title.current-details .required4 {
+    color: #009A33;
+}
+.business-title.current-details .required5 {
+    color: #A4AEB4;
+}
+.loan-secured p{
+    font-size:12px;
+    color: #009A33;
+    margin-bottom:0;
+    font-family: Montserrat;
+        font-weight: 500;
+    margin-top: -5px;
+}
+.all-application{
+    margin:0.8rem 0;
+}
+.all-application a {
+    text-decoration: underline;
+    color: #00405C;
+    font-weight: 400;
+    font-family: Montserrat Alternates;
+    font-size:14px;
+}
+/*================/dashboard css*===========*/
+/*================profile page css*===========*/
+.profile-tabs .nav-tabs {
+    border-bottom: 0;
+}
+
+.profile-tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #00405C;
+    background-color: #fff;
+    border-left: 0;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 3px solid #30D667!important;
+    padding-bottom: 3px;
+    
+}
+.profile-tabs ul {
+    display: flex;
+    justify-content: space-between;
+        margin-bottom: 1rem;
+}
+.profile-tabs ul li a {
+    padding: .5rem 0rem;
+    color: #A4AEB4;
+    font-weight: 500;
+        font-size: 18px;
+}
+.nav-tabs .nav-link{
+    border:0;
+}
+.profile-tabs .nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover {
+    border:0;
+}
+.profile-button{
+    display: flex;
+}
+.profile-button button.btn {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    height: 48px;
+    padding: 0 30px;
+    margin-left: 1.6rem;
+    margin-top: 2.5rem;
+}
+.profile-button button.btn.btn1.btn-edit{
+    background-color: #A4AEB4;
+}
+.profile-button button.btn.btn1.btn-save{
+    background-color: #00405C;
+}
+/*================profile page css===========*/
+
+/*========================/dashboard broker===========================*/
+
+/*================dashboard broker loan application css===========*/
+.position-sidebar #progressbar {
+    left: 90px;
+}
+.card1.position-sidebar {
+    margin-top: 2rem;
+}
+/*================dashboard broker loan application css===========*/
+
+
+/*================dashboard broker setting css===========*/
+.profile-button button.btn.btn1.btn-link {
+    border: 1px solid #2D8DD6;
+    color: #2D8DD6;
+    text-decoration: none;
+}
+.password-details .psd-title{
+    border-bottom: 2px solid green;
+    font-weight: 600;
+    font-family: Montserrat Alternates;
+    color: #00405C;
+}
+button.btn.btn-red {
+    background: #D73613;
+    border: 1px solid #D73613;
+    box-shadow: none;
+}
+.notice-details.total-details h6{
+    color: #30D667;
+}
+.notice-details.total-details h2{
+    font-weight:600;
+    font-family: Montserrat;
+    margin-bottom:0;
+    color: #00405C;
+}
+.notice-details.total-details.investment h6{
+    color: #DD995A;
+}
+.notice-details.total-details.investment h2{
+    color: #A4AEB4;
+}
+.treading-details{
+    display: flex;
+    justify-content: space-between;
+    margin: 1.5rem 0 0.8rem 0;
+}
+.treading-details h6{
+    font-weight:600;
+    font-family: Montserrat Alternates;
+    margin-bottom:0;
+    color: #00405C;
+}
+.treading-details a{
+    font-weight:400;
+    font-family: Montserrat;
+    color: #00405C;
+    font-size:12px;
+}
+.chart-details p{
+    margin-bottom:0;
+    font-size: 12px;
+}
+.chart-details p:nth-child(1) {
+    color: #2D8DD6;
+}
+.chart-details p:nth-child(2){
+    color: #30D667;
+}
+.chart-details p:nth-child(3){
+    color: #DD995A;
+}
+.chart-details p:before{
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 20%;
+}
+.chart-details p:nth-child(1):before {
+    background-color: #2D8DD6;
+}
+.chart-details p:nth-child(2):before {
+    background-color: #30D667;
+}
+.chart-details p:nth-child(3):before {
+    background-color:#DD995A;
+}
+
+.status-details.panel.panel-default {
+    margin: 0.5rem 0;
+    padding: 1.3rem 0;
+}
+.accordion-section .panel-default .panel-title a {
+    display: block;
+    font-weight: 600;
+    font-size: 16px;
+    color: #A4AEB4;
+    text-decoration: none;
+        margin-left: 44px;
+}
+.panel-body.content {
+    width: 80%;
+}
+.accordion-section .panel-default .panel-title a:before {
+         content: '';
+    display: block;
+    width: 10px;
+    height: 2px;
+    background-color: #30D667;
+    position: absolute;
+    left: 8%;
+    transform: rotate(
+0deg
+);
+    margin-top: 9px;
+    transition: .5s;
+}
+.accordion-section .panel-default .panel-title a:after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 2px;
+    background-color: #30D667;
+    position: absolute;
+    left: 8%;
+    margin-top: -24px;
+    transform: rotate(
+0deg
+);
+    margin-top: -10px;
+    margin-right: 15px
+}
+.accordion-section .panel-default .panel-title a.collapsed:before {
+    transform: rotate(90deg);
+}
+.accordion-section h3.panel-title.mb-0 {
+    font-family:'Montserrat Alternates';
+}
+.accordion-section .panel-body.content p  {
+    font-weight:600;
+    color: #8E9CAE;
+    margin-bottom: 0;
+    margin-left: 44px;
+    margin-top: 6px;
+}
+.accordion-section .class-art-fun h6 {
+    line-height: 2;
+    margin-left: 20px;
+}
+.accordion-section .one-time {
+    padding: 0rem 2rem;
+}
+.breadcrumb {
+    padding: 0rem 0rem;
+    background-color: transparent;
+}
+.breadcrumb a {
+    color: #00405C;
+}
+.breadcrumb-item.active {
+    color: #30D667;
+}
+/*================dashboard broker setting css===========*/
+
+.bidding-details {
+    margin-top: 1.4rem;
+}
+.bidding-details form label {
+    color: #A4AEB4;
+    font-size: 14px;
+}
+.bidding-details form .form-control {
+    background-color: #F1F6F9;
+    border: 1px solid #F1F6F9;
+}
+
+
+/*----------------for mobile view*----------------*/
+#nav-icon1{
+  width: 50px;
+  height: 0px;
+      margin-top: -9px;
+  position: relative;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+      
+}
+
+#nav-icon1 span, #nav-icon3 span, #nav-icon4 span {
+  display: block;
+  position: absolute;
+  height: 3px;
+    width: 55%;
+      background: #00405C;
+  border-radius: 9px;
+  opacity: 1;
+  left: 33px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .25s ease-in-out;
+  -moz-transition: .25s ease-in-out;
+  -o-transition: .25s ease-in-out;
+  transition: .25s ease-in-out;
+}
+
+#nav-icon1 span:nth-child(1) {
+  top: 0px;
+}
+
+#nav-icon1 span:nth-child(2) {
+  top: 10px;
+}
+
+#nav-icon1 span:nth-child(3) {
+  top: 20px;
+}
+
+#nav-icon1.open span:nth-child(1) {
+  top: 18px;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+#nav-icon1.open span:nth-child(2) {
+  opacity: 0;
+  left: -60px;
+}
+button:focus {
+    outline: 0px dotted;
+    outline: 0;
+}
+#nav-icon1.open span:nth-child(3) {
+  top: 18px;
+  -webkit-transform: rotate(-135deg);
+  -moz-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+
+
+.sidebar-modal.modal.left .modal-dialog
+{
+  -webkit-transform: translate3d(0%, 0, 0);
+  -ms-transform: translate3d(0%, 0, 0);
+  -o-transform: translate3d(0%, 0, 0);
+  transform: translate3d(0%, 0, 0);
+}
+.sidebar-modal.modal.left .modal-dialog
+ {
+  position: fixed;
+  margin: auto;
+  width: 500px;
+  max-width: 100%;
+  height: 100%;
+}
+
+.sidebar-modal.modal.left .modal-content {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.sidebar-modal.modal.left .modal-body {
+  padding:0;
+}
+
+.sidebar-modal.modal.left.fade .modal-dialog {
+  left: -500px;
+  -webkit-transition: opacity 0.3s linear, left 0.3s ease-out;
+  -moz-transition: opacity 0.3s linear, left 0.3s ease-out;
+  -o-transition: opacity 0.3s linear, left 0.3s ease-out;
+  transition: opacity 0.3s linear, left 0.3s ease-out;
+}
+
+.sidebar-modal.modal.left.fade.show .modal-dialog {
+  left: 0;
+}
+
+
+.sidebar-modal.modal.left .modal-content
+{
+  border-radius: 0;
+  border: none;
+  background: #F1F6F9;
+}
+
+.sidebar-modal.modal.left .modal-dialog.modal-sm,
+.modal.right .modal-dialog.modal-sm {
+  width: 100%;
+}
+.sidebar-modal .modal-header {
+    padding: .5rem 1rem;
+}
+/*----------------/for mobile view*----------------*/
