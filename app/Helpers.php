@@ -29,12 +29,12 @@ function sendEmail($template, $to_email, $subject)
 {
     $data = array(
         'email' => $to_email,
-        'clientid' => 'iTreat',
+        'clientid' => 'BIDMCA',
         'key' => 'wHfWHwpDYFf3rEpbbc1tipQu28jqoOf0qeLNunkrqtwU1J1lPPKepJvJX7ILDpSy',
         'subject' => $subject,
         'message' => $template,
         'file' => '',
-        'replyto' => 'noreply@itreat.ae'
+        'replyto' => 'noreply@bidmca.com'
     );
     $url = 'https://esmtp.qualwebs.com/qw/api/api.php';
     $handle = curl_init($url);

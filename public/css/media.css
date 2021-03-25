@@ -167,6 +167,18 @@
 	.step-button button.btn.btn-authorize {
     margin-top: 1.5rem;
 	}
+	.forget-details {
+    text-align: left;
+	}
+	#footer .social-col {
+    text-align: left;
+	}
+	#footer .copyright-col {
+    text-align: left;
+	}
+	.call-details {
+    margin: 8px 0;
+	}	
 }
 
 @media only screen
@@ -298,4 +310,11 @@ and (orientation: landscape){
 }
 @media only screen and (min-width: 1200px){
 
+}
+
+
+@media screen and (min-device-width: 1561px) and (max-device-width: 1920px){
+	.brokder-details .business-title.current-details {
+    margin-bottom: 0.9rem;
+}
 }

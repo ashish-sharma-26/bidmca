@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
 body{
-	
+
 }
 .mobile-header{
     display: none;
@@ -17,8 +17,8 @@ div#side-bar {
 
 #page-content {
     width: calc(100% - 460px);
-    margin-left: 535px;
-    margin-right: 125px;
+    margin-left: 495px;
+    margin-right: 85px;
 }
 #side-bar-content {
     width: 460px;
@@ -35,7 +35,7 @@ div#side-bar {
     box-shadow: none;
 }
 .view-height {
-    min-height: calc(100vh - 124px);
+    min-height:calc(100vh - 116.78px);
 }
 #header img.quadrad {
     width: 180px;
@@ -168,7 +168,7 @@ div#side-bar {
     padding-bottom: 5px;
 }
 .application-row .application-details p{
-	font-size: 12px;	
+	font-size: 12px;
 	color: #00405C;
 	font-weight:400;
 	margin-bottom:0;
@@ -183,7 +183,7 @@ div#side-bar {
 /*==========footer details===========*/
 #footer{
 	background-color: #E7EDF0;
-	padding: 0.5rem 0;
+	padding: 0.4rem 0;
 }
 #footer .call-details h6{
 	color: #82a2af;
@@ -198,18 +198,21 @@ div#side-bar {
 	font-family: 'Montserrat Alternates', sans-serif;
 }
 #footer .social-col .social-details i {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     background:  #82a2af;
     text-align: center;
     border-radius: 50px;
-    line-height: 32px;
+    line-height: 28px;
     margin-left: 5px;
     color: white;
     cursor: pointer;
 }
 #footer .call-details.social-details h6 {
     display: inline-block;
+}
+#footer .call-col{
+    margin:auto 0;
 }
 #footer .social-col {
     text-align: right;
@@ -218,7 +221,10 @@ div#side-bar {
     margin: auto;
     text-align: center;
 }
-
+.signup-social-details p {
+    color: #A4AEB4;
+    margin-bottom: 7px;
+}
 /*=======================how bidmca work css======================*/
 .bidding-row .works-details{
 	background-color: #ebf2fb;
@@ -418,11 +424,12 @@ input[type=checkbox]:checked ~ label{
 }
 .datainput input,.datainput textarea{
     display: block;
-    width: 100%;
+    width: 99%;
     border: none;
     border-bottom: 2px solid #D5D9DC;
     padding-bottom: 6px;
     padding-top: 20px;
+        font-weight: 500;
 }
 
 .datainput input:focus,.datainput textarea:focus{
@@ -440,10 +447,10 @@ input[type=checkbox]:checked ~ label{
         font-weight: 500;
 }
 .datainput ::placeholder {
-  color: #00405C;
-  font-weight: 600;
+  color: #495057;
+  font-weight: 500;
   font-family: 'Montserrat', sans-serif;
-  font-size: 15px;
+  font-size: 14px;
 }
 .datainput input:focus~label,.datainput input:valid~label,.datainput textarea:focus~label,.datainput textarea:valid~label{
     top:-10px;
@@ -459,7 +466,7 @@ input[type=checkbox]:checked ~ label{
     content:'';
     height:2px;
     width:0;
-    bottom:1px;
+    bottom:0px;
     position:absolute;
     background:#00405C;
     transition:.2s ease all;
@@ -490,7 +497,7 @@ input[type=checkbox]:checked ~ label{
     width: 100%;
     border: none;
     border-bottom: 2px solid #D5D9DC;
-    padding-bottom: 3px;
+    padding-bottom: 8px;
     padding-top: 20px;
      color: #00405C;
   font-weight: 600;
@@ -691,11 +698,12 @@ select {
     padding: 2px;
     border-radius: 0px;
     box-sizing: border-box;
-    color: #9E9E9E;
+    color: #00405C;
     border: 1px solid #BDBDBD;
     font-size: 16px;
     letter-spacing: 1px;
     height: 50px !important
+    font-weight: 500;
 }
 
 /*select {
@@ -868,7 +876,7 @@ select:focus {
 .card2 .confirmation-details {
     margin-top: 1rem;
     margin-left: 8px;
-        min-height: 80vh;
+    min-height:85vh;
 }
 .card2 .banking-details .authorized-info h5{
     font-size: 22px;
@@ -946,14 +954,13 @@ h6.details2 {
     bottom: 1em;
 }*/
 .previous-page{
-    position: absolute;
-    bottom: 1.5rem;
+    float: left;
+    margin-top: 4px;
 }
-.nxt-details {
-    
-        position: absolute;
-    bottom: 1rem;
-    right: 10%;
+.nxt-details{
+    float: right;
+    margin-bottom: 1rem;
+
 }
 .nxt-details .btn{
     border:1px solid #2D8DD6;
@@ -1032,7 +1039,7 @@ border-radius:3px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size:14px;
-} 
+}
 .quotes-author .author-address  h6{
     font-family: 'Montserrat', sans-serif;
     font-weight:800;
@@ -1135,7 +1142,7 @@ border-radius:3px;
     border-radius: 5px 10px 10px 5px;
         font-weight: 400;
     background: #F6FBFF;
-   
+
     color: #2D8DD6;
     text-align: center;
 }
@@ -1220,7 +1227,7 @@ border-radius:3px;
     font-size: 18px;
 }
 .brokder-details  .business-title.current-details {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.45rem;
 }
 .business-title.current-details .required {
     color: #D73613;
@@ -1269,7 +1276,7 @@ border-radius:3px;
     border-top: 0;
     border-bottom: 3px solid #30D667!important;
     padding-bottom: 3px;
-    
+
 }
 .profile-tabs ul {
     display: flex;
@@ -1504,7 +1511,7 @@ button.btn.btn-red {
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
-      
+
 }
 
 #nav-icon1 span, #nav-icon3 span, #nav-icon4 span {
@@ -1617,3 +1624,41 @@ button:focus {
     padding: .5rem 1rem;
 }
 /*----------------/for mobile view*----------------*/
+
+
+
+/*==================login form=====================*/
+.process-details h5 {
+    color: #00405C;
+    margin-bottom: 0px;
+    font-size: 22px;
+}
+.forget-details {
+    text-align: right;
+}
+.forget-details a {
+    font-size: 14px;
+}
+.login-form{
+    padding: 1rem 3.5rem;
+    margin-top: 5rem;
+}
+.login-form .datainput input, .datainput textarea{
+    width:100%;
+}
+
+.business-title.current-details .kicked-bg {
+    background: url(../images/kicked.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: 1px 2px;
+}
+.business-title.current-details .kicked-bg  p {
+        font-size: 12px;
+    color: white;
+    padding: 5px 17px;
+}
+
+.upload-file .file-upload-wrapper:after{
+    padding: 2.9em 10em;
+}

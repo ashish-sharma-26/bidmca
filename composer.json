@@ -18,7 +18,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.2",
         "livewire/livewire": "^2.4",
-        "prettus/l5-repository": "^2.7"
+        "prettus/l5-repository": "^2.7",
+        "ramsey/uuid": "^4.1"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.5",

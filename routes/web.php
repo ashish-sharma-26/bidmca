@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,11 +29,17 @@ Route::get('/register', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::post('/api/send-otp', [\App\Http\Controllers\Common\CommonController::class, 'sendOtp'])->name('sendOtp');
 Route::post('/api/verify-otp', [\App\Http\Controllers\Common\CommonController::class, 'verifyOTP'])->name('verifyOTP');
+Route::get('/api/common/get-cities/{stateId}', [\App\Http\Controllers\Common\CommonController::class, 'getCities'])->name('getCities');
+Route::post('/api/common/file-upload', [\App\Http\Controllers\Common\CommonController::class, 'uploadFile'])->name('uploadFile');
+Route::get('/check-email', [\App\Http\Controllers\Common\CommonController::class, 'checkEmail'])->name('checkEmail');
+
+Route::middleware(['auth:web'])->group(function () {
+    Route::get('/application', [App\Http\Controllers\ApplicationController::class, 'index'])->name('application');
+    Route::post('/api/application/store', [App\Http\Controllers\ApplicationController::class, 'store'])->name('applicationStore');
+    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/logout', [App\Http\Controllers\UsersController::class, 'logout'])->name('logout');
+});

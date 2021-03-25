@@ -16,8 +16,10 @@
     <!-- Styles -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{asset('css/aos-animation.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+    <link href="{{asset('css/custom.css')}}" rel="stylesheet">
     <link href="{{asset('css/media.css')}}" rel="stylesheet">
 </head>
 <body id="main-background">
@@ -49,7 +51,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link btn btn-application" href="http://159.65.142.31/bidmca-design/step.html">Start Application</a>
+                        <a class="nav-link btn btn-application" href="{{url('/application')}}">Start Application</a>
                     </li>
 
                     <li class="nav-item">

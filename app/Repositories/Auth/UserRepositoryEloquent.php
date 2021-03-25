@@ -5,7 +5,7 @@ namespace App\Repositories\Auth;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Repositories\Auth\UserRepository;
-use App\Models\Auth\User;
+use App\Models\User;
 use App\Validators\Auth\UserValidator;
 
 /**
@@ -44,5 +44,5 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

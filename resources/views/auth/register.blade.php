@@ -140,7 +140,9 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn" onclick="verifyOtp(this)">Submit</button>
+                        <div class="submit-button">
+                            <button type="button" class="btn" onclick="verifyOtp(this)">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>

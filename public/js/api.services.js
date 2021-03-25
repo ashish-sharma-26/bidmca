@@ -1,4 +1,6 @@
 const baseURL = 'http://localhost/bidmca/public/api/';
+const webUrl = 'http://localhost/bidmca/public';
+const storageURL = 'http://localhost/bidmca/public/storage/';
 
 const headers = () => {
     const headers = {
@@ -33,7 +35,15 @@ class API {
         return request('POST', 'users', inputData);
     }
 
-    getUser(){
-        return request('GET', 'users');
+    getCities(stateId){
+        return request('GET', `common/get-cities/${stateId}`);
+    }
+
+    storeApplication(inputData){
+        return request('POST', `application/store`, inputData);
+    }
+
+    fileUpload(inputData){
+        return request('POST', `common/file-upload`, inputData);
     }
 }

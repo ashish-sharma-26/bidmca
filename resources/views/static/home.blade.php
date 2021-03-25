@@ -30,10 +30,10 @@
                     </div>
                     <div class="col-12 col-md-5 col-lg-5 col-xl-3 offset-xl-1 form-col">
                         <div class="loan-form">
-                            <form>
+                            <form action="{{url('/application')}}">
                                 <div class="form-group" data-aos="fade-left" data-aos-easing="linear"
                                      data-aos-duration="500">
-                                    <input type="number" class="form-control" name="loan-amt" id="loan_amt"
+                                    <input class="form-control" name="loan_amount" id="loan_amount"
                                            placeholder="Enter the loan amount here">
                                 </div>
                                 <div data-aos="fade-left" data-aos-easing="linear" data-aos-duration="500">
