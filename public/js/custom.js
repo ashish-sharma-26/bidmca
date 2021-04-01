@@ -110,6 +110,12 @@ if($('#billing_phone').length){
         phoneRegionCode: 'US'
     });
 }
+if($('#billing_phone2').length){
+    new Cleave('#billing_phone', {
+        phone: true,
+        phoneRegionCode: 'US'
+    });
+}
 var loan_amount;
 if($('#loan_amount').length){
     loan_amount = new Cleave('#loan_amount', {

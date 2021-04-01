@@ -271,7 +271,7 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
                                         <div class="datainput select">
-                                            <select class="select-text" id="billing_state_id" name="billing_state_id" required onchange="stateChange(this.value)">
+                                            <select class="select-text" id="billing_state_id" name="billing_state_id" required onchange="stateChange(this.value, 1)">
                                                     <option value="">Please select</option>
                                                     @foreach($states as $state)
                                                         <option value="{{$state->id}}">{{$state->state_name}}</option>
@@ -341,12 +341,72 @@
                                 <div class="relation-details custom-check step-check">
                                     <ul class="list-group-horizontal aos-init">
                                         <li>
-                                            <input type="checkbox" id="check-option" name="selector1">
+                                            <input type="checkbox" id="check-option" name="selector1" onchange="addressCheck(this)">
                                             <label for="check-option">Billing details same as physical address
                                                 details</label>
                                             <div class="check"></div>
                                         </li>
                                     </ul>
+                                </div>
+
+                                <div id="billingAddressWrap" class="d-none">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-10">
+                                            <div class="datainput">
+                                                <input class="validate" id="billing_street_address2" name="billing_street_address2" required=""
+                                                       type="text"
+                                                       placeholder="Physical Street Address"/>
+                                                <span class="bar"></span>
+                                                <label>Physical Street Address</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-5">
+                                            <div class="datainput select">
+                                                <select class="select-text" id="billing_state_id2" name="billing_state_id2" required onchange="stateChange(this.value, 2)">
+                                                    <option value="">Please select</option>
+                                                    @foreach($states as $state)
+                                                        <option value="{{$state->id}}">{{$state->state_name}}</option>
+                                                    @endforeach
+                                                </select>
+                                                <!--<span class="select-highlight"></span>-->
+                                                <span class="select-bar"></span>
+                                                <label class="">State</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-5">
+                                            <div class="datainput select">
+                                                <select class="select-text" id="billing_city_id2" name="billing_city_id2" required>
+                                                    <option value="">Please select state</option>
+                                                </select>
+                                                <!--<span class="select-highlight"></span>-->
+                                                <span class="select-bar"></span>
+                                                <label class="">City</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-5">
+                                            <div class="datainput">
+                                                <input class="validate" id="billing_zipcode2" name="billing_zipcode2" required="" type="number"
+                                                       value='' placeholder="Zipcode"/>
+                                                <span class="bar"></span>
+                                                <label>Zipcode</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-5">
+                                            <div class="datainput">
+                                                <input class="validate" id="billing_phone2" name="billing_phone2" required=""
+                                                       placeholder="Phone Number"/>
+                                                <span class="bar"></span>
+                                                <label>Phone Number</label>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </form>
                         </div>

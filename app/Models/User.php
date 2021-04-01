@@ -55,8 +55,8 @@ class User extends Authenticatable implements Transformable
         'email_verified_at' => 'datetime',
     ];
 
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = Hash::make($value);
-    }
+//    public function setPasswordAttribute($value)
+//    {
+//        $this->attributes['password'] = Hash::make($value, ['rounds' => 12]);
+//    }
 }

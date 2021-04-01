@@ -55,14 +55,29 @@ function checkMode(value) {
     }
 }
 
-function stateChange(value){
+function addressCheck(element) {
+    if($(element).is(":checked")){
+        $('#billingAddressWrap').removeClass('d-none');
+    }
+    if(!$(element).is(":checked")){
+        $('#billingAddressWrap').addClass('d-none');
+    }
+}
+
+function stateChange(value, type){
     api.getCities(value).then((res) => {
-        $('#billing_city_id').html(res.data.response.cityHtml);
+        if(type == 1){
+            $('#billing_city_id').html(res.data.response.cityHtml);
+        }
+        if(type == 2){
+            $('#billing_city_id2').html(res.data.response.cityHtml);
+        }
     }).catch((error) => {
     });
 }
 
 function storeApplication(action) {
+    nextStep(action);
     let is_business_operating = 0;
     if($('#is_business_operating').is(":checked")){
         is_business_operating = 1;

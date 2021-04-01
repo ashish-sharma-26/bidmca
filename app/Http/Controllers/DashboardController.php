@@ -9,7 +9,19 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     public function index(){
-        $application = Application::with(['city', 'state'])->where('user_id', Auth::user()->id)->get();
-        return view('dashboard.broker', ['applications' => $application]);
+        $data = [];
+        if(Auth::user()->user_type === 1){
+            $application = Application::with(['city', 'state'])
+                ->where('user_id', Auth::user()->id)
+                ->get();
+            $data = ['applications' => $application];
+        }
+        if(Auth::user()->user_type === 2){
+            $application = Application::with(['city', 'state'])
+                ->where('status', 3)
+                ->get();
+            $data = ['openApplications' => $application];
+        }
+        return view('dashboard.dashboard', $data);
     }
 }
