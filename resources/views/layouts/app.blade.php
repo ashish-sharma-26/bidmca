@@ -55,7 +55,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link btn btn-login" href="#">Login <i class="las la-long-arrow-alt-right icons"></i></a>
+                        <a class="nav-link btn btn-login" href="{{url('/login')}}">Login <i class="las la-long-arrow-alt-right icons"></i></a>
                     </li>
 
                 </ul>

@@ -48,4 +48,25 @@ class Application extends Model
     public function state(){
         return $this->hasOne(State::class,'id', 'billing_state_id');
     }
+
+    public function stateOfIncorporation(){
+        return $this->hasOne(State::class,'id', 'state_incorporation_id');
+    }
+
+    public function owner(){
+        return $this->hasMany(Owner::class, 'application_id','id');
+    }
+
+    public function bid(){
+        return $this->hasOne(Bid::class, 'application_id','id');
+    }
+
+    public function bankAccount(){
+        return $this->hasMany(BankAccount::class, 'application_id','id');
+    }
+
+    public function getLoanAmountAttribute($value)
+    {
+        return number_format($value);
+    }
 }

@@ -41,5 +41,7 @@ Route::middleware(['auth:web'])->group(function () {
     Route::get('/application', [App\Http\Controllers\ApplicationController::class, 'index'])->name('application');
     Route::post('/api/application/store', [App\Http\Controllers\ApplicationController::class, 'store'])->name('applicationStore');
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/application/{id}', [App\Http\Controllers\ApplicationController::class, 'view'])->name('app_view');
+    Route::post('/api/application/bid', [App\Http\Controllers\BidController::class, 'store'])->name('app_bid');
     Route::get('/logout', [App\Http\Controllers\UsersController::class, 'logout'])->name('logout');
 });

@@ -46,4 +46,8 @@ class API {
     fileUpload(inputData){
         return request('POST', `common/file-upload`, inputData);
     }
+
+    placeBid(inputData){
+        return request('POST', `application/bid`, inputData);
+    }
 }

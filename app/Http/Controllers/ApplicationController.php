@@ -15,7 +15,7 @@ class ApplicationController extends Controller
 {
     public function index(){
         $states = State::all();
-        return view('application', ['states' => $states]);
+        return view('application.create', ['states' => $states]);
     }
 
     public function store(Request $request){
@@ -196,5 +196,18 @@ class ApplicationController extends Controller
         ]);
 
         return $appId;
+    }
+
+    public function view($id){
+        $application = Application::with([
+            'city',
+            'state',
+            'stateOfIncorporation',
+            'owner',
+            'bankAccount',
+            'bid'
+        ])->where('unique_id',$id)->first();
+//        dd($application);
+        return view('application.single',['application' => $application]);
     }
 }

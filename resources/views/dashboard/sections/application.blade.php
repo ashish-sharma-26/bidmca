@@ -20,32 +20,18 @@
                 </div>
                 <div class="col-4 col-md-4 col-lg-4 col-xl-4">
                     <div class="loan-details">
-                        <h6>Status</h6>
-                        <p>{{$application->is_business_operating ? 'Operating' : 'Closed'}}</p>
+                        <h6>{{$application->is_business_operating ? 'Operating' : 'Closed'}}</h6>
+                        <p>Status</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="col-12 col-md-5 col-lg-4 col-xl-5">
-        <div class="business-title current-details">
-            <p>Applied on</p>
-            <h6>{{date('F d, Y', strtotime($application->created_at))}}</h6>
-        </div>
-        <div class="business-title current-details">
-            <p>Current Status</p>
-            <h6 class="required">Pending</h6>
-        </div>
-        @if(auth()->user()->user_type === 1)
-            <div class="nxt-details view-button">
-                <button class="btn ">View <span class="las la-long-arrow-alt-right icons"></span></button>
-            </div>
-        @endif
-        @if(auth()->user()->user_type === 2)
-            <div class="nxt-details view-button">
-                <button class="btn ">Participate <span class="las la-long-arrow-alt-right icons"></span></button>
-            </div>
-        @endif
-    </div>
+    @if(auth()->user()->user_type === 1)
+        @include('dashboard.sections.application.broker-action', ['application' => $application])
+    @endif
+    @if(auth()->user()->user_type === 2)
+        @include('dashboard.sections.application.lender-action', ['application' => $application])
+    @endif
 </div>

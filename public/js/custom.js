@@ -132,6 +132,14 @@ if($('#due_amount').length){
     });
 }
 
+var bidAmount;
+if($('#bidAmount').length){
+    bidAmount = new Cleave('#bidAmount', {
+        numeral: true,
+        numeralThousandsGroupStyle: 'thousand'
+    });
+}
+
 if($('#amount_per_year').length){
     new Cleave('#amount_per_year', {
         numeral: true,

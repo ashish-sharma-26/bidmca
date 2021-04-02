@@ -32,7 +32,7 @@
             <div class="row">
                 <div class="col-10 col-md-10">
                     <div class="logo-width">
-                        <a href="http://159.65.142.31/bidmca-design/home.html"><img src="images/logo1.png" class="img-fluid"></a></div>
+                        <a href="{{url('/')}}"><img src="images/logo1.png" class="img-fluid"></a></div>
                 </div>
                 <div class="col-2 col-md-2 text-right">
                     <div class="menubars"><span class="fa fa-bars" data-toggle="modal" data-target="#left-sidebar"></span></div>
@@ -43,6 +43,7 @@
         <!-----------------/sidebar for mobile view------------------->
         <div class="row">
             <!--================start left side bar for web==================-->
+            @if (Route::currentRouteName() != 'app_view')
             <div id="side-bar-content" class=" mobile-hide">
                 <div id="side-bar">
                     <a href="{{url('/')}}"><img src="images/logo.png" data-aos="zoom-in"></a>
@@ -64,6 +65,7 @@
                     </div>
                 </div>
             </div>
+            @endif
             @yield('content')
         </div>
     </div>
