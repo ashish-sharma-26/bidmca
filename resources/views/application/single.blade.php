@@ -288,71 +288,73 @@
                                 <p>Proposal closes on</p>
                                 <h6>{{date('F d, Y', strtotime($application->created_at))}}</h6>
                             </div>
-                            <div class="business-title current-details">
-                                <p>Current Bid Status:</p>
-                                <div class="kicked-bg"><p>Placed</p></div>
-                            </div>
+                            @if($application->bid)
+                                <div class="business-title current-details">
+                                    <p>Current Bid Status:</p>
+                                    <div class="kicked-bg"><p>Placed</p></div>
+                                </div>
+                            @endif
                         </div>
 
                         <div class="bidding-details">
-                                <input type="hidden" name="application_id" id="application_id"
-                                       value="{{$application->id}}">
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">IR:</label>
-                                        <input type="number" min="0"
-                                               class="form-control"
-                                               id="interest_rate"
-                                               name="interest_rate"
-                                               placeholder="IR"
-                                               value="{{$application->bid ? $application->bid->interest_rate : ''}}"
-                                        >
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">Timeframe:</label>
-                                        <input type="number"
-                                               class="form-control"
-                                               min="1"
-                                               id="timeframe"
-                                               name="timeframe"
-                                               placeholder="Timeframe"
-                                               value="{{$application->bid ? $application->bid->duration : ''}}"
-                                        >
-                                    </div>
-
-                                    <div class="form-group col-md-12">
-                                        <label for="inputPassword4">Your current bid amount:</label>
-                                        <input type="text"
-                                               class="form-control"
-                                               id="bidAmount"
-                                               name="bid_amount"
-                                               placeholder="Bid Amount"
-                                               value="{{$application->bid ? $application->bid->amount : ''}}"
-                                        >
-                                    </div>
-
-                                    <div>
-
-                                    </div>
+                            <input type="hidden" name="application_id" id="application_id"
+                                   value="{{$application->id}}">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="inputEmail4">IR:</label>
+                                    <input type="number" min="0"
+                                           class="form-control"
+                                           id="interest_rate"
+                                           name="interest_rate"
+                                           placeholder="IR"
+                                           value="{{$application->bid ? $application->bid->interest_rate : ''}}"
+                                    >
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="inputPassword4">Timeframe:</label>
+                                    <input type="number"
+                                           class="form-control"
+                                           min="1"
+                                           id="timeframe"
+                                           name="timeframe"
+                                           placeholder="Timeframe"
+                                           value="{{$application->bid ? $application->bid->duration : ''}}"
+                                    >
                                 </div>
 
-                                @if($application->bid)
-                                    <div class="profile-button">
-                                        <div>
-                                            <button class="btn btn1 btn-save mt-3 ml-0 w-100" onclick="placeBidAction()"
-                                                    id="placeBid">Update your bid
-                                            </button>
-                                        </div>
+                                <div class="form-group col-md-12">
+                                    <label for="inputPassword4">Your current bid amount:</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="bidAmount"
+                                           name="bid_amount"
+                                           placeholder="Bid Amount"
+                                           value="{{$application->bid ? $application->bid->amount : ''}}"
+                                    >
+                                </div>
+
+                                <div>
+
+                                </div>
+                            </div>
+
+                            @if($application->bid)
+                                <div class="profile-button">
+                                    <div>
+                                        <button class="btn btn1 btn-save mt-3 ml-0 w-100" onclick="placeBidAction()"
+                                                id="placeBid">Update your bid
+                                        </button>
                                     </div>
-                                @else
-                                    <div class="profile-button step-button">
-                                        <div>
-                                            <button type="button" onclick="placeBidAction()" id="placeBid"
-                                                    class="btn btn-getauto mt-3 ml-0 w-100">Submit My Application
-                                            </button>
-                                        </div>
+                                </div>
+                            @else
+                                <div class="profile-button step-button">
+                                    <div>
+                                        <button type="button" onclick="placeBidAction()" id="placeBid"
+                                                class="btn btn-getauto mt-3 ml-0 w-100">Submit My Application
+                                        </button>
                                     </div>
-                                @endif
+                                </div>
+                            @endif
                         </div>
                     </div>
                 @endif
