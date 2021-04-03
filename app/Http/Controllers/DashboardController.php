@@ -17,8 +17,9 @@ class DashboardController extends Controller
             $data = ['applications' => $application];
         }
         if(Auth::user()->user_type === 2){
-            $application = Application::with(['city', 'state', 'bid'])
-                ->get();
+            $application = Application::with(['city', 'state', 'bid' => function ($query) {
+                $query->where('user_id', Auth::user()->id);
+            }])->get();
             $data = ['openApplications' => $application];
         }
         return view('dashboard.dashboard', $data);
