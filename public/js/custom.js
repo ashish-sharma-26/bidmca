@@ -209,7 +209,7 @@ function register(){
         email: $('#email').val(),
         phone: $('#phone').val(),
         password: $('#password').val(),
-        user_type: $('input[name="user_type"]').val(),
+        user_type: $('input[name="user_type"]:checked').val(),
         tnc: $('input[name="tnc"]').val()
     };
 

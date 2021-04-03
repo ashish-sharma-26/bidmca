@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-6 col-xl-6 forget-details">
-                                <a href="http://159.65.142.31/bidmca-design/forget-password.html">Forgot Password?</a>
+                                <a href="#">Forgot Password?</a>
                             </div>
                         </div>
 
@@ -69,7 +69,7 @@
                         <div class="row justify-content-center">
                             <div class="col-12 col-md-8 col-lg-8 col-xl-8">
                                 <div class="signup-social-details text-center">
-                                    <p>New User? <a href="#">Create an Account</a></p>
+                                    <p>New User? <a href="{{url('/register?ref=borrower')}}">Create an Account</a></p>
                                 </div>
 
                             </div>

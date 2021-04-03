@@ -77,7 +77,7 @@ function stateChange(value, type){
 }
 
 function storeApplication(action) {
-    nextStep(action);
+    // nextStep(action);
     let is_business_operating = 0;
     if($('#is_business_operating').is(":checked")){
         is_business_operating = 1;
@@ -165,6 +165,7 @@ function placeBidAction() {
     api.placeBid(data).then((res) => {
         showNotification('Bid places successfully', 'success')
         disableElement('placeBid', false);
+        window.location.href = webUrl + '/dashboard';
     }).catch((error) => {
         disableElement('placeBid', false);
         showNotification(error.response.data.message, 'error');

@@ -123,7 +123,7 @@ class ApplicationController extends Controller
                 return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);
             }
 
-            if(!$request->input('authCheck'))
+            if(Auth::user()->user_type === 1)
             {
                 $validator = Validator::make($request->all(), [
                     'account_email' => 'required|email'

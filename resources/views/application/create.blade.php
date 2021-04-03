@@ -28,10 +28,10 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 col-lg-4 col-xl-4 draft">
-{{--                                <div class="signup-social-details">--}}
-{{--                                    <a href="javascript:void(0)" onclick="storeApplication('draft')">Save to draft <span--}}
-{{--                                            class="las la-long-arrow-alt-right icons"></span></a>--}}
-{{--                                </div>--}}
+                                {{--                                <div class="signup-social-details">--}}
+                                {{--                                    <a href="javascript:void(0)" onclick="storeApplication('draft')">Save to draft <span--}}
+                                {{--                                            class="las la-long-arrow-alt-right icons"></span></a>--}}
+                                {{--                                </div>--}}
                             </div>
                         </div>
                         <div class="row">
@@ -96,7 +96,8 @@
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="form-group col-md-5 relation-details custom-check step-check m-0 pb-3 pt-3">
+                                    <div
+                                        class="form-group col-md-5 relation-details custom-check step-check m-0 pb-3 pt-3">
                                         <ul class="list-group-horizontal aos-init">
                                             <li class="mr-0">
                                                 <input type="checkbox" id="is_business_operating"
@@ -109,7 +110,8 @@
                                     <div class="form-group col-md-5">
                                         <div class="datainput">
                                             <input class="validate" id="loan_amount" name="loan_amount" required=""
-                                                   type="tel" value="{{ Request::get('loan_amount') }}" placeholder="Loan Amount"/>
+                                                   type="tel" value="{{ Request::get('loan_amount') }}"
+                                                   placeholder="Loan Amount"/>
                                             <span class="bar"></span>
                                             <label>Loan Amount in $</label>
                                         </div>
@@ -119,7 +121,8 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
                                         <div class="datainput select">
-                                            <select class="select-text" required id="due_status" name="due_status" onchange="changeDueStatus(this.value)">
+                                            <select class="select-text" required id="due_status" name="due_status"
+                                                    onchange="changeDueStatus(this.value)">
                                                 <!--<option value="" disabled selected></option>-->
                                                 <option value="0">No</option>
                                                 <option value="1">Yes</option>
@@ -153,7 +156,8 @@
                                 <div class="form-row due-wrap d-none">
                                     <div class="form-group col-md-5">
                                         <div class="datainput select">
-                                            <select class="select-text" required id="due_contract" name="due_contract" onchange="checkContract(this.value)">
+                                            <select class="select-text" required id="due_contract" name="due_contract"
+                                                    onchange="checkContract(this.value)">
                                                 <!--<option value="" disabled selected></option>-->
                                                 <option value="0">No</option>
                                                 <option value="1">Yes</option>
@@ -170,8 +174,10 @@
                                         <div class="signature-details upload-file mt-0" id="contract_file-wrap">
                                             <div class=" uplaoad-doc">
                                                 <div class="form-group">
-                                                    <div class="file-upload-wrapper" data-text="Drag &amp; drop your contract file here or click to upload it from a computer">
-                                                        <input type="file" class="file-upload-field" name="contract_file">
+                                                    <div class="file-upload-wrapper"
+                                                         data-text="Drag &amp; drop your contract file here or click to upload it from a computer">
+                                                        <input type="file" class="file-upload-field"
+                                                               name="contract_file">
                                                     </div>
                                                 </div>
                                             </div>
@@ -204,7 +210,8 @@
                     </div>
                 </div>
                 <div class="nxt-details">
-                    <button class="btn next-button"  id="step1" onclick="storeApplication('step1')">Next step <span class="las la-long-arrow-alt-right icons"></span>
+                    <button class="btn next-button" id="step1" onclick="storeApplication('step1')">Next step <span
+                            class="las la-long-arrow-alt-right icons"></span>
                     </button>
                 </div>
 
@@ -237,10 +244,10 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-4 col-lg-4 col-xl-4 draft">
-{{--                                <div class="signup-social-details">--}}
-{{--                                    <a href="javascript:void(0)" onclick="storeApplication('draft')">Save to draft <span--}}
-{{--                                            class="las la-long-arrow-alt-right icons"></span></a>--}}
-{{--                                </div>--}}
+                                {{--                                <div class="signup-social-details">--}}
+                                {{--                                    <a href="javascript:void(0)" onclick="storeApplication('draft')">Save to draft <span--}}
+                                {{--                                            class="las la-long-arrow-alt-right icons"></span></a>--}}
+                                {{--                                </div>--}}
                             </div>
                         </div>
                         <div class="row">
@@ -259,7 +266,8 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-10">
                                         <div class="datainput">
-                                            <input class="validate" id="billing_street_address" name="billing_street_address" required=""
+                                            <input class="validate" id="billing_street_address"
+                                                   name="billing_street_address" required=""
                                                    type="text"
                                                    placeholder="Physical Street Address"/>
                                             <span class="bar"></span>
@@ -271,11 +279,12 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
                                         <div class="datainput select">
-                                            <select class="select-text" id="billing_state_id" name="billing_state_id" required onchange="stateChange(this.value, 1)">
-                                                    <option value="">Please select</option>
-                                                    @foreach($states as $state)
-                                                        <option value="{{$state->id}}">{{$state->state_name}}</option>
-                                                    @endforeach
+                                            <select class="select-text" id="billing_state_id" name="billing_state_id"
+                                                    required onchange="stateChange(this.value, 1)">
+                                                <option value="">Please select</option>
+                                                @foreach($states as $state)
+                                                    <option value="{{$state->id}}">{{$state->state_name}}</option>
+                                                @endforeach
                                             </select>
                                             <!--<span class="select-highlight"></span>-->
                                             <span class="select-bar"></span>
@@ -284,7 +293,8 @@
                                     </div>
                                     <div class="form-group col-md-5">
                                         <div class="datainput select">
-                                            <select class="select-text" id="billing_city_id" name="billing_city_id" required>
+                                            <select class="select-text" id="billing_city_id" name="billing_city_id"
+                                                    required>
                                                 <option value="">Please select state</option>
                                             </select>
                                             <!--<span class="select-highlight"></span>-->
@@ -298,7 +308,8 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
                                         <div class="datainput">
-                                            <input class="validate" id="billing_zipcode" name="billing_zipcode" required="" type="number"
+                                            <input class="validate" id="billing_zipcode" name="billing_zipcode"
+                                                   required="" type="number"
                                                    value='' placeholder="Zipcode"/>
                                             <span class="bar"></span>
                                             <label>Zipcode</label>
@@ -318,7 +329,8 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
                                         <div class="datainput select">
-                                            <select class="select-text" id="mode" name="mode" onchange="checkMode(this.value)" required>
+                                            <select class="select-text" id="mode" name="mode"
+                                                    onchange="checkMode(this.value)" required>
                                                 <!--<option value="" disabled selected></option>-->
                                                 <option value="Owned">Owned</option>
                                                 <option value="Rented">Rented</option>
@@ -330,7 +342,8 @@
                                     </div>
                                     <div class="form-group col-md-5 d-none" id="modeAmount">
                                         <div class="datainput">
-                                            <input class="validate" id="amount_per_year" name="amount_per_year" required=""
+                                            <input class="validate" id="amount_per_year" name="amount_per_year"
+                                                   required=""
                                                    placeholder="Amount in $ per year"/>
                                             <span class="bar"></span>
                                             <label>Amount in $ per year</label>
@@ -341,7 +354,8 @@
                                 <div class="relation-details custom-check step-check">
                                     <ul class="list-group-horizontal aos-init">
                                         <li>
-                                            <input type="checkbox" id="check-option" name="selector1" onchange="addressCheck(this)">
+                                            <input type="checkbox" id="check-option" name="selector1"
+                                                   onchange="addressCheck(this)">
                                             <label for="check-option">Billing details same as physical address
                                                 details</label>
                                             <div class="check"></div>
@@ -353,7 +367,8 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-10">
                                             <div class="datainput">
-                                                <input class="validate" id="billing_street_address2" name="billing_street_address2" required=""
+                                                <input class="validate" id="billing_street_address2"
+                                                       name="billing_street_address2" required=""
                                                        type="text"
                                                        placeholder="Physical Street Address"/>
                                                 <span class="bar"></span>
@@ -365,7 +380,9 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-5">
                                             <div class="datainput select">
-                                                <select class="select-text" id="billing_state_id2" name="billing_state_id2" required onchange="stateChange(this.value, 2)">
+                                                <select class="select-text" id="billing_state_id2"
+                                                        name="billing_state_id2" required
+                                                        onchange="stateChange(this.value, 2)">
                                                     <option value="">Please select</option>
                                                     @foreach($states as $state)
                                                         <option value="{{$state->id}}">{{$state->state_name}}</option>
@@ -378,7 +395,8 @@
                                         </div>
                                         <div class="form-group col-md-5">
                                             <div class="datainput select">
-                                                <select class="select-text" id="billing_city_id2" name="billing_city_id2" required>
+                                                <select class="select-text" id="billing_city_id2"
+                                                        name="billing_city_id2" required>
                                                     <option value="">Please select state</option>
                                                 </select>
                                                 <!--<span class="select-highlight"></span>-->
@@ -392,7 +410,8 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-5">
                                             <div class="datainput">
-                                                <input class="validate" id="billing_zipcode2" name="billing_zipcode2" required="" type="number"
+                                                <input class="validate" id="billing_zipcode2" name="billing_zipcode2"
+                                                       required="" type="number"
                                                        value='' placeholder="Zipcode"/>
                                                 <span class="bar"></span>
                                                 <label>Zipcode</label>
@@ -400,7 +419,8 @@
                                         </div>
                                         <div class="form-group col-md-5">
                                             <div class="datainput">
-                                                <input class="validate" id="billing_phone2" name="billing_phone2" required=""
+                                                <input class="validate" id="billing_phone2" name="billing_phone2"
+                                                       required=""
                                                        placeholder="Phone Number"/>
                                                 <span class="bar"></span>
                                                 <label>Phone Number</label>
@@ -422,7 +442,8 @@
                     </div>
                 </div>
                 <div class="nxt-details">
-                    <button class="btn next-button" id="step2" onclick="storeApplication('step2')">Next step <span class="las la-long-arrow-alt-right icons"></span>
+                    <button class="btn next-button" id="step2" onclick="storeApplication('step2')">Next step <span
+                            class="las la-long-arrow-alt-right icons"></span>
                     </button>
                 </div>
 
@@ -487,7 +508,8 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-5">
                                         <div class="datainput">
-                                            <input class="validate" id="ownership_percent" name="ownership_percent" required=""
+                                            <input class="validate" id="ownership_percent" name="ownership_percent"
+                                                   required=""
                                                    type="number" max="3" value='' placeholder="Ownership %"/>
                                             <span class="bar"></span>
                                             <label>Ownership %</label>
@@ -575,7 +597,8 @@
                 </div>
 
                 <div class="nxt-details">
-                    <button class="btn next-button"  id="step3" onclick="storeApplication('step3')">Next <span class="las la-long-arrow-alt-right icons"></span>
+                    <button class="btn next-button" id="step3" onclick="storeApplication('step3')">Next <span
+                            class="las la-long-arrow-alt-right icons"></span>
                     </button>
                 </div>
 
@@ -642,41 +665,50 @@
                                 <div class="form-row">
                                     <div class="form-group col-md-7">
                                         <div class="datainput mt-0">
-                                            <input class="validate" id="account_number" name="account_number" required=""
+                                            <input class="validate" id="account_number" name="account_number"
+                                                   required=""
                                                    type="number" value='' placeholder="Your bank account number"/>
                                             <span class="bar"></span>
                                             <label>Your bank account number</label>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="relation-details custom-check step-check">
-                                    <ul class="list-group-horizontal">
-                                        <li>
-                                            <input type="checkbox" id="authCheck" name="authCheck">
-                                            <label for="authCheck">I am authorized to sign on the behalf of
-                                                entity.</label>
-                                            <div class="check"></div>
-                                        </li>
-                                    </ul>
-                                </div>
+                                @if(auth()->user()->user_type === 3)
+{{--                                    <div class="relation-details custom-check step-check">--}}
+{{--                                        <ul class="list-group-horizontal">--}}
+{{--                                            <li>--}}
+{{--                                                <input type="checkbox" id="authCheck" name="authCheck">--}}
+{{--                                                <label for="authCheck">I am authorized to sign on the behalf of--}}
+{{--                                                    entity.</label>--}}
+{{--                                                <div class="check"></div>--}}
+{{--                                            </li>--}}
+{{--                                        </ul>--}}
+{{--                                    </div>--}}
+                                @endif
 
                                 <div class="row step-button">
-                                    <div class="col-xl-3">
-                                        <button class="btn btn-getauto" disabled="true" id="authBtn">Authorize <span
-                                                class="las la-long-arrow-alt-right icons"></span></button>
-                                    </div>
-                                    <div class="col-xl-12">
-                                        <p class="step-note">Note: After authorising first account you will be able to
-                                            add another account.</p>
-                                    </div>
-                                    <div class="form-group col-xl-12" id="authEmailWrap">
-                                        <div class="datainput">
-                                            <input class="validate" id="account_email" name="account_email" required="" type="email"
-                                                   value='' placeholder="Email"/>
-                                            <span class="bar"></span>
-                                            <label>Email</label>
+                                    @if(auth()->user()->user_type === 3)
+                                        <div class="col-xl-3">
+                                            <button class="btn btn-getauto" id="authBtn">Authorize <span
+                                                    class="las la-long-arrow-alt-right icons"></span></button>
                                         </div>
-                                    </div>
+                                        <div class="col-xl-12">
+                                            <p class="step-note">Note: After authorising first account you will be able
+                                                to
+                                                add another account.</p>
+                                        </div>
+                                    @endif
+                                    @if(auth()->user()->user_type === 1)
+                                        <div class="form-group col-xl-12" id="authEmailWrap">
+                                            <div class="datainput">
+                                                <input class="validate" id="account_email" name="account_email"
+                                                       required="" type="email"
+                                                       value='' placeholder="Email"/>
+                                                <span class="bar"></span>
+                                                <label>Email</label>
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </form>
                         </div>
@@ -693,7 +725,8 @@
                 </div>
 
                 <div class="nxt-details">
-                    <button class="btn next-button" id="step4" onclick="storeApplication('step4')">Next step <span class="las la-long-arrow-alt-right icons"></span>
+                    <button class="btn next-button" id="step4" onclick="storeApplication('step4')">Next step <span
+                            class="las la-long-arrow-alt-right icons"></span>
                     </button>
                 </div>
 
@@ -743,7 +776,8 @@
                         <div class="col-12 col-md-8 col-lg-8 col-xl-7">
                             <div class="status-details">
                                 <h6 id="business_name_t"></h6>
-                                <p><i class="fa fa-map-marker" aria-hidden="true"></i><span id="business_city"></span>, <span id="business_state"></span></p>
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i><span id="business_city"></span>,
+                                    <span id="business_state"></span></p>
                                 <p><span id="business_desc"></span></p>
                                 <div class="row">
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4">
@@ -785,9 +819,9 @@
                                 <div class=" uplaoad-doc" id="signature_file-a-wrap" style="display: none;">
                                     <div class="form-group">
                                         <a href="" id="signature_file-a" target="_blank">
-                                        <div class="file-upload-wrapper"
-                                             data-text="View uploaded file">
-                                        </div>
+                                            <div class="file-upload-wrapper"
+                                                 data-text="View uploaded file">
+                                            </div>
                                         </a>
                                         <a href="javascript:void (0)" onclick="resetUpload('signature_file')">
                                             <i class="fa fa-trash text-danger"></i>

@@ -20,11 +20,11 @@
                         <h5 class="mb-1">Welcome, {{ auth()->user()->first_name}}!</h5>
                     </div>
                     <div class="business-title form-title">
-                        <p>Last login, February 10, 21</p>
+                        <p>Last login, {{date('F d, Y', time())}}</p>
                     </div>
                 </div>
 
-                @if(auth()->user()->user_type === 1)
+                @if(auth()->user()->user_type === 1 || auth()->user()->user_type === 3)
                     @include('dashboard.sections.broker-notice')
                     @include('dashboard.sections.application-list', ['apps' => $applications, 'title' => 'Recent Loan Application(s)'])
                 @endif

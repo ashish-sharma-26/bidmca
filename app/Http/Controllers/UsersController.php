@@ -82,7 +82,7 @@ class UsersController extends Controller
             $data['password'] = Hash::make($data['password']);
             $user = $this->repository->create($data);
 
-//            $credentials = ['email' => $request->input('email'), 'password' => $request->input('password')];
+            // $credentials = ['email' => $request->input('email'), 'password' => $request->input('password')];
 
             $response = [
                 'message' => 'User created.',

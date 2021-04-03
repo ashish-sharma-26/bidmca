@@ -1,6 +1,6 @@
 <div class="col-12 col-md-5 col-lg-4 col-xl-5">
     <div class="business-title current-details">
-        <p>Applied on</p>
+        <p>Proposal closes on</p>
         <h6>{{date('F d, Y', strtotime($application->created_at))}}</h6>
     </div>
     @if($application->bid)

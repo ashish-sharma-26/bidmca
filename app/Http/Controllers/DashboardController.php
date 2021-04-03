@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index(){
         $data = [];
-        if(Auth::user()->user_type === 1){
+        if(Auth::user()->user_type === 1 || Auth::user()->user_type === 3){
             $application = Application::with(['city', 'state'])
                 ->where('user_id', Auth::user()->id)
                 ->get();
@@ -18,7 +18,6 @@ class DashboardController extends Controller
         }
         if(Auth::user()->user_type === 2){
             $application = Application::with(['city', 'state', 'bid'])
-                ->where('status', 3)
                 ->get();
             $data = ['openApplications' => $application];
         }

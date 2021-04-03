@@ -5,9 +5,11 @@
     </div>
     <div class="business-title current-details">
         <p>Current Status</p>
-        <h6 class="required">Pending</h6>
+        <h6 class="required">Open</h6>
     </div>
     <div class="nxt-details view-button">
-        <button class="btn ">View <span class="las la-long-arrow-alt-right icons"></span></button>
+        <a href="{{url('/')}}/application/{{$application->unique_id}}">
+            <button class="btn ">View <span class="las la-long-arrow-alt-right icons"></span></button>
+        </a>
     </div>
 </div>

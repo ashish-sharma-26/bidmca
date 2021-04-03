@@ -28,7 +28,7 @@
         </div>
     </div>
 
-    @if(auth()->user()->user_type === 1)
+    @if(auth()->user()->user_type === 1 || auth()->user()->user_type === 3)
         @include('dashboard.sections.application.broker-action', ['application' => $application])
     @endif
     @if(auth()->user()->user_type === 2)

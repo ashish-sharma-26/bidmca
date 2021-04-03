@@ -16,12 +16,19 @@
                                     </div>
                                 </div>
                                 <div class="col-2 col-md-2 col-lg-2 col-xl-2 back-title">
-                                    <a href="http://159.65.142.31/bidmca-design/works.html"> < Back </a>
+                                    <a href="{{url('/')}}"> < Back </a>
                                 </div>
                             </div>
                             <div class="relation-details">
                                 <p>Your relationship with bidmca</p>
                                 <ul class="list-group-horizontal">
+                                    @if(app('request')->input('ref'))
+                                        <li>
+                                            <input type="radio" value="3" id="e-option" name="user_type">
+                                            <label for="e-option">Borrower</label>
+                                            <div class="check"></div>
+                                        </li>
+                                    @endif
                                     <li>
                                         <input type="radio" value="1" id="f-option" name="user_type">
                                         <label for="f-option">Broker</label>
@@ -73,7 +80,8 @@
                                 </div>
                                 <div class="form-group col-md-6 datainput-col">
                                     <div class="datainput">
-                                        <input class="validate" id="password" name="password" required="" type="password"
+                                        <input class="validate" id="password" name="password" required=""
+                                               type="password"
                                                value='' placeholder="*****"/>
                                         <span class="bar"></span>
                                         <label>Password</label>
@@ -95,7 +103,8 @@
                             </div>
 
                             <div class="submit-button">
-                                <button class="btn" type="button" onclick="sendOtp(this)" id="submitUser">Submit</button>
+                                <button class="btn" type="button" onclick="sendOtp(this)" id="submitUser">Submit
+                                </button>
                             </div>
 
                             <div class="row">
