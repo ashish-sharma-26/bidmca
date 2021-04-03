@@ -3,7 +3,7 @@
 // const storageURL = 'http://localhost/bidmca/public/storage/';
 
 const baseURL = 'http://13.212.91.216/api/';
-const webUrl = 'http://13.212.91.216/';
+const webUrl = 'http://13.212.91.216';
 const storageURL = 'http://13.212.91.216/storage/';
 
 const headers = () => {
