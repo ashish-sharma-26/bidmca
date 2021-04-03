@@ -46,6 +46,6 @@ function sendEmail($template, $to_email, $subject)
 
 function sendSMS($number, $message){
     $twilio = new Aloha\Twilio\Twilio('ACa15c30576b0673eb35f9499726531d21', 'eea89624c3619b8494fcf9267a2768f0', '+19166194213');
-    $twilio->message('+91'.$number, $message);
+    $twilio->message('+1'.$number, $message);
     return true;
 }
