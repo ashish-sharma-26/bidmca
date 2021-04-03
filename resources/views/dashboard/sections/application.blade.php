@@ -4,7 +4,7 @@
             <h6>{{$application->business_name}}</h6>
             <p><i class="fa fa-map-marker" aria-hidden="true"></i>{{$application->city->city_name}}
                 , {{' '.$application->state->state_name}}</p>
-            <p>{{$application->business_name}}</p>
+            <p>{{$application->industry_type}}</p>
             <div class="row">
                 <div class="col-4 col-md-4 col-lg-4 col-xl-4">
                     <div class="loan-details details1">
