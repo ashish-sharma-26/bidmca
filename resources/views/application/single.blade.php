@@ -290,7 +290,7 @@
                             </div>
                             <div class="business-title current-details">
                                 <p>Current Bid Status:</p>
-                                <div class="kicked-bg"><p>Places</p></div>
+                                <div class="kicked-bg"><p>Placed</p></div>
                             </div>
                         </div>
 
@@ -337,13 +337,23 @@
                                     </div>
                                 </div>
 
-                                <div class="profile-button step-button">
-                                    <div>
-                                        <button type="button" onclick="placeBidAction()" id="placeBid"
-                                                class="btn btn-getauto mt-3 ml-0 w-100">Submit My Application
-                                        </button>
+                                @if($application->bid)
+                                    <div class="profile-button">
+                                        <div>
+                                            <button class="btn btn1 btn-save mt-3 ml-0 w-100" onclick="placeBidAction()"
+                                                    id="placeBid">Update your bid
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
+                                @else
+                                    <div class="profile-button step-button">
+                                        <div>
+                                            <button type="button" onclick="placeBidAction()" id="placeBid"
+                                                    class="btn btn-getauto mt-3 ml-0 w-100">Submit My Application
+                                            </button>
+                                        </div>
+                                    </div>
+                                @endif
                             </form>
                         </div>
                     </div>
