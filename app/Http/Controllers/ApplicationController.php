@@ -205,7 +205,9 @@ class ApplicationController extends Controller
             'stateOfIncorporation',
             'owner',
             'bankAccount',
-            'bid'
+            'bid' => function ($query) {
+                $query->where('user_id', Auth::user()->id);
+            }
         ])->where('unique_id',$id)->first();
 //        dd($application);
         return view('application.single',['application' => $application]);
