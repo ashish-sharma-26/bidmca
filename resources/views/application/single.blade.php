@@ -295,7 +295,6 @@
                         </div>
 
                         <div class="bidding-details">
-                            <form>
                                 <input type="hidden" name="application_id" id="application_id"
                                        value="{{$application->id}}">
                                 <div class="form-row">
@@ -354,7 +353,6 @@
                                         </div>
                                     </div>
                                 @endif
-                            </form>
                         </div>
                     </div>
                 @endif
