@@ -38,7 +38,6 @@ class ApplicationController extends Controller
                 $query->with(['user']);
             }]
         )->where('id',$id)->first();
-        dd($application);
         return view('admin.application.application-view', compact('application'));
     }
 }

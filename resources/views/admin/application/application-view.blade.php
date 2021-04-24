@@ -41,10 +41,10 @@
                                                     <h5 class="card-title w-100 mb-3">Application info</h5>
                                                     <li><span>Business Name</span><span class="value">{{$application->business_name}}</span></li>
                                                     <li><span>Location</span><span class="value">{{$application->billing_city_id}}
-                                    , {{' '.$application->state ? $application->state->state_name : 'N/A'}}</span></li>
+                                    , {{' '.$application->state->state_name}}</span></li>
                                                     <li><span>Industry Type</span><span class="value">{{$application->industry_type}}</span></li>
                                                     <li><span>Loan Amount</span><span class="value">${{$application->loan_amount}}</span></li>
-                                                    <li><span>Currenct Debt.</span><span class="value">${{$application->due_amount ? $application->due_amount : 0 }}</span></li>
+                                                    <li><span>Current Debt.</span><span class="value">${{$application->due_amount ? $application->due_amount : 0 }}</span></li>
                                                     <li><span>Business Status</span><span class="value">{{$application->is_business_operating ? 'Operating' : 'Closed'}}</span></li>
                                                     <li><span>State of Incorporation</span><span class="value">{{$application->stateOfIncorporation->state_name}}</span></li>
                                                     <li><span>Fed Tax Id</span><span class="value">{{$application->fed_tax_id}}</span></li>
