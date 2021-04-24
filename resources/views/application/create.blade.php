@@ -292,13 +292,11 @@
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5">
-                                        <div class="datainput select">
-                                            <select class="select-text" id="billing_city_id" name="billing_city_id"
-                                                    required>
-                                                <option value="">Please select state</option>
-                                            </select>
+                                        <div class="datainput">
+                                            <input class="validate" placeholder="City" id="billing_city_id" name="billing_city_id"
+                                                    required/>
                                             <!--<span class="select-highlight"></span>-->
-                                            <span class="select-bar"></span>
+                                            <span class="bar"></span>
                                             <label class="">City</label>
                                         </div>
                                     </div>
@@ -394,13 +392,11 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-md-5">
-                                            <div class="datainput select">
-                                                <select class="select-text" id="billing_city_id2"
+                                            <div class="datainput">
+                                                <input class="select-text" placeholder="City" id="billing_city_id2"
                                                         name="billing_city_id2" required>
-                                                    <option value="">Please select state</option>
-                                                </select>
                                                 <!--<span class="select-highlight"></span>-->
-                                                <span class="select-bar"></span>
+                                                <span class="bar"></span>
                                                 <label class="">City</label>
                                             </div>
                                         </div>

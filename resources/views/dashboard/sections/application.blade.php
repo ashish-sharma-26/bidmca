@@ -2,7 +2,7 @@
     <div class="col-12 col-md-7 col-lg-8 col-xl-7">
         <div class="status-details mt-0">
             <h6>{{$application->business_name}}</h6>
-            <p><i class="fa fa-map-marker" aria-hidden="true"></i>{{$application->city->city_name}}
+            <p><i class="fa fa-map-marker" aria-hidden="true"></i>{{$application->billing_city_id}}
                 , {{' '.$application->state->state_name}}</p>
             <p>{{$application->industry_type}}</p>
             <div class="row">

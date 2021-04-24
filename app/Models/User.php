@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -55,8 +56,31 @@ class User extends Authenticatable implements Transformable
         'email_verified_at' => 'datetime',
     ];
 
-//    public function setPasswordAttribute($value)
-//    {
-//        $this->attributes['password'] = Hash::make($value, ['rounds' => 12]);
-//    }
+    public function getCreatedAtAttribute($value){
+        $date = new Carbon($value);
+        return $date->format('Y-m-d h:i');
+    }
+
+    public function getUserTypeAttribute($value)
+    {
+        if($value === 1){
+            return 'Broker';
+        }
+        if($value === 2){
+            return 'Lender';
+        }
+        if($value === 3){
+            return 'Borrower';
+        }
+    }
+
+    public function getIsActiveAttribute($value)
+    {
+        if($value == 1){
+            return 'Active';
+        }
+        if($value == 0){
+            return 'Inactive';
+        }
+    }
 }

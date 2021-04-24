@@ -27,7 +27,7 @@
                         <div class="col-12 col-md-8 col-lg-8 col-xl-12">
                             <div class="status-details mt-0">
                                 <h6>{{$application->business_name}}</h6>
-                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>{{$application->city->city_name}}
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i>{{$application->billing_city_id}}
                                     , {{' '.$application->state->state_name}}</p>
                                 <p>{{$application->industry_type}}</p>
                                 <div class="row">
@@ -117,7 +117,7 @@
                                                         <p>Contract File</p>
                                                     </div>
                                                     <div class="col-7 col-md-5 col-lg-5 col-xl-5">
-                                                        <h6><a href="{{$application->contract_file}}">View File</a></h6>
+                                                        <h6><a href="{{$application->contract_file}}" target="_blank">View File</a></h6>
                                                     </div>
                                                 </div>
                                             @endif

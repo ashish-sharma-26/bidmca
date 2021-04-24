@@ -200,7 +200,6 @@ class ApplicationController extends Controller
 
     public function view($id){
         $application = Application::with([
-            'city',
             'state',
             'stateOfIncorporation',
             'owner',

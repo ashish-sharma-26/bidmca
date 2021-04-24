@@ -2,6 +2,7 @@
 
 namespace App\Models\Application;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,5 +22,9 @@ class Bid extends Model
     public function getAmountAttribute($value)
     {
         return number_format($value);
+    }
+
+    public function user(){
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
 }
