@@ -54,4 +54,8 @@ class API {
     placeBid(inputData){
         return request('POST', `application/bid`, inputData);
     }
+
+    validateBidScore(inputData){
+        return request('POST', `application/validate-bid-score`, inputData);
+    }
 }

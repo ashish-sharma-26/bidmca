@@ -17,7 +17,9 @@ class Bid extends Model
         'user_id',
         'interest_rate',
         'duration',
-        'amount'
+        'amount',
+        'score',
+        'status'
     ];
     public function getAmountAttribute($value)
     {

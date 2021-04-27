@@ -117,7 +117,8 @@
                                                         <p>Contract File</p>
                                                     </div>
                                                     <div class="col-7 col-md-5 col-lg-5 col-xl-5">
-                                                        <h6><a href="{{$application->contract_file}}" target="_blank">View File</a></h6>
+                                                        <h6><a href="{{$application->contract_file}}" target="_blank">View
+                                                                File</a></h6>
                                                     </div>
                                                 </div>
                                             @endif
@@ -291,7 +292,14 @@
                             @if($application->bid)
                                 <div class="business-title current-details">
                                     <p>Current Bid Status:</p>
-                                    <div class="kicked-bg"><p>Placed</p></div>
+                                    @if($application->bid)
+                                        @if($application->bid->status == 1)
+                                            <label class="badge badge-success">Winning</label>
+                                        @endif
+                                        @if($application->bid->status == 2)
+                                            <label class="badge badge-danger">Kicked</label>
+                                        @endif
+                                    @endif
                                 </div>
                             @endif
                         </div>
@@ -341,7 +349,7 @@
                             @if($application->bid)
                                 <div class="profile-button">
                                     <div>
-                                        <button class="btn btn1 btn-save mt-3 ml-0 w-100" onclick="placeBidAction()"
+                                        <button class="btn btn1 btn-save mt-3 ml-0 w-100" onclick="validateBidScore()"
                                                 id="placeBid">Update your bid
                                         </button>
                                     </div>
@@ -349,7 +357,7 @@
                             @else
                                 <div class="profile-button step-button">
                                     <div>
-                                        <button type="button" onclick="placeBidAction()" id="placeBid"
+                                        <button type="button" onclick="validateBidScore()" id="placeBid"
                                                 class="btn btn-getauto mt-3 ml-0 w-100">Submit My Application
                                         </button>
                                     </div>

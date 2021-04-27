@@ -153,6 +153,29 @@ function storeApplication(action) {
     });
 }
 
+function validateBidScore() {
+    const data = {
+        application_id: $('#application_id').val(),
+        interest_rate: $('#interest_rate').val(),
+        timeframe: $('#timeframe').val(),
+        bid_amount: $('#bidAmount').val(),
+    };
+
+    disableElement('placeBid', true);
+    api.validateBidScore(data).then((res) => {
+        if(res.data.message){
+            var r = confirm(res.data.message);
+            if(r == true){
+                placeBidAction();
+            }
+        }else{
+            placeBidAction()
+        }
+    }).catch((error) => {
+        showNotification(error.response.data.message, 'error');
+    });
+}
+
 function placeBidAction() {
     const data = {
         application_id: $('#application_id').val(),

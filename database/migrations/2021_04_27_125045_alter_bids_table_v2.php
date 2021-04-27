@@ -14,7 +14,7 @@ class AlterBidsTableV2 extends Migration
     public function up()
     {
         Schema::table('bids', function (Blueprint $table) {
-            $table->decimal('score', 30, 2)->nullable();
+            $table->decimal('score', 30, 2)->after('amount')->default(0);
         });
     }
 

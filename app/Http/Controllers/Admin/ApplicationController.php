@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Application\Application;
+use App\Models\Application\Bid;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -28,16 +29,24 @@ class ApplicationController extends Controller
         return redirect()->back();
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
     public function viewApplication($id){
         $application = Application::with([
             'state',
             'stateOfIncorporation',
             'owner',
-            'bankAccount',
-            'bids' => function($query){
-                $query->with(['user']);
-            }]
-        )->where('id',$id)->first();
-        return view('admin.application.application-view', compact('application'));
+            'bankAccount'
+        ])->where('id',$id)->first();
+
+        $bids = Bid::with(['user'])
+            ->where('application_id', $id)
+            ->orderBy('score', 'DESC')
+            ->orderBy('amount', 'DESC')
+            ->orderBy('updated_at', 'ASC')
+            ->get();
+        return view('admin.application.application-view', compact('application','bids'));
     }
 }
