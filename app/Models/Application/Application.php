@@ -89,4 +89,8 @@ class Application extends Model
             return '<label class="badge badge-danger">Rejected</label>';
         }
     }
+
+    public function getStatusId(){
+        return $this->status;
+    }
 }

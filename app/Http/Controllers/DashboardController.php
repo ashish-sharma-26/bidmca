@@ -10,16 +10,16 @@ class DashboardController extends Controller
 {
     public function index(){
         $data = [];
-        if(Auth::user()->user_type === 1 || Auth::user()->user_type === 3){
+        if(Auth::user()->user_type === 'Broker' || Auth::user()->user_type === 'Borrower'){
             $application = Application::with(['state'])
                 ->where('user_id', Auth::user()->id)
                 ->get();
             $data = ['applications' => $application];
         }
-        if(Auth::user()->user_type === 2){
+        if(Auth::user()->user_type === 'Lender'){
             $application = Application::with(['state', 'bid' => function ($query) {
                 $query->where('user_id', Auth::user()->id);
-            }])->get();
+            }])->where('status', 3)->get();
             $data = ['openApplications' => $application];
         }
         return view('dashboard.dashboard', $data);

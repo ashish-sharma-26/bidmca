@@ -28,10 +28,10 @@
         </div>
     </div>
 
-    @if(auth()->user()->user_type === 1 || auth()->user()->user_type === 3)
+    @if(auth()->user()->user_type === 'Broker' || auth()->user()->user_type === 'Borrower')
         @include('dashboard.sections.application.broker-action', ['application' => $application])
     @endif
-    @if(auth()->user()->user_type === 2)
+    @if(auth()->user()->user_type === 'Lender')
         @include('dashboard.sections.application.lender-action', ['application' => $application])
     @endif
 </div>

@@ -32,7 +32,7 @@ class ApplicationController extends Controller
         $inputData['loan_amount'] = $inputData['loan_amount'] ? $inputData['loan_amount'] : 0;
         $inputData['due_amount'] = $inputData['due_amount'] ? $inputData['due_amount'] : 0;
         $inputData['amount_per_year'] = $inputData['amount_per_year'] ? $inputData['amount_per_year'] : 0;
-
+        $inputData['status'] = 1;
         unset($inputData['authCheck']);
         if($request->input('action') === 'draft'){
             $application = $this->storeAction($inputData);
@@ -123,7 +123,7 @@ class ApplicationController extends Controller
                 return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);
             }
 
-            if(Auth::user()->user_type === 1)
+            if(Auth::user()->user_type === 'Broker')
             {
                 $validator = Validator::make($request->all(), [
                     'account_email' => 'required|email'
@@ -151,6 +151,7 @@ class ApplicationController extends Controller
             if ($validator->fails()) {
                 return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);
             }
+            $inputData['status'] = 2;
             $application = $this->storeAction($inputData);
         }
 

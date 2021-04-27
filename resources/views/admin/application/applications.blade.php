@@ -70,6 +70,7 @@
                                             <th>Loan Amount</th>
                                             <th>Status</th>
                                             <th>Submitted At</th>
+                                            <th>Closing</th>
                                             <th>Action</th>
                                         </tr>
                                         </thead>
@@ -83,6 +84,7 @@
                                                 <td>${{ $application['loan_amount'] }}
                                                 <td>{!! $application['status'] !!}</td>
                                                 <td>{{ $application['created_at'] }}</td>
+                                                <td>{{ $application['closing_date'] ? date('Y-m-d', strtotime($application['closing_date'])) : '--' }}</td>
                                                 <td>
                                                     <ul class="list-inline m-0">
                                                         <li class="list-inline-item">
@@ -125,18 +127,4 @@
             </div>
         </div>
     </div>
-    <script>
-        function changeStatus(id, status) {
-            if (status == '3') {
-                var r = confirm('Are you sure?');
-                if (r == true) {
-                    window.location.href = '{{url('/admin/application-status')}}/' + status + '?application=' + id;
-                }
-            }
-            if (status == '4') {
-                $('#applicationId').val(id);
-                $('#rejectModal').modal('show');
-            }
-        }
-    </script>
 @endsection

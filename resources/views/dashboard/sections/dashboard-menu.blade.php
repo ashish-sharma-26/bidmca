@@ -17,7 +17,7 @@
             data-aos-duration="600"
             data-aos-easing="linear">Profile
             Details</h6></a>
-    @if(auth()->user()->user_type != 2)
+    @if(auth()->user()->user_type != 'Lender`')
         <a href="{{route('application')}}">
             <h6 class="details3"
                 data-aos="fade-right"
@@ -26,7 +26,7 @@
                 Loan Applications</h6>
         </a>
     @endif
-    @if(auth()->user()->user_type == 2)
+    @if(auth()->user()->user_type == 'Lender')
         <a href="#">
             <h6 class="details3"
                 data-aos="fade-right"

@@ -281,12 +281,12 @@
 
 
                 </div>
-                @if(auth()->user()->user_type === 2)
+                @if(auth()->user()->user_type === 'Lender')
                     <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                         <div class="closes-details">
                             <div class="business-title current-details">
                                 <p>Proposal closes on</p>
-                                <h6>{{date('F d, Y', strtotime($application->created_at))}}</h6>
+                                <h6>{{date('F d, Y', strtotime($application->closing_date))}}</h6>
                             </div>
                             @if($application->bid)
                                 <div class="business-title current-details">
@@ -358,7 +358,7 @@
                         </div>
                     </div>
                 @endif
-                @if(auth()->user()->user_type !== 2)
+                @if(auth()->user()->user_type !== 'Lender')
                     <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                         <div class="closes-details">
                             <div class="business-title current-details">
@@ -367,7 +367,8 @@
                             </div>
                             <div class="business-title current-details">
                                 <p>Current Status</p>
-                                <h6 class="required">Open</h6>
+                                {!! $application->status !!}
+                                <p class="text-danger">{{$application->reject_reason}}</p>
                             </div>
                         </div>
                     </div>

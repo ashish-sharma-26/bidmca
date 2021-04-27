@@ -18,12 +18,12 @@ class ApplicationController extends Controller
         return view('admin.application.applications', compact('applications'));
     }
 
-    public function applicationStatus(Request $request, $status){
-        if($status == 3){
-            Application::where('id', $request->application)->update(['status' => $status]);
+    public function applicationStatus(Request $request){
+        if($request->status == '3'){
+            Application::where('id', $request->application)->update(['status' => $request->status, 'closing_date' => $request->closing_date]);
         }
-        if($status == 4){
-            Application::where('id', $request->application)->update(['reject_reason' => $request->reason,'status' => $status]);
+        if($request->status == '4'){
+            Application::where('id', $request->application)->update(['reject_reason' => $request->reason,'status' => $request->status]);
         }
         return redirect()->back();
     }

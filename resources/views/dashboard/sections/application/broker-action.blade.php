@@ -5,7 +5,7 @@
     </div>
     <div class="business-title current-details">
         <p>Current Status</p>
-        <h6 class="required">Open</h6>
+        {!! $application->status !!}
     </div>
     <div class="nxt-details view-button">
         <a href="{{url('/')}}/application/{{$application->unique_id}}">

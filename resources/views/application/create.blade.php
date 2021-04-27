@@ -669,7 +669,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                @if(auth()->user()->user_type === 3)
+                                @if(auth()->user()->user_type === 'Borrower')
 {{--                                    <div class="relation-details custom-check step-check">--}}
 {{--                                        <ul class="list-group-horizontal">--}}
 {{--                                            <li>--}}
@@ -683,7 +683,7 @@
                                 @endif
 
                                 <div class="row step-button">
-                                    @if(auth()->user()->user_type === 3)
+                                    @if(auth()->user()->user_type === 'Borrower')
                                         <div class="col-xl-3">
                                             <button class="btn btn-getauto" id="authBtn">Authorize <span
                                                     class="las la-long-arrow-alt-right icons"></span></button>
@@ -694,7 +694,7 @@
                                                 add another account.</p>
                                         </div>
                                     @endif
-                                    @if(auth()->user()->user_type === 1)
+                                    @if(auth()->user()->user_type === 'Broker')
                                         <div class="form-group col-xl-12" id="authEmailWrap">
                                             <div class="datainput">
                                                 <input class="validate" id="account_email" name="account_email"
