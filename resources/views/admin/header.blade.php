@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta http-equiv="Content-Language" content="en">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Global trade plaza</title>
+    <title>Admin | BIDMCA</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
@@ -77,7 +77,7 @@
                                 </div>
                             </div>
                             <div class="widget-content-right header-user-info ml-3">
-                                <a href="{{ route('logout') }}" class="nav-link">
+                                <a href="{{ route('admin_logout') }}" class="nav-link">
                                     <button type="button" class="btn-shadow p-1 btn btn-primary btn-sm">
                                         <i class="fa text-white fa-power-off pr-1 pl-1"></i> logout
                                     </button>

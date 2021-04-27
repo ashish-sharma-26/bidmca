@@ -9,6 +9,9 @@ use App\Http\Controllers\Admin\ApplicationController;
 Route::get('/login', function () {
     return view('admin.login');
 })->name('admin_login');
+Route::get('/settings', function () {
+    return view('admin.account.account-settings');
+})->name('settings');
 
 Route::post('/login', [AdminAuthController::class, 'adminLogin'])->name('admin_login_action');
 
@@ -19,4 +22,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/applications', [ApplicationController::class, 'applications'])->name('admin_applications');
     Route::get('/application/{id}', [ApplicationController::class, 'viewApplication'])->name('admin_application');
     Route::get('/application-status/{status}', [ApplicationController::class, 'applicationStatus']);
+
+    Route::post('/update-password', [AdminAuthController::class, 'updatePassword'])->name('update_password');
+    Route::get('/logout', [AdminAuthController::class, 'logout'])->name('admin_logout');
 });

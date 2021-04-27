@@ -56,7 +56,7 @@
 
                     <li class="app-sidebar__heading">Account Settings</li>
                     <li>
-                        <a href="#" class="probtn">
+                        <a href="{{route('settings')}}" class="probtn">
                             <i class="metismenu-icon pe-7s-settings">
                             </i>Account settings
                         </a>
