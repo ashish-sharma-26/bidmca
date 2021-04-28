@@ -14,8 +14,11 @@ $(document).ready(function () {
     $('input[name="closing_date"]').daterangepicker({
         singleDatePicker: true,
         showDropdowns: true,
+        timePicker: true,
+        timePickerIncrement: 10,
+        timePicker24Hour: true,
         locale: {
-            format: 'YYYY-MM-DD'
+            format: 'YYYY-MM-DD HH:mm'
         },
         minDate: moment().format('YYYY-MM-DD HH:mm'),
         maxYear: parseInt(moment().format('YYYY'),10)

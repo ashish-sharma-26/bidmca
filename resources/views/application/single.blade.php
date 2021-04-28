@@ -131,65 +131,65 @@
 
 
                             <!--panel2-->
-                            <div class="status-details panel panel-default">
-                                <div class="panel-heading" role="tab" id="heading2">
-                                    <h3 class="panel-title  mb-0">
-                                        <a class="collapsed" role="button" title="" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapse2" aria-expanded="false"
-                                           aria-controls="collapse2">
-                                            Banking Folio
-                                        </a>
-                                    </h3>
-                                </div>
-                                <div id="collapse2" class="panel-collapse collapse" role="tabpanel"
-                                     aria-labelledby="heading2">
-                                    <div class="panel-body content">
-                                        @if(count($application->bankAccount))
-                                            @foreach($application->bankAccount AS $bank)
-                                                <div class="loan-details loan-business">
-                                                    <div class="row">
-                                                        <div class="col-7 col-md-7 col-lg-7 col-xl-7">
-                                                            <p>Your banking partner</p>
-                                                        </div>
-                                                        <div class="col-7 col-md-5 col-lg-5 col-xl-5">
-                                                            <h6>{{$bank->bank}}</h6>
-                                                        </div>
-                                                    </div>
+{{--                            <div class="status-details panel panel-default">--}}
+{{--                                <div class="panel-heading" role="tab" id="heading2">--}}
+{{--                                    <h3 class="panel-title  mb-0">--}}
+{{--                                        <a class="collapsed" role="button" title="" data-toggle="collapse"--}}
+{{--                                           data-parent="#accordion" href="#collapse2" aria-expanded="false"--}}
+{{--                                           aria-controls="collapse2">--}}
+{{--                                            Banking Folio--}}
+{{--                                        </a>--}}
+{{--                                    </h3>--}}
+{{--                                </div>--}}
+{{--                                <div id="collapse2" class="panel-collapse collapse" role="tabpanel"--}}
+{{--                                     aria-labelledby="heading2">--}}
+{{--                                    <div class="panel-body content">--}}
+{{--                                        @if(count($application->bankAccount))--}}
+{{--                                            @foreach($application->bankAccount AS $bank)--}}
+{{--                                                <div class="loan-details loan-business">--}}
+{{--                                                    <div class="row">--}}
+{{--                                                        <div class="col-7 col-md-7 col-lg-7 col-xl-7">--}}
+{{--                                                            <p>Your banking partner</p>--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="col-7 col-md-5 col-lg-5 col-xl-5">--}}
+{{--                                                            <h6>{{$bank->bank}}</h6>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
 
-                                                    <div class="row">
-                                                        <div class="col-7 col-md-7 col-lg-7 col-xl-7">
-                                                            <p>Your banking account number</p>
-                                                        </div>
-                                                        <div class="col-7 col-md-5 col-lg-5 col-xl-5">
-                                                            <h6>{{$bank->account_number}}</h6>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endforeach
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
+{{--                                                    <div class="row">--}}
+{{--                                                        <div class="col-7 col-md-7 col-lg-7 col-xl-7">--}}
+{{--                                                            <p>Your banking account number</p>--}}
+{{--                                                        </div>--}}
+{{--                                                        <div class="col-7 col-md-5 col-lg-5 col-xl-5">--}}
+{{--                                                            <h6>{{$bank->account_number}}</h6>--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
+{{--                                                </div>--}}
+{{--                                            @endforeach--}}
+{{--                                        @endif--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <!--/panel2-->
 
                             <!--panel2-->
-                            <div class="status-details panel panel-default">
-                                <div class="panel-heading" role="tab" id="heading3">
-                                    <h3 class="panel-title  mb-0">
-                                        <a class="collapsed" role="button" title="" data-toggle="collapse"
-                                           data-parent="#accordion" href="#collapse3" aria-expanded="false"
-                                           aria-controls="collapse3">
-                                            Confirmation
-                                        </a>
-                                    </h3>
-                                </div>
-                                <div id="collapse3" class="panel-collapse collapse" role="tabpanel"
-                                     aria-labelledby="heading3">
-                                    <div class="panel-body content">
-                                        <p>lorem ipusum</p>
-                                    </div>
-                                </div>
-                            </div>
+{{--                            <div class="status-details panel panel-default">--}}
+{{--                                <div class="panel-heading" role="tab" id="heading3">--}}
+{{--                                    <h3 class="panel-title  mb-0">--}}
+{{--                                        <a class="collapsed" role="button" title="" data-toggle="collapse"--}}
+{{--                                           data-parent="#accordion" href="#collapse3" aria-expanded="false"--}}
+{{--                                           aria-controls="collapse3">--}}
+{{--                                            Confirmation--}}
+{{--                                        </a>--}}
+{{--                                    </h3>--}}
+{{--                                </div>--}}
+{{--                                <div id="collapse3" class="panel-collapse collapse" role="tabpanel"--}}
+{{--                                     aria-labelledby="heading3">--}}
+{{--                                    <div class="panel-body content">--}}
+{{--                                        <p>lorem ipusum</p>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                             <!--/panel2-->
 
                             <!--panel3-->
@@ -385,6 +385,6 @@
             </div>
         </div>
 
-
+        <p class="text-center">bidmca©{{ date('Y') }}</p>
     </div>
 @endsection

@@ -66,9 +66,6 @@ class FilterBids extends Command
                         $minScore = $bid->score;
                     }
                 }
-                Log::debug($targetAmount);
-                Log::debug($bidsAmount);
-                Log::debug($wonBids);
 
                 // UPDATE WON BIDS
                 DB::table('bids')->where('application_id', $application->id)

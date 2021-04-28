@@ -88,6 +88,10 @@ class Application extends Model
         if($value == 4){
             return '<label class="badge badge-danger">Rejected</label>';
         }
+
+        if($value == 5){
+            return '<label class="badge badge-info">Closed</label>';
+        }
     }
 
     public function getStatusId(){

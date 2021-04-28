@@ -84,7 +84,7 @@
                                                 <td>${{ $application['loan_amount'] }}
                                                 <td>{!! $application['status'] !!}</td>
                                                 <td>{{ $application['created_at'] }}</td>
-                                                <td>{{ $application['closing_date'] ? date('Y-m-d', strtotime($application['closing_date'])) : '--' }}</td>
+                                                <td>{{ $application['closing_date'] ? date('Y-m-d h:i a', strtotime($application['closing_date'])) : '--' }}</td>
                                                 <td>
                                                     <ul class="list-inline m-0">
                                                         <li class="list-inline-item">

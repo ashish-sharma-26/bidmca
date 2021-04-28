@@ -138,8 +138,12 @@
                                     <div class="main-card mb-3 card">
                                         <div class="no-gutters row">
                                             @if(count($bids) > 0)
-                                                <h3 class="w-100 mb-2 mt-2">Bid(s)</h3>
-                                                <hr/>
+                                                <div class="col-md-10">
+                                                    <h3 class="w-100 mb-2 mt-2">Bid(s)</h3>
+                                                </div>
+                                                <div class="col-md-2 text-right">
+                                                    <button class="btn btn-primary mt-2 mr-2" onclick="javascript: location.reload()">Refresh</button>
+                                                </div>
                                                 <table class="table table-striped">
                                                     <thead>
                                                     <th>Bid By</th>
@@ -159,7 +163,7 @@
                                                             <td>{{$bid->score}}</td>
                                                             <td>
                                                                 @if($bid->status == 1)
-                                                                    <label class="badge badge-success">Won</label>
+                                                                    <label class="badge badge-success">Winning</label>
                                                                 @endif
                                                                 @if($bid->status == 2)
                                                                     <label class="badge badge-danger">Lost</label>

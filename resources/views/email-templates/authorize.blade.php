@@ -33,7 +33,7 @@
         <p style="font-weight: bold;font-size: 1rem;padding-bottom: 1rem;margin: 0;">Please verify the loan application.</p>
     </div>
     <div class="footer" style="padding: 20px 2rem 5px 2rem; background-color: #30D667; color: #ffffff;">
-        <div style="width: 100%; display:block;visibility: hidden">
+        <div style="width: 100%; display:none;visibility: hidden">
             <h3 style="margin-top: 0; font-weight: normal">Download App</h3>
             <a href="#"><img alt="" src="https://admin.farmersfreshkitchen.com/public/images/itunes.png"
                              style="max-width: 132px; height: auto;"></a>
