@@ -108,7 +108,7 @@ class FilterBids extends Command
 
         $template = view('email-templates.lost-bids')->render();
         foreach ($lostBids AS $bid) {
-            sendEmail($template, 'kapil@qualwebs.com', 'Alert: Bid Lost ' . $bid->user->email);
+            sendEmail($template, $bid->user->email, 'Alert: Bid Lost ');
         }
         return true;
     }

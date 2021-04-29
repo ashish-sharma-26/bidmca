@@ -64,7 +64,7 @@ class CloseApplication extends Command
 
         $template = view('email-templates.won-bids')->render();
         foreach ($lostBids AS $bid) {
-            sendEmail($template, 'kapil@qualwebs.com', 'Bid Won ' . $bid->user->email);
+            sendEmail($template, $bid->user->email, 'Bid Won ');
         }
         return true;
     }
