@@ -309,7 +309,7 @@
                                    value="{{$application->id}}">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="inputEmail4">IR:</label>
+                                    <label for="inputEmail4">Factor:</label>
                                     <input type="number" min="0"
                                            class="form-control"
                                            id="interest_rate"
@@ -319,7 +319,7 @@
                                     >
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Timeframe:</label>
+                                    <label for="inputPassword4">Term:</label>
                                     <input type="number"
                                            class="form-control"
                                            min="1"

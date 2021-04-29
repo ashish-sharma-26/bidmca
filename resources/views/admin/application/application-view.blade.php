@@ -147,8 +147,8 @@
                                                 <table class="table table-striped">
                                                     <thead>
                                                     <th>Bid By</th>
-                                                    <th>Interest Rate</th>
-                                                    <th>Duration</th>
+                                                    <th>Factor</th>
+                                                    <th>Terms</th>
                                                     <th>Amount</th>
                                                     <th>Score</th>
                                                     <th>Status</th>

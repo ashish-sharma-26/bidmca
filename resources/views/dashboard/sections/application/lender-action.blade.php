@@ -8,7 +8,7 @@
     @if($application->bid)
         <div class="business-title current-details">
             <p>Your Bid Status :<span class="required4"> ${{$application->bid->amount}}</span></p>
-            <h6 class="required4"><span>{{$application->bid->interest_rate}} IR</span> <span>{{$application->bid->duration}} Mo</span>
+            <h6 class="required4"><span>{{$application->bid->interest_rate}} Factor</span> <span>{{$application->bid->duration}} Mo</span>
             </h6>
         </div>
     @endif
