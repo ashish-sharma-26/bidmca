@@ -40,6 +40,7 @@ class Application extends Model
         'billing_phone2',
         'signature_file',
         'account_email',
+        'status',
     ];
 
     protected $appends = ['status_id'];
