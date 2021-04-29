@@ -2,7 +2,7 @@
     @if($application->status != '<label class="badge badge-info">Closed</label>')
     <div class="business-title current-details">
         <p>Proposal closes on</p>
-        <h6>{{date('F d, Y', strtotime($application->closing_date))}}</h6>
+        <h6>{{date('F d, Y h:i a', strtotime($application->closing_date))}}</h6>
     </div>
     @endif
     @if($application->bid)
