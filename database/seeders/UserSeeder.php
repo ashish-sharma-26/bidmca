@@ -19,18 +19,9 @@ class UserSeeder extends Seeder
         DB::table('users')->insert([
             'first_name' => Str::random(10),
             'last_name' => Str::random(10),
-            'email' => 'lender1@mailinator.com',
-            'password' => Hash::make('12345678'),
-            'phone' => rand(10,10),
-            'user_type' => 2,
-            'is_active' => 1,
-        ]);
-        DB::table('users')->insert([
-            'first_name' => Str::random(10),
-            'last_name' => Str::random(10),
             'email' => 'lender2@mailinator.com',
             'password' => Hash::make('12345678'),
-            'phone' => rand(10,10),
+            'phone' => rand(1,1000000000),
             'user_type' => 2,
             'is_active' => 1,
         ]);
@@ -39,7 +30,7 @@ class UserSeeder extends Seeder
             'last_name' => Str::random(10),
             'email' => 'lender3@mailinator.com',
             'password' => Hash::make('12345678'),
-            'phone' => rand(10,10),
+            'phone' => rand(1,1000000000),
             'user_type' => 2,
             'is_active' => 1,
         ]);
@@ -48,7 +39,7 @@ class UserSeeder extends Seeder
             'last_name' => Str::random(10),
             'email' => 'lender4@mailinator.com',
             'password' => Hash::make('12345678'),
-            'phone' => rand(10,10),
+            'phone' => rand(1,1000000000),
             'user_type' => 2,
             'is_active' => 1,
         ]);
@@ -57,7 +48,7 @@ class UserSeeder extends Seeder
             'last_name' => Str::random(10),
             'email' => 'broker@mailinator.com',
             'password' => Hash::make('12345678'),
-            'phone' => rand(10,10),
+            'phone' => rand(1,1000000000),
             'user_type' => 1,
             'is_active' => 1,
         ]);
