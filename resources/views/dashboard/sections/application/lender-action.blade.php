@@ -12,7 +12,7 @@
             </h6>
         </div>
     @endif
-    @if($application->getStatusIdAttribute != 'Closed')
+    @if($application->getStatusIdAttribute() != 'Closed')
         <div class="nxt-details view-button">
             <a href="{{url('/')}}/application/{{$application->unique_id}}">
                 @if(!$application->bid)
