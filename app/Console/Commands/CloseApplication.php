@@ -40,11 +40,12 @@ class CloseApplication extends Command
      */
     public function handle()
     {
-        $this->info(date('Y-m-d H:i:s'));
         $applications = Application::where('status', 3)->where('closing_date', '<', date('Y-m-d H:i:s'))->get();
-        foreach ($applications AS $application) {
-            Application::where('id',$application->id)->update(['status' => 5]);
-            $this->sendEmailtoWonUsers($application->id);
+        if (count($applications) > 0) {
+            foreach ($applications AS $application) {
+                Application::where('id', $application->id)->update(['status' => 5]);
+                $this->sendEmailtoWonUsers($application->id);
+            }
         }
         return 0;
     }

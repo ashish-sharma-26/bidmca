@@ -42,51 +42,53 @@ class FilterBids extends Command
     public function handle()
     {
         $applications = Application::where('status', 3)->get();
-        foreach ($applications AS $application) {
-            $bids = Bid::with(['user'])
-                ->where('application_id', $application->id)
-                ->orderBy('score', 'DESC')
-                ->orderBy('amount', 'DESC')
-                ->orderBy('updated_at', 'ASC')
-                ->get();
-            if (count($bids)) {
-                $targetAmount = floatval(preg_replace('/[^\d.]/', '', $application->loan_amount));;
-                $bidsAmount = 0;
-                $wonBids = [];
-                $minScore = 0;
-                $maxScore = $bids[0]->score;
-                foreach ($bids AS $bid) {
-                    if (count($bids) > 0) {
-                        if ($bidsAmount >= $targetAmount) {
-                            break;
-                        } else {
-                            array_push($wonBids, $bid->id);
-                            $bidsAmount += floatval(preg_replace('/[^\d.]/', '', $bid->amount));
+        if(count($applications)){
+            foreach ($applications AS $application) {
+                $bids = Bid::with(['user'])
+                    ->where('application_id', $application->id)
+                    ->orderBy('score', 'DESC')
+                    ->orderBy('amount', 'DESC')
+                    ->orderBy('updated_at', 'ASC')
+                    ->get();
+                if (count($bids)) {
+                    $targetAmount = floatval(preg_replace('/[^\d.]/', '', $application->loan_amount));;
+                    $bidsAmount = 0;
+                    $wonBids = [];
+                    $minScore = 0;
+                    $maxScore = $bids[0]->score;
+                    foreach ($bids AS $bid) {
+                        if (count($bids) > 0) {
+                            if ($bidsAmount >= $targetAmount) {
+                                break;
+                            } else {
+                                array_push($wonBids, $bid->id);
+                                $bidsAmount += floatval(preg_replace('/[^\d.]/', '', $bid->amount));
+                            }
+                            $minScore = $bid->score;
                         }
-                        $minScore = $bid->score;
                     }
+
+                    // UPDATE WON BIDS
+                    DB::table('bids')->where('application_id', $application->id)
+                        ->whereIn('id', $wonBids)
+                        ->update([
+                            'status' => 1
+                        ]);
+
+                    // UPDATE LOST BIDS
+                    DB::table('bids')->where('application_id', $application->id)
+                        ->whereNotIn('id', $wonBids)
+                        ->update([
+                            'status' => 2
+                        ]);
+
+                    // UPDATE APPLICATION MIN/MAX SCORE
+                    Application::where('id', $application->id)
+                        ->update(['min_bid_score' => $minScore, 'max_bid_score' => $maxScore]);
+
+                    // SEND EMAIL TO LOST USERS
+                    $this->sendEmailtoLostUsers($application->id);
                 }
-
-                // UPDATE WON BIDS
-                DB::table('bids')->where('application_id', $application->id)
-                    ->whereIn('id', $wonBids)
-                    ->update([
-                        'status' => 1
-                    ]);
-
-                // UPDATE LOST BIDS
-                DB::table('bids')->where('application_id', $application->id)
-                    ->whereNotIn('id', $wonBids)
-                    ->update([
-                        'status' => 2
-                    ]);
-
-                // UPDATE APPLICATION MIN/MAX SCORE
-                Application::where('id', $application->id)
-                    ->update(['min_bid_score' => $minScore, 'max_bid_score' => $maxScore]);
-
-                // SEND EMAIL TO LOST USERS
-                $this->sendEmailtoLostUsers($application->id);
             }
         }
         return true;
