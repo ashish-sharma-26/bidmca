@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\UserCreateRequest;
@@ -217,5 +218,32 @@ class UsersController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'current_password' => 'required|string',
+            'new_password' => 'required|min:8',
+            'confirm_password' => 'required|same:new_password',
+        ]);
+        if ($validator->fails()) {
+            /** Returns error if validation fails **/
+            $error = $validator->errors()->first();
+            return redirect()->back()->withErrors([$error]);
+        }
+        $user = auth()->user();
+        $result = Hash::check($request->input('current_password'), $user->password);
+        /** Condition check if entered password matched with current password **/
+        if ($result == true) {
+            $user->password = Hash::make($request->input('new_password'));
+            $user->save();
+            $success = "Password updated successfully";
+            return redirect()->back()->with(['success' => $success]);
+            /** Returns error if password not match with current password **/
+        } else {
+            $error = "Current password not match";
+            return redirect()->back()->withErrors([$error]);
+        }
     }
 }

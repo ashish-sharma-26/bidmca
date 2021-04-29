@@ -11,7 +11,7 @@
             data-aos="fade-right"
             data-aos-duration="500">Dashboard</h6>
     </a>
-    <a href="#">
+    <a href="{{route('profile')}}">
         <h6 class="details2"
             data-aos="fade-right"
             data-aos-duration="600"
@@ -23,11 +23,11 @@
                 data-aos="fade-right"
                 data-aos-duration="700"
                 data-aos-easing="linear">
-                Loan Applications</h6>
+                Apply Applications</h6>
         </a>
     @endif
     @if(auth()->user()->user_type == 'Lender')
-        <a href="#">
+        <a href="{{route('lender_applications')}}">
             <h6 class="details3"
                 data-aos="fade-right"
                 data-aos-duration="700"
@@ -38,7 +38,7 @@
     @endif
 
 
-    <a href="#"><h6 class="details4"
+    <a  href="{{route('user_settings')}}"><h6 class="details4"
                     data-aos="fade-right"
                     data-aos-duration="800"
                     data-aos-easing="linear">

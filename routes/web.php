@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
@@ -38,9 +39,17 @@ Route::post('/api/common/file-upload', [\App\Http\Controllers\Common\CommonContr
 Route::get('/check-email', [\App\Http\Controllers\Common\CommonController::class, 'checkEmail'])->name('checkEmail');
 
 Route::middleware(['auth:web'])->group(function () {
+    Route::get('/profile', function () {
+        return view('dashboard.profile');
+    })->name('profile');
+    Route::get('/settings', function () {
+        return view('dashboard.settings');
+    })->name('user_settings');
     Route::get('/application', [App\Http\Controllers\ApplicationController::class, 'index'])->name('application');
     Route::post('/api/application/store', [App\Http\Controllers\ApplicationController::class, 'store'])->name('applicationStore');
     Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/lender-applications', [App\Http\Controllers\DashboardController::class, 'lenderApplications'])->name('lender_applications');
+    Route::post('/update-password', [\App\Http\Controllers\UsersController::class, 'updatePassword'])->name('user_update_password');
     Route::get('/application/{id}', [App\Http\Controllers\ApplicationController::class, 'view'])->name('app_view');
     Route::post('/api/application/bid', [App\Http\Controllers\BidController::class, 'store'])->name('app_bid');
     Route::post('/api/application/validate-bid-score', [App\Http\Controllers\BidController::class, 'validateBidScore'])->name('app_bid');

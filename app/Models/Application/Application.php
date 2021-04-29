@@ -42,6 +42,8 @@ class Application extends Model
         'account_email',
     ];
 
+    protected $appends = ['status_id'];
+
     public function state(){
         return $this->hasOne(State::class,'id', 'billing_state_id');
     }
@@ -94,7 +96,7 @@ class Application extends Model
         }
     }
 
-    public function getStatusId(){
-        return $this->status;
+    public function getStatusIdAttribute(){
+        return strip_tags($this->status);
     }
 }
