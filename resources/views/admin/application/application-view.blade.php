@@ -144,6 +144,12 @@
                                                 <div class="col-md-2 text-right">
                                                     <button class="btn btn-primary mt-2 mr-2" onclick="javascript: location.reload()">Refresh</button>
                                                 </div>
+                                                <div class="col-md-6">
+                                                    <h5>Average Factor: {{$application->avg_factor}}</h5>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h5>Average Term: {{$application->avg_term}}</h5>
+                                                </div>
                                                 <table class="table table-striped">
                                                     <thead>
                                                     <th>Bid By</th>

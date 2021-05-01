@@ -56,12 +56,16 @@ class FilterBids extends Command
                     $wonBids = [];
                     $minScore = 0;
                     $maxScore = $bids[0]->score;
+                    $totalTerms = 0;
+                    $totalFactor = 0;
                     foreach ($bids AS $bid) {
                         if (count($bids) > 0) {
                             if ($bidsAmount >= $targetAmount) {
                                 break;
                             } else {
                                 array_push($wonBids, $bid->id);
+                                $totalTerms += $bid->duration;
+                                $totalFactor += $bid->interest_rate;
                                 $bidsAmount += floatval(preg_replace('/[^\d.]/', '', $bid->amount));
                             }
                             $minScore = $bid->score;
@@ -82,12 +86,19 @@ class FilterBids extends Command
                             'status' => 2
                         ]);
 
-                    // UPDATE APPLICATION MIN/MAX SCORE
+                    // UPDATE APPLICATION MIN/MAX SCORE AND AVG TERM/FACTOR
+                    $avgFactor = $totalFactor/count($wonBids);
+                    $avgTerm = $totalTerms/count($wonBids);
                     Application::where('id', $application->id)
-                        ->update(['min_bid_score' => $minScore, 'max_bid_score' => $maxScore]);
+                        ->update([
+                            'min_bid_score' => $minScore,
+                            'max_bid_score' => $maxScore,
+                            'avg_term' => $avgTerm,
+                            'avg_factor' => $avgFactor,
+                        ]);
 
                     // SEND EMAIL TO LOST USERS
-                    $this->sendEmailtoLostUsers($application->id);
+                    // $this->sendEmailtoLostUsers($application->id);
                 }
             }
         }
