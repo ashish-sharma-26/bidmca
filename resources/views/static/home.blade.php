@@ -8,7 +8,7 @@
                 <div class="row funding-row">
                     <div class="col-12 col-md-7 col-lg-7 col-xl-8">
                         <div class="funding-details">
-                            <p data-aos="fade-right" data-aos-easing="linear" data-aos-duration="500">Fast funding.1
+                            <p data-aos="fade-right" data-aos-easing="linear" data-aos-duration="500">Transparent pricing.
                                 Quick decisions. Personal service.</p>
                             <h1 data-aos="fade-right" data-aos-easing="linear" data-aos-duration="500">The money you
                                 need, when you need it.</h1>
@@ -16,7 +16,7 @@
                         <div class="funding-display">
                             <div class="fund-services">
                                 <p data-aos="fade-right" data-aos-duration="1000"><i class="fa fa-check-circle"></i>
-                                    Fast funding</p>
+                                    Transparent Pricing</p>
                             </div>
                             <div class="fund-services">
                                 <p data-aos="fade-right" data-aos-duration="1200"><i class="fa fa-check-circle"></i>
