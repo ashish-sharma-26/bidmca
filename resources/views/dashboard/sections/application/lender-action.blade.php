@@ -13,7 +13,7 @@
                 @if($application->bid->status == 2)
                     <p>Your Bid Status :<label class="badge badge-danger">Loosing</label></p>
                 @endif
-            <h6 class="required4"><span>${{$application->bid->amount}} <span class="text-black-50">|</span> @ {{$application->bid->interest_rate}} <span class="text-black-50">|</span> </span> <span> {{$application->bid->duration}} MO</span>
+            <h6 class="required4"><span>${{$application->bid->amount}}  @ {{$application->bid->interest_rate}}  <span> {{$application->bid->duration}} M</span>
             </h6>
         </div>
     @endif
