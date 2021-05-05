@@ -297,7 +297,7 @@
                                             <label class="badge badge-success">Winning</label>
                                         @endif
                                         @if($application->bid->status == 2)
-                                            <label class="badge badge-danger">Kicked</label>
+                                            <label class="badge badge-danger">Loosing</label>
                                         @endif
                                     @endif
                                 </div>

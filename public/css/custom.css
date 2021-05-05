@@ -15,3 +15,7 @@ body{
     z-index: 9999;
     transition: opacity 0.3s linear;
 }
+
+.cursor-pointer{
+    cursor: pointer;
+}

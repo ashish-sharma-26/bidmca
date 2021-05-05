@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row cursor-pointer" onclick="javascript: window.location.href = '{{url('/application')}}/{{$application->unique_id}}'">
     <div class="col-12 col-md-7 col-lg-8 col-xl-7">
         <div class="status-details mt-0">
             <h6>{{$application->business_name}}</h6>

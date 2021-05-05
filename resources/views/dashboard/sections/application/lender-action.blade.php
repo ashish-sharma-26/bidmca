@@ -11,9 +11,9 @@
                 <p>Your Bid Status :<label class="badge badge-success">Winning</label></p>
             @endif
                 @if($application->bid->status == 2)
-                    <p>Your Bid Status :<label class="badge badge-danger">Kicked</label></p>
+                    <p>Your Bid Status :<label class="badge badge-danger">Loosing</label></p>
                 @endif
-            <h6 class="required4"><span>${{$application->bid->amount}} <span class="text-black-50">|</span> F {{$application->bid->interest_rate}} <span class="text-black-50">|</span> </span> <span>M {{$application->bid->duration}}</span>
+            <h6 class="required4"><span>${{$application->bid->amount}} <span class="text-black-50">|</span> @ {{$application->bid->interest_rate}} <span class="text-black-50">|</span> </span> <span> {{$application->bid->duration}} MO</span>
             </h6>
         </div>
     @endif
