@@ -15,8 +15,10 @@
 
     <!-- Styles -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet"
+          href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{{asset('css/aos-animation.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/custom.css')}}" rel="stylesheet">
@@ -27,7 +29,8 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg logo-width">
             <a class="navbar-brand" href="{{url('/')}}"><img src="images/logo1.png"></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <div id="nav-icon1">
                     <span></span>
                     <span></span>
@@ -55,7 +58,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link btn btn-login" href="{{url('/login')}}">Login <i class="las la-long-arrow-alt-right icons"></i></a>
+                        <a class="nav-link btn btn-login" href="{{url('/login')}}">Login <i
+                                class="las la-long-arrow-alt-right icons"></i></a>
                     </li>
 
                 </ul>
@@ -89,9 +93,10 @@
         </div>
     </div>
 </div>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/aos-animation.js') }}" defer></script>
-    <script src="{{ asset('js/api.services.js') }}" defer></script>
-    <script src="{{ asset('js/custom.js') }}" defer></script>
+<script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('js/aos-animation.js') }}" defer></script>
+<script src="{{ asset('js/api.services.js') }}" defer></script>
+<script src="{{ asset('js/custom.js') }}" defer></script>
 </body>
 </html>

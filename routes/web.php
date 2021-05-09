@@ -28,6 +28,10 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
+Route::get('/plaid', function () {
+    return view('application.plaid');
+})->name('plaid');
+
 Auth::routes();
 
 Auth::routes();

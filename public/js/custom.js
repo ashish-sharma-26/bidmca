@@ -228,3 +228,19 @@ function resetUpload(Element) {
     $('#' + Element + '-a').prop('href','');
     $('#' + Element).val('');
 }
+
+const handler = Plaid.create({
+    token: 'link-sandbox-cfa53167-716e-450d-9071-0ba8728d167a',
+    onSuccess: (public_token, metadata) => {
+        console.log(public_token);
+        console.log(metadata);
+    },
+    onLoad: () => {},
+    onExit: (err, metadata) => {
+        console.log(err)
+    },
+    onEvent: (eventName, metadata) => {},
+    receivedRedirectUri: null,
+});
+
+// handler.open();
