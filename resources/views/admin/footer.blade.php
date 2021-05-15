@@ -36,10 +36,13 @@
         </form>
     </div>
 </div>
+<script src="https://www.gstatic.com/firebasejs/8.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.0/firebase-database.js"></script>
 <script type="text/javascript" src="{{ asset('/admin/assets/scripts/moment.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/admin/assets/scripts/daterangepicker.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/admin/assets/scripts/main.js') }}"></script>
 <script type="text/javascript" src="{{ asset('/admin/assets/scripts/custom.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/admin/assets/scripts/admin-firebase.js') }}"></script>
 
 </body>
 

@@ -161,12 +161,14 @@ function validateBidScore() {
         bid_amount: $('#bidAmount').val(),
     };
 
-    disableElement('placeBid', true);
+    disableElement('#placeBid', true);
     api.validateBidScore(data).then((res) => {
         if(res.data.message){
             var r = confirm(res.data.message);
             if(r == true){
                 placeBidAction();
+            }else{
+                disableElement('#placeBid', false);
             }
         }else{
             placeBidAction()
@@ -184,13 +186,13 @@ function placeBidAction() {
         bid_amount: $('#bidAmount').val(),
     };
 
-    disableElement('placeBid', true);
+    disableElement('#placeBid', true);
     api.placeBid(data).then((res) => {
         showNotification('Bid places successfully', 'success')
-        disableElement('placeBid', false);
-        window.location.href = webUrl + '/dashboard';
+        disableElement('#placeBid', false);
+        // window.location.href = webUrl + '/dashboard';
     }).catch((error) => {
-        disableElement('placeBid', false);
+        disableElement('#placeBid', false);
         showNotification(error.response.data.message, 'error');
     });
 }

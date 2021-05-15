@@ -145,10 +145,10 @@
                                                     <button class="btn btn-primary mt-2 mr-2" onclick="javascript: location.reload()">Refresh</button>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <h5>Average Factor: {{$application->avg_factor}}</h5>
+                                                    <h5>Average Factor: <span id="avg_factor_{{$application->id}}">{{$application->avg_factor}}</span></h5>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <h5>Average Term: {{$application->avg_term}}</h5>
+                                                    <h5>Average Term: <span id="avg_term_{{$application->id}}">{{$application->avg_term}}</span></h5>
                                                 </div>
                                                 <table class="table table-striped">
                                                     <thead>
@@ -159,7 +159,7 @@
                                                     <th>Score</th>
                                                     <th>Status</th>
                                                     </thead>
-                                                    <tbody>
+                                                    <tbody id="bidWrap">
                                                     @foreach($bids AS $bid)
                                                         <tr>
                                                             <td>{{$bid->user->first_name}} {{$bid->user->last_name}}</td>

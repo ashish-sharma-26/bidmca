@@ -40,7 +40,7 @@ class BidController extends Controller
             return response()->json(apiResponseHandler([], 'Bids are not allowed', 400), 400);
         }
 
-        $score = number_format($request->input('timeframe') / $request->input('interest_rate'), 2);
+        $score = round($request->input('timeframe') / $request->input('interest_rate'), 2);
         Bid::updateOrCreate([
             'application_id' => $request->input('application_id'),
             'user_id' => Auth::user()->id
@@ -60,7 +60,11 @@ class BidController extends Controller
 
         $realTime = new RealtimeController();
 
-        $allBids = Bid::where('application_id', $application->id)->select('id', 'status','amount','interest_rate','duration','user_id')->get();
+        $allBids = Bid::leftJoin('users','users.id','bids.user_id')
+            ->where('application_id', $application->id)
+            ->select('bids.id', 'bids.status', 'bids.amount', 'bids.score', 'bids.interest_rate', 'bids.duration', 'bids.user_id','users.first_name','users.last_name')
+            ->orderBy('bids.score','DESC')
+            ->get();
 
         $pushData = [
             'min_bid_score' => $updatedData['min_bid_score'],
@@ -94,7 +98,7 @@ class BidController extends Controller
             return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);
         }
 
-        $score = number_format($request->input('timeframe') / $request->input('interest_rate'), 2);
+        $score = round($request->input('timeframe') / $request->input('interest_rate'), 2);
 
         $application = Application::find($request->input('application_id'));
 
@@ -157,8 +161,6 @@ class BidController extends Controller
             // UPDATE APPLICATION MIN/MAX SCORE AND AVG TERM/FACTOR
             $avgFactor = $totalFactor / count($wonBids);
             $avgTerm = $totalTerms / count($wonBids);
-            Log::info($avgFactor);
-            Log::info($avgTerm);
             $data = [
                 'min_bid_score' => $minScore,
                 'max_bid_score' => $maxScore,
