@@ -1,1 +1,1 @@
-const BASE_URL = "http://13.212.91.216/api/v1/";
+const BASE_URL = "http://localhost/bidmca/public/api/v1/";
