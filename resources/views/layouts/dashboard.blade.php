@@ -25,14 +25,14 @@
 </head>
 <body>
 <div class="preloader" style="display: none"><svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background:0 0"><circle cx="50" cy="50" r="4.719" fill="none" stroke="#1d3f72" stroke-width="2"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="3" keySplines="0 0.2 0.8 1" begin="-1.5s" repeatCount="indefinite"/><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="3" keySplines="0.2 0 0.8 1" begin="-1.5s" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="27.591" fill="none" stroke="#5699d2" stroke-width="2"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="3" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="3" keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite"/></circle></svg></div>
-<section>
+<section id="user_{{auth()->user()->id}}">
     <div class="container-fluid">
         <!-----------------sidebar for mobile view------------------->
         <div class="mobile-header">
             <div class="row">
                 <div class="col-10 col-md-10">
                     <div class="logo-width">
-                        <a href="{{url('/')}}"><img src="images/logo1.png" class="img-fluid"></a></div>
+                        <a href="{{url('/')}}"><img src="{{asset('images/logo1.png')}}" class="img-fluid"></a></div>
                 </div>
                 <div class="col-2 col-md-2 text-right">
                     <div class="menubars"><span class="fa fa-bars" data-toggle="modal" data-target="#left-sidebar"></span></div>
@@ -177,6 +177,9 @@
     </div>
 </div>
 <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.6.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.0/firebase-database.js"></script>
 <script src="{{ asset('js/app.js') }}" defer></script>
 <script src="{{ asset('js/aos-animation.js') }}" defer></script>
 <script src="{{ asset('js/api.services.js') }}" defer></script>
@@ -184,5 +187,6 @@
 <script src="{{ asset('js/daterangepicker.js') }}" defer></script>
 <script src="{{ asset('js/custom.js') }}" defer></script>
 <script src="{{ asset('js/application.js') }}" defer></script>
+<script src="{{ asset('js/firebase.js') }}" defer></script>
 </body>
 </html>

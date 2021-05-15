@@ -1,15 +1,15 @@
-// const baseURL = 'http://localhost/bidmca/public/api/';
-// const webUrl = 'http://localhost/bidmca/public';
-// const storageURL = 'http://localhost/bidmca/public/storage/';
+const baseURL = 'http://localhost/bidmca/public/api/';
+const webUrl = 'http://localhost/bidmca/public';
+const storageURL = 'http://localhost/bidmca/public/storage/';
 
-const baseURL = 'http://13.212.91.216/api/';
-const webUrl = 'http://13.212.91.216';
-const storageURL = 'http://13.212.91.216/storage/';
+// const baseURL = 'http://13.212.91.216/api/';
+// const webUrl = 'http://13.212.91.216';
+// const storageURL = 'http://13.212.91.216/storage/';
 
 const headers = () => {
     const headers = {
         'Content-Type': 'application/json'
-    };``
+    };
 
     return headers;
 };

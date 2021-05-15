@@ -229,18 +229,38 @@ function resetUpload(Element) {
     $('#' + Element).val('');
 }
 
-const handler = Plaid.create({
-    token: 'link-sandbox-cfa53167-716e-450d-9071-0ba8728d167a',
-    onSuccess: (public_token, metadata) => {
-        console.log(public_token);
-        console.log(metadata);
-    },
-    onLoad: () => {},
-    onExit: (err, metadata) => {
-        console.log(err)
-    },
-    onEvent: (eventName, metadata) => {},
-    receivedRedirectUri: null,
-});
+// const handler = Plaid.create({
+//     token: 'link-sandbox-cfa53167-716e-450d-9071-0ba8728d167a',
+//     onSuccess: (public_token, metadata) => {
+//         console.log(public_token);
+//         console.log(metadata);
+//     },
+//     onLoad: () => {},
+//     onExit: (err, metadata) => {
+//         console.log(err)
+//     },
+//     onEvent: (eventName, metadata) => {},
+//     receivedRedirectUri: null,
+// });
 
 // handler.open();
+
+if (!window.Notification) {
+    console.log('Browser does not support notifications.');
+} else {
+    // check if permission is already granted
+    if (Notification.permission === 'granted') {
+        // show notification here
+    } else {
+        // request permission from user
+        Notification.requestPermission().then(function(p) {
+            if(p === 'granted') {
+                console.log('notifications Granted.');
+            } else {
+                console.log('User blocked notifications.');
+            }
+        }).catch(function(err) {
+            console.error(err);
+        });
+    }
+}

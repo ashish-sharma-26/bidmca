@@ -290,7 +290,7 @@
                                 <h6>{{date('F d, Y', strtotime($application->closing_date))}}</h6>
                             </div>
                             @if($application->bid)
-                                <div class="business-title current-details">
+                                <div class="business-title current-details" id="bid_{{$application->bid->id}}">
                                     <p>Current Bid Status:</p>
                                     @if($application->bid)
                                         @if($application->bid->status == 1)
@@ -309,7 +309,15 @@
                                 <div class="col-md-6">
                                     <div class="business-title current-details">
                                         <p>Average Factor(%)</p>
-                                        <h6>{{$application->avg_factor}}</h6>
+                                        <h6 id="avg_factor_{{$application->id}}">{{$application->avg_factor}}</h6>
+                                    </div>
+                                </div>
+                            @endif
+                            @if($application->avg_factor == 0)
+                                <div class="col-md-6" id="avg_factor_wrap_{{$application->id}}" style="display: none">
+                                    <div class="business-title current-details">
+                                        <p>Average Factor(%)</p>
+                                        <h6 id="avg_factor_{{$application->id}}"></h6>
                                     </div>
                                 </div>
                             @endif
@@ -317,7 +325,15 @@
                                 <div class="col-md-6">
                                     <div class="business-title current-details">
                                         <p>Average Term(MO)</p>
-                                        <h6>{{$application->avg_term}}</h6>
+                                        <h6 id="avg_term_{{$application->id}}">{{$application->avg_term}}</h6>
+                                    </div>
+                                </div>
+                            @endif
+                                @if($application->avg_term == 0)
+                                <div class="col-md-6" id="avg_term_wrap_{{$application->id}}" style="display: none">
+                                    <div class="business-title current-details">
+                                        <p>Average Term(MO)</p>
+                                        <h6 id="avg_term_{{$application->id}}">{{$application->avg_term}}</h6>
                                     </div>
                                 </div>
                             @endif

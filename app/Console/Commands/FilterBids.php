@@ -96,9 +96,6 @@ class FilterBids extends Command
                             'avg_term' => $avgTerm,
                             'avg_factor' => $avgFactor,
                         ]);
-
-                    // SEND EMAIL TO LOST USERS
-                    // $this->sendEmailtoLostUsers($application->id);
                 }
             }
         }

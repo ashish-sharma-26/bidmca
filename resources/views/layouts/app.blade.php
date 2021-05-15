@@ -28,7 +28,7 @@
 <header id="header" class="bg-white">
     <div class="container">
         <nav class="navbar navbar-expand-lg logo-width">
-            <a class="navbar-brand" href="{{url('/')}}"><img src="images/logo1.png"></a>
+            <a class="navbar-brand" href="{{url('/')}}"><img src="{{asset('images/logo1.png')}}"></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                     aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <div id="nav-icon1">
