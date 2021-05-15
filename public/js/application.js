@@ -190,7 +190,7 @@ function placeBidAction() {
     api.placeBid(data).then((res) => {
         showNotification('Bid places successfully', 'success')
         disableElement('#placeBid', false);
-        // window.location.href = webUrl + '/dashboard';
+        window.location.href = webUrl + '/dashboard';
     }).catch((error) => {
         disableElement('#placeBid', false);
         showNotification(error.response.data.message, 'error');
