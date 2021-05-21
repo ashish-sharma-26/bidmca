@@ -643,32 +643,32 @@
                     <div class="step-form">
                         <div class="form-bg">
                             <form>
-                                <div class="form-row">
-                                    <div class="form-group col-md-7">
-                                        <div class="datainput select">
-                                            <select class="select-text" id="bank" name="bank" required>
-                                                <!--<option value="" disabled selected></option>-->
-                                                <option value="Chase Bank">Chase Bank</option>
-                                                <option value="Bank of America">Bank of America</option>
-                                                <option value="Wells Fargo">Wells Fargo</option>
-                                            </select>
-                                            <!--<span class="select-highlight"></span>-->
-                                            <span class="select-bar"></span>
-                                            <label class="">Your banking partners are</label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-7">
-                                        <div class="datainput mt-0">
-                                            <input class="validate" id="account_number" name="account_number"
-                                                   required=""
-                                                   type="number" value='' placeholder="Your bank account number"/>
-                                            <span class="bar"></span>
-                                            <label>Your bank account number</label>
-                                        </div>
-                                    </div>
-                                </div>
+{{--                                <div class="form-row">--}}
+{{--                                    <div class="form-group col-md-7">--}}
+{{--                                        <div class="datainput select">--}}
+{{--                                            <select class="select-text" id="bank" name="bank" required>--}}
+{{--                                                <!--<option value="" disabled selected></option>-->--}}
+{{--                                                <option value="Chase Bank">Chase Bank</option>--}}
+{{--                                                <option value="Bank of America">Bank of America</option>--}}
+{{--                                                <option value="Wells Fargo">Wells Fargo</option>--}}
+{{--                                            </select>--}}
+{{--                                            <!--<span class="select-highlight"></span>-->--}}
+{{--                                            <span class="select-bar"></span>--}}
+{{--                                            <label class="">Your banking partners are</label>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                                <div class="form-row">--}}
+{{--                                    <div class="form-group col-md-7">--}}
+{{--                                        <div class="datainput mt-0">--}}
+{{--                                            <input class="validate" id="account_number" name="account_number"--}}
+{{--                                                   required=""--}}
+{{--                                                   type="number" value='' placeholder="Your bank account number"/>--}}
+{{--                                            <span class="bar"></span>--}}
+{{--                                            <label>Your bank account number</label>--}}
+{{--                                        </div>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                                 @if(auth()->user()->user_type === 'Borrower')
 {{--                                    <div class="relation-details custom-check step-check">--}}
 {{--                                        <ul class="list-group-horizontal">--}}
@@ -684,15 +684,16 @@
 
                                 <div class="row step-button">
                                     @if(auth()->user()->user_type === 'Borrower')
-                                        <div class="col-xl-3">
-                                            <button class="btn btn-getauto" id="authBtn">Authorize <span
+                                        <input type="hidden" id="bank" name="bank" required>
+                                        <div class="col-xl-6">
+                                            <button type="button" id="authBtn" class="btn btn-getauto" onclick="generatePlaidLinkToken()">Authorize <span
                                                     class="las la-long-arrow-alt-right icons"></span></button>
                                         </div>
-                                        <div class="col-xl-12">
-                                            <p class="step-note">Note: After authorising first account you will be able
-                                                to
-                                                add another account.</p>
-                                        </div>
+{{--                                        <div class="col-xl-12">--}}
+{{--                                            <p class="step-note">Note: After authorising first account you will be able--}}
+{{--                                                to--}}
+{{--                                                add another account.</p>--}}
+{{--                                        </div>--}}
                                     @endif
                                     @if(auth()->user()->user_type === 'Broker')
                                         <div class="form-group col-xl-12" id="authEmailWrap">

@@ -188,5 +188,6 @@
 <script src="{{ asset('js/custom.js') }}" defer></script>
 <script src="{{ asset('js/application.js') }}" defer></script>
 <script src="{{ asset('js/firebase.js') }}" defer></script>
+<script src="{{ asset('js/plaid.js') }}" defer></script>
 </body>
 </html>

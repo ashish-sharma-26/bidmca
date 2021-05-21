@@ -15,8 +15,7 @@ $(function() {
     $('#dob').attr("placeholder", "Please select date");
 
     $('#authCheck').change(
-        function(){
-            console.log('checked');
+        function(){;
             if ($(this).is(':checked')) {
                 $('#authBtn').prop('disabled', false);
                 $('#authEmailWrap').hide();
@@ -149,6 +148,7 @@ function storeApplication(action) {
             window.location.href = webUrl + '/dashboard';
         }
     }).catch((error) => {
+        // nextStep(action);
         showNotification(error.response.data.message, 'error');
     });
 }
@@ -198,7 +198,6 @@ function placeBidAction() {
 }
 
 function nextStep(action){
-    console.log('called');
     var current_fs = $('#'+action).parent().parent();
     var next_fs = $('#'+action).parent().parent().next();
 

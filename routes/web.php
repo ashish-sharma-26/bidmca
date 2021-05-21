@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\Auth\AdminAuthController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PlaidController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,4 +59,8 @@ Route::middleware(['auth:web'])->group(function () {
     Route::post('/api/application/bid', [App\Http\Controllers\BidController::class, 'store'])->name('app_bid');
     Route::post('/api/application/validate-bid-score', [App\Http\Controllers\BidController::class, 'validateBidScore'])->name('app_bid');
     Route::get('/logout', [App\Http\Controllers\UsersController::class, 'logout'])->name('logout');
+
+    // PLAID
+    Route::get('/api/plaid/link-token',[PlaidController::class,'generateLinkToken'])->name('link_token');
+    Route::post('/api/plaid/public-token',[PlaidController::class,'storePublicToken'])->name('public_token');
 });

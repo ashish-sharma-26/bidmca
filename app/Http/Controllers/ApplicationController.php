@@ -114,13 +114,14 @@ class ApplicationController extends Controller
         }
 
         if($request->input('action') === 'step4'){
-            $validator = Validator::make($request->all(), [
-                'bank' => 'required',
-                'account_number' => 'required',
-            ]);
+            if(Auth::user()->user_type === 'Borrower') {
+                $validator = Validator::make($request->all(), [
+                    'bank' => 'required'
+                ]);
 
-            if ($validator->fails()) {
-                return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);
+                if ($validator->fails()) {
+                    return response()->json(apiResponseHandler([], 'Please authorize the bank details.', 400), 400);
+                }
             }
 
             if(Auth::user()->user_type === 'Broker')
@@ -132,6 +133,8 @@ class ApplicationController extends Controller
                 if ($validator->fails()) {
                     return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);
                 }
+
+                $token = crypt('','');
 
                 $message = view('email-templates.authorize')->render();
 
@@ -192,8 +195,7 @@ class ApplicationController extends Controller
 
         BankAccount::create([
             'application_id' => $appId->id,
-            'bank' => $data['bank'],
-            'account_number' => $data['account_number'],
+            'bank' => $data['bank']
         ]);
 
         return $appId;
