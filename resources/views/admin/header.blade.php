@@ -10,19 +10,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link href="{{ asset('admin/assets/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ asset('admin/assets/daterangepicker.css')}}" rel="stylesheet">
     <link href="http://54.176.179.158/global_trade_back/node_modules/cropperjs/dist/cropper.css" rel="stylesheet">
     <link href="{{ asset('admin/assets/main.css')}}" rel="stylesheet">
     <link href="{{ asset('admin/assets/custom.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script type="text/javascript" src="{{ asset('admin/assets/scripts/baseUrl.js') }}"></script>
-    <script type="text/javascript" src="http://54.176.179.158/global_trade_back/node_modules/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="{{ asset('admin/assets/scripts/bootstrap.min.js') }}"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <style>
         .changes {
             padding: 5px 7px;

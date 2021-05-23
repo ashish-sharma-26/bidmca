@@ -173,23 +173,25 @@
                         <!--/panel2-->
 
                             <!--panel2-->
-                        {{--                            <div class="status-details panel panel-default">--}}
-                        {{--                                <div class="panel-heading" role="tab" id="heading3">--}}
-                        {{--                                    <h3 class="panel-title  mb-0">--}}
-                        {{--                                        <a class="collapsed" role="button" title="" data-toggle="collapse"--}}
-                        {{--                                           data-parent="#accordion" href="#collapse3" aria-expanded="false"--}}
-                        {{--                                           aria-controls="collapse3">--}}
-                        {{--                                            Confirmation--}}
-                        {{--                                        </a>--}}
-                        {{--                                    </h3>--}}
-                        {{--                                </div>--}}
-                        {{--                                <div id="collapse3" class="panel-collapse collapse" role="tabpanel"--}}
-                        {{--                                     aria-labelledby="heading3">--}}
-                        {{--                                    <div class="panel-body content">--}}
-                        {{--                                        <p>lorem ipusum</p>--}}
-                        {{--                                    </div>--}}
-                        {{--                                </div>--}}
-                        {{--                            </div>--}}
+                                                    <div class="status-details panel panel-default">
+                                                        <div class="panel-heading" role="tab" id="heading3">
+                                                            <h3 class="panel-title  mb-0">
+                                                                <a class="collapsed" role="button" title="" data-toggle="collapse"
+                                                                   data-parent="#accordion" href="#collapse3" aria-expanded="false"
+                                                                   aria-controls="collapse3">
+                                                                    Admin Comment
+                                                                </a>
+                                                            </h3>
+                                                        </div>
+                                                        <div id="collapse3" class="panel-collapse collapse" role="tabpanel"
+                                                             aria-labelledby="heading3">
+                                                            <div class="panel-body content">
+                                                                @if($application->reject_reason != '' && $application->getStatusIdAttribute() == 'Approved')
+                                                                    {{$application->reject_reason}}
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
                         <!--/panel2-->
 
                             <!--panel3-->
@@ -410,7 +412,9 @@
                             <div class="business-title current-details">
                                 <p>Current Status</p>
                                 {!! $application->status !!}
+                                @if($application->getStatusIdAttribute() == 'Rejected')
                                 <p class="text-danger">{{$application->reject_reason}}</p>
+                                    @endif
                             </div>
                         </div>
                     </div>

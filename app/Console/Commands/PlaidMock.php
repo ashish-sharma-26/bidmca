@@ -41,12 +41,9 @@ class PlaidMock extends Command
      */
     public function handle()
     {
-        $rt = new RealtimeController();
-        $rt->pushFirebase();
-        exit();
         $client = new Plaid(env('PLAID_CLIENT_ID'),env('PLAID_SECRET'),env('PLAID_ENV'));
         try {
-            $trx = $client->items->get('access-sandbox-d3755b8f-ffe5-40fc-b0f3-d17be2e0c981',new \DateTime('2020-03-01 00:00:00'),new \DateTime('2020-04-01 00:00:00'));
+            $trx = $client->liabilities->list('access-sandbox-d3755b8f-ffe5-40fc-b0f3-d17be2e0c981');
             Log::debug((array) $trx);
         }
         catch (PlaidRequestException $exception){

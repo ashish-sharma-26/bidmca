@@ -134,8 +134,6 @@ class ApplicationController extends Controller
                     return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);
                 }
 
-                $token = crypt('','');
-
                 $message = view('email-templates.authorize')->render();
 
                 sendEmail($message, $request->input('account_email'), 'BIDMCA Application');
@@ -211,7 +209,9 @@ class ApplicationController extends Controller
                 $query->where('user_id', Auth::user()->id);
             }
         ])->where('unique_id',$id)->first();
-//        dd($application);
-        return view('application.single',['application' => $application]);
+        if($application){
+            return view('application.single',['application' => $application]);
+        }
+        return redirect()->to('dashboard');
     }
 }
