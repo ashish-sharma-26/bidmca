@@ -173,25 +173,26 @@
                         <!--/panel2-->
 
                             <!--panel2-->
-                                                    <div class="status-details panel panel-default">
-                                                        <div class="panel-heading" role="tab" id="heading3">
-                                                            <h3 class="panel-title  mb-0">
-                                                                <a class="collapsed" role="button" title="" data-toggle="collapse"
-                                                                   data-parent="#accordion" href="#collapse3" aria-expanded="false"
-                                                                   aria-controls="collapse3">
-                                                                    Admin Comment
-                                                                </a>
-                                                            </h3>
-                                                        </div>
-                                                        <div id="collapse3" class="panel-collapse collapse" role="tabpanel"
-                                                             aria-labelledby="heading3">
-                                                            <div class="panel-body content">
-                                                                @if($application->reject_reason != '' && $application->getStatusIdAttribute() == 'Approved')
-                                                                    {{$application->reject_reason}}
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                            @if($application->reject_reason != '' && $application->getStatusIdAttribute() == 'Approved')
+                                <div class="status-details panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading3">
+                                        <h3 class="panel-title  mb-0">
+                                            <a class="collapsed" role="button" title="" data-toggle="collapse"
+                                               data-parent="#accordion" href="#collapse3" aria-expanded="false"
+                                               aria-controls="collapse3">
+                                                Admin Comment
+                                            </a>
+                                        </h3>
+                                    </div>
+                                    <div id="collapse3" class="panel-collapse collapse" role="tabpanel"
+                                         aria-labelledby="heading3">
+                                        <div class="panel-body content">
+
+                                            {{$application->reject_reason}}
+                                        </div>
+                                    </div>
+                                </div>
+                        @endif
                         <!--/panel2-->
 
                             <!--panel3-->
@@ -331,7 +332,7 @@
                                     </div>
                                 </div>
                             @endif
-                                @if($application->avg_term == 0)
+                            @if($application->avg_term == 0)
                                 <div class="col-md-6" id="avg_term_wrap_{{$application->id}}" style="display: none">
                                     <div class="business-title current-details">
                                         <p>Average Term(MO)</p>
@@ -413,8 +414,8 @@
                                 <p>Current Status</p>
                                 {!! $application->status !!}
                                 @if($application->getStatusIdAttribute() == 'Rejected')
-                                <p class="text-danger">{{$application->reject_reason}}</p>
-                                    @endif
+                                    <p class="text-danger">{{$application->reject_reason}}</p>
+                                @endif
                             </div>
                         </div>
                     </div>
