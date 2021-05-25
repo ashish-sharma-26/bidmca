@@ -63,7 +63,4 @@ Route::middleware(['auth:web'])->group(function () {
     // PLAID
     Route::get('/api/plaid/link-token',[PlaidController::class,'generateLinkToken'])->name('link_token');
     Route::post('/api/plaid/public-token',[PlaidController::class,'storePublicToken'])->name('public_token');
-    Route::get('/plaid/fetch-account-data/{id}',[PlaidController::class,'fetchAccountData']);
-    Route::get('/plaid/fetch-liability-data/{id}',[PlaidController::class,'fetchLiabilityData']);
-    Route::get('/plaid/fetch-transaction-data/{id}',[PlaidController::class,'fetchTransactionData']);
 });
