@@ -70,7 +70,7 @@ function fetchAccountData(id) {
     $('#acc-button').hide();
     $('#acc-loader').show();
     $.ajax({
-        url: BASE_URL + '/admin/plaid/fetch-account-data/' + id,
+        url: BASE_URL + 'admin/plaid/fetch-account-data/' + id,
         type: 'GET',
         dataType: 'JSON',
         success: function (success) {
@@ -88,7 +88,7 @@ function fetchLiabilityData(id) {
     $('#lbt-button').hide();
     $('#lbt-loader').show();
     $.ajax({
-        url: BASE_URL + '/admin/plaid/fetch-liability-data/' + id,
+        url: BASE_URL + 'admin/plaid/fetch-liability-data/' + id,
         type: 'GET',
         dataType: 'JSON',
         success: function (success) {
@@ -120,7 +120,7 @@ function fetchTrxData(id) {
     $('#trx-loader').show();
     $('#trx-table').hide();
     $.ajax({
-        url: BASE_URL + '/admin/plaid/fetch-transaction-data/' + id + '?start=' + trxStartDate + '&end=' + trxEndDate,
+        url: BASE_URL + 'admin/plaid/fetch-transaction-data/' + id + '?start=' + trxStartDate + '&end=' + trxEndDate,
         type: 'GET',
         dataType: 'JSON',
         success: function (success) {
