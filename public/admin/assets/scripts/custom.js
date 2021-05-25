@@ -73,9 +73,6 @@ function fetchAccountData(id) {
         url: BASE_URL + 'plaid/fetch-account-data/' + id,
         type: 'GET',
         dataType: 'JSON',
-        beforeSend: function(request) {
-            request.setRequestHeader("Authorization", "Basic YWRtaW46SGlAYmlkbWNh");
-        },
         success: function (success) {
             $('#acc-loader').hide();
             $('#acc-table').show();
@@ -94,9 +91,6 @@ function fetchLiabilityData(id) {
         url: BASE_URL + 'plaid/fetch-liability-data/' + id,
         type: 'GET',
         dataType: 'JSON',
-        beforeSend: function(request) {
-            request.setRequestHeader("Authorization", "Basic YWRtaW46SGlAYmlkbWNh");
-        },
         success: function (success) {
             $('#lbt-loader').hide();
             $('#lbt-table').show();
@@ -129,9 +123,6 @@ function fetchTrxData(id) {
         url: BASE_URL + 'plaid/fetch-transaction-data/' + id + '?start=' + trxStartDate + '&end=' + trxEndDate,
         type: 'GET',
         dataType: 'JSON',
-        beforeSend: function(request) {
-            request.setRequestHeader("Authorization", "Basic YWRtaW46SGlAYmlkbWNh");
-        },
         success: function (success) {
             $('#trx-loader').hide();
             $('#trx-table').show();
