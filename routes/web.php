@@ -19,7 +19,7 @@ use App\Http\Controllers\PlaidController;
 
 Route::get('/', function () {
     return view('static.home');
-});
+})->name('index');
 
 Route::get('/how-it-work', function () {
     return view('static.how-it-work');
@@ -42,6 +42,9 @@ Route::post('/api/verify-otp', [\App\Http\Controllers\Common\CommonController::c
 Route::get('/api/common/get-cities/{stateId}', [\App\Http\Controllers\Common\CommonController::class, 'getCities'])->name('getCities');
 Route::post('/api/common/file-upload', [\App\Http\Controllers\Common\CommonController::class, 'uploadFile'])->name('uploadFile');
 Route::get('/check-email', [\App\Http\Controllers\Common\CommonController::class, 'checkEmail'])->name('checkEmail');
+Route::get('/application/authorize/{key}', [PlaidController::class, 'appBankAuthorize'])->name('plaid_auth');
+Route::get('/api/plaid/link-token/{appId}',[PlaidController::class,'generateLinkTokenGuest'])->name('link_token');
+Route::post('/api/plaid/public-token',[PlaidController::class,'storePublicToken'])->name('public_token');
 
 Route::middleware(['auth:web'])->group(function () {
     Route::get('/profile', function () {
@@ -62,5 +65,4 @@ Route::middleware(['auth:web'])->group(function () {
 
     // PLAID
     Route::get('/api/plaid/link-token',[PlaidController::class,'generateLinkToken'])->name('link_token');
-    Route::post('/api/plaid/public-token',[PlaidController::class,'storePublicToken'])->name('public_token');
 });

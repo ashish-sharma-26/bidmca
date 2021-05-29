@@ -89,6 +89,10 @@ class API {
         return request('GET', `plaid/link-token`);
     }
 
+    generatePlaidLinkTokenGuest(appId){
+        return request('GET', `plaid/link-token/${appId}`);
+    }
+
     storePlaidInfo(inputData){
         return request('POST', `plaid/public-token`, inputData);
     }

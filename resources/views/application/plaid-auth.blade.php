@@ -1,23 +1,8 @@
-@extends('layouts.dashboard')
+@extends('layouts.app')
 
 @section('content')
     <div class="col-md-12 col-md-12 col-lg-10 col-xl-9 mx-auto">
         <div class="form-bg" data-aos="zoom-in" data-aos-duration="1000">
-            <div class="row">
-                <div class="col-12 col-md-10 col-lg-10 col-xl-10">
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><i class="fas fa-angle-left"></i> <a
-                                    href="{{url('/dashboard')}}">All
-                                    applications</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">ID {{$application->id}}</li>
-                        </ol>
-                    </nav>
-                </div>
-                <div class="col-2 col-md-2 col-lg-2 col-xl-2 back-title">
-                    <a href="{{url('/dashboard')}}"> &lt; Back </a>
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col-12 col-md-8 col-lg-8 col-xl-8">
@@ -285,149 +270,36 @@
 
 
                 </div>
-                @if(auth()->user()->user_type === 'Lender')
-                    <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="closes-details">
-                            <div class="business-title current-details">
-                                <p>Proposal closes on</p>
-                                <h6>{{date('F d, Y', strtotime($application->closing_date))}}</h6>
-                            </div>
-                            @if($application->bid)
-                                <div class="business-title current-details" id="bid_{{$application->bid->id}}">
-                                    <p>Current Bid Status:</p>
-                                    @if($application->bid)
-                                        @if($application->bid->status == 1)
-                                            <label class="badge badge-success">Winning</label>
-                                        @endif
-                                        @if($application->bid->status == 2)
-                                            <label class="badge badge-danger">Losing</label>
-                                        @endif
-                                    @endif
-                                </div>
+                <div class="col-12 col-md-4 col-lg-4 col-xl-4">
+                    <div class="closes-details">
+                        <div class="business-title current-details">
+                            <p>Applied on</p>
+                            <h6>{{date('F d, Y', strtotime($application->created_at))}}</h6>
+                        </div>
+                        <div class="business-title current-details">
+                            <p>Current Status</p>
+                            {!! $application->status !!}
+                            @if($application->getStatusIdAttribute() == 'Rejected')
+                                <p class="text-danger">{{$application->reject_reason}}</p>
                             @endif
                         </div>
-
-                        <div class="row">
-                            @if($application->avg_factor > 0)
-                                <div class="col-md-6">
-                                    <div class="business-title current-details">
-                                        <p>Average Factor(%)</p>
-                                        <h6 id="avg_factor_{{$application->id}}">{{$application->avg_factor}}</h6>
-                                    </div>
-                                </div>
-                            @endif
-                            @if($application->avg_factor == 0)
-                                <div class="col-md-6" id="avg_factor_wrap_{{$application->id}}" style="display: none">
-                                    <div class="business-title current-details">
-                                        <p>Average Factor(%)</p>
-                                        <h6 id="avg_factor_{{$application->id}}"></h6>
-                                    </div>
-                                </div>
-                            @endif
-                            @if($application->avg_term > 0)
-                                <div class="col-md-6">
-                                    <div class="business-title current-details">
-                                        <p>Average Term(MO)</p>
-                                        <h6 id="avg_term_{{$application->id}}">{{$application->avg_term}}</h6>
-                                    </div>
-                                </div>
-                            @endif
-                            @if($application->avg_term == 0)
-                                <div class="col-md-6" id="avg_term_wrap_{{$application->id}}" style="display: none">
-                                    <div class="business-title current-details">
-                                        <p>Average Term(MO)</p>
-                                        <h6 id="avg_term_{{$application->id}}">{{$application->avg_term}}</h6>
-                                    </div>
-                                </div>
-                            @endif
-                        </div>
-                        <div class="bidding-details">
-                            <input type="hidden" name="application_id" id="application_id"
-                                   value="{{$application->id}}">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4">Factor:</label>
-                                    <input type="number" min="0"
-                                           class="form-control"
-                                           id="interest_rate"
-                                           name="interest_rate"
-                                           placeholder="0.000"
-                                           value="{{$application->bid ? $application->bid->interest_rate : ''}}"
-                                    >
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">Term:</label>
-                                    <input type="number"
-                                           class="form-control"
-                                           min="1"
-                                           id="timeframe"
-                                           name="timeframe"
-                                           placeholder="Months"
-                                           value="{{$application->bid ? $application->bid->duration : ''}}"
-                                    >
-                                </div>
-
-                                <div class="form-group col-md-12">
-                                    <label for="inputPassword4">Amount:</label>
-                                    <input type="text"
-                                           class="form-control"
-                                           id="bidAmount"
-                                           name="bid_amount"
-                                           placeholder="$"
-                                           value="{{$application->bid ? $application->bid->amount : ''}}"
-                                    >
-                                </div>
-
-                                <div>
-
-                                </div>
-                            </div>
-
-                            @if($application->bid)
-                                <div class="profile-button">
-                                    <div>
-                                        <button class="btn btn1 btn-save mt-3 ml-0 w-100" onclick="validateBidScore()"
-                                                id="placeBid">Update your bid
-                                        </button>
-                                    </div>
-                                </div>
+                    </div>
+                    <div class="profile-button step-button">
+                        <div>
+                            <input type="hidden" value="{{$application->unique_id}}" id="unique_id">
+                            @if($application->plaid_access_token)
+                                <button class="btn btn-getauto mt-3 ml-0 w-100" disabled
+                                        id="authBtn">Already Authorized
+                                </button>
                             @else
-                                <div class="profile-button step-button">
-                                    <div>
-                                        <button type="button" onclick="validateBidScore()" id="placeBid"
-                                                class="btn btn-getauto mt-3 ml-0 w-100">Submit My Application
-                                        </button>
-                                    </div>
-                                </div>
+                                <button class="btn btn-getauto mt-3 ml-0 w-100" onclick="generatePlaidLinkTokenGuest()"
+                                        id="authBtn">Authorize with Plaid
+                                </button>
                             @endif
                         </div>
                     </div>
-                @endif
-                @if(auth()->user()->user_type !== 'Lender')
-                    <div class="col-12 col-md-4 col-lg-4 col-xl-4">
-                        <div class="closes-details">
-                            <div class="business-title current-details">
-                                <p>Applied on</p>
-                                <h6>{{date('F d, Y', strtotime($application->created_at))}}</h6>
-                            </div>
-                            <div class="business-title current-details">
-                                <p>Current Status</p>
-                                @if($application->plaid_access_token)
-                                    {!! $application->status !!}
-                                    @if($application->getStatusIdAttribute() == 'Rejected')
-                                        <p class="text-danger">{{$application->reject_reason}}</p>
-                                    @endif
-                                @else
-                                    <h6 class="required1">Banking Folio Pending</h6>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                @endif
-
+                </div>
             </div>
         </div>
-
-        <p class="text-center">bidmca©{{ date('Y') }}</p>
     </div>
 @endsection

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Application\Application;
+use App\Models\Application\Owner;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use TomorrowIdeas\Plaid\Plaid;
@@ -10,6 +12,7 @@ use TomorrowIdeas\Plaid\Entities\User;
 use Illuminate\Support\Facades\Auth;
 use TomorrowIdeas\Plaid\PlaidRequestException;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Crypt;
 
 class PlaidController extends Controller
 {
@@ -24,6 +27,45 @@ class PlaidController extends Controller
         // USER ENTITY PLAID
         $name = Auth::user()->first_name . ' ' . Auth::user()->last_name;
         $tokenUser = new User(Auth::id(), $name);
+
+        try {
+            // GENERATING TOKEN
+            $token = $plaid->tokens->create(
+                'bidmca plaid',
+                'en',
+                ['US'],
+                $tokenUser,
+                ["auth", "transactions"]
+            );
+            return response()->json(apiResponseHandler($token, '', 200), 200);
+        } catch (PlaidRequestException $exception) {
+            return response()->json(apiResponseHandler([], $exception->getMessage(), 400), 400);
+        }
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function generateLinkTokenGuest($appId)
+    {
+        // INIT PLAID CLIENT
+        $plaid = $this->getPlaidClient();
+
+        // APPLICATION
+        $application = Application::where('unique_id', $appId)->first();
+
+        if($application->plaid_access_token){
+            return response()->json(apiResponseHandler([], 'Application already authorized.', 400), 400);
+        }
+
+        // APP Owners
+        $owners = Owner::where('application_id', $application->id)->first();
+        if(!$owners){
+            return response()->json(apiResponseHandler([], 'Application not completed.', 400), 400);
+        }
+        // USER ENTITY PLAID
+        $name = $owners->first_name . ' ' . $owners->last_name;
+        $tokenUser = new User($owners->id, $name);
 
         try {
             // GENERATING TOKEN
@@ -238,6 +280,16 @@ class PlaidController extends Controller
             } catch (PlaidRequestException $exception) {
                 return response()->json(apiResponseHandler([], $exception->getMessage(), 400), 400);
             }
+        }
+    }
+
+    public function appBankAuthorize($key){
+        try {
+            $application = Crypt::decryptString($key);
+            $application = Application::where('unique_id',$application)->first();
+            return view('application.plaid-auth', compact('application'));
+        } catch (DecryptException $e) {
+            return redirect()->route('index');
         }
     }
 

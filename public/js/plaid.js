@@ -9,6 +9,18 @@ function generatePlaidLinkToken() {
     });
 }
 
+function generatePlaidLinkTokenGuest() {
+    disableElement('#authBtn', true);
+    const appId = $('#unique_id').val();
+    api.generatePlaidLinkTokenGuest(appId).then(res => {
+        const plaidObject = this.plaidObject(res.data.response.link_token);
+        plaidObject.open();
+    }).catch(error => {
+        disableElement('#authBtn', false);
+        showNotification(error.response.data.message, 'error');
+    });
+}
+
 function plaidObject(token) {
     return Plaid.create({
         token: token,

@@ -7,25 +7,28 @@ use App\Models\Application\BankAccount;
 use App\Models\Application\Owner;
 use App\Models\Common\State;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Validator;
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Facades\Auth;
 
 class ApplicationController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $states = State::all();
         return view('application.create', ['states' => $states]);
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $inputData = $request->all();
-        if(!$inputData['unique_id']){
+        if (!$inputData['unique_id']) {
             $inputData['unique_id'] = Uuid::uuid4();
         }
-        $inputData['loan_amount'] = str_replace(',', '',$inputData['loan_amount']);
-        $inputData['due_amount'] = str_replace(',', '',$inputData['due_amount']);
-        $inputData['amount_per_year'] = str_replace(',', '',$inputData['amount_per_year']);
+        $inputData['loan_amount'] = str_replace(',', '', $inputData['loan_amount']);
+        $inputData['due_amount'] = str_replace(',', '', $inputData['due_amount']);
+        $inputData['amount_per_year'] = str_replace(',', '', $inputData['amount_per_year']);
         $inputData['status'] = 1;
         $inputData['user_id'] = Auth::user()->id;
 
@@ -34,15 +37,15 @@ class ApplicationController extends Controller
         $inputData['amount_per_year'] = $inputData['amount_per_year'] ? $inputData['amount_per_year'] : 0;
         $inputData['status'] = 1;
         unset($inputData['authCheck']);
-        if($request->input('action') === 'draft'){
+        if ($request->input('action') === 'draft') {
             $application = $this->storeAction($inputData);
-            if($inputData['unique_id']){
+            if ($inputData['unique_id']) {
                 $this->storeOwners($inputData);
                 $this->storeBank($inputData);
             }
         }
 
-        if($request->input('action') === 'step1'){
+        if ($request->input('action') === 'step1') {
             $validator = Validator::make($request->all(), [
                 'business_name' => 'required',
                 'state_incorporation_id' => 'required',
@@ -55,7 +58,7 @@ class ApplicationController extends Controller
                 return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);
             }
 
-            if($request->input('due_status') == 1) {
+            if ($request->input('due_status') == 1) {
                 $validator = Validator::make($request->all(), [
                     'due_amount' => 'required',
                     'lender_names' => 'required'
@@ -68,7 +71,7 @@ class ApplicationController extends Controller
             $application = $this->storeAction($inputData);
         }
 
-        if($request->input('action') === 'step2'){
+        if ($request->input('action') === 'step2') {
             $validator = Validator::make($request->all(), [
                 'billing_street_address' => 'required',
                 'billing_city_id' => 'required',
@@ -81,7 +84,7 @@ class ApplicationController extends Controller
                 return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);
             }
 
-            if($request->input('mode') == 'Rented') {
+            if ($request->input('mode') == 'Rented') {
                 $validator = Validator::make($request->all(), [
                     'amount_per_year' => 'required',
                 ]);
@@ -93,7 +96,7 @@ class ApplicationController extends Controller
             $application = $this->storeAction($inputData);
         }
 
-        if($request->input('action') === 'step3'){
+        if ($request->input('action') === 'step3') {
             $validator = Validator::make($request->all(), [
                 'owner' => 'required',
                 'ownership_percent' => 'required',
@@ -113,8 +116,8 @@ class ApplicationController extends Controller
             $application = $this->storeOwners($inputData);
         }
 
-        if($request->input('action') === 'step4'){
-            if(Auth::user()->user_type === 'Borrower') {
+        if ($request->input('action') === 'step4') {
+            if (Auth::user()->user_type === 'Borrower') {
                 $validator = Validator::make($request->all(), [
                     'bank' => 'required'
                 ]);
@@ -122,10 +125,11 @@ class ApplicationController extends Controller
                 if ($validator->fails()) {
                     return response()->json(apiResponseHandler([], 'Please authorize the bank details.', 400), 400);
                 }
+
+                $application = $this->storeBank($inputData);
             }
 
-            if(Auth::user()->user_type === 'Broker')
-            {
+            if (Auth::user()->user_type === 'Broker') {
                 $validator = Validator::make($request->all(), [
                     'account_email' => 'required|email'
                 ]);
@@ -134,16 +138,16 @@ class ApplicationController extends Controller
                     return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);
                 }
 
-                $message = view('email-templates.authorize')->render();
+                $key = Crypt::encryptString($inputData['unique_id']);
+                $message = view('email-templates.authorize', ['key' => $key])->render();
 
                 sendEmail($message, $request->input('account_email'), 'BIDMCA Application');
 
+                $application = Application::where('unique_id', $inputData['unique_id'])->first();
             }
-
-            $application = $this->storeBank($inputData);
         }
 
-        if($request->input('action') === 'step5'){
+        if ($request->input('action') === 'step5') {
             $inputData['status'] = 4;
             $validator = Validator::make($request->all(), [
                 'signature_file' => 'required',
@@ -156,19 +160,21 @@ class ApplicationController extends Controller
             $application = $this->storeAction($inputData);
         }
 
-        return response()->json(apiResponseHandler($application, '',200), 200);
+        return response()->json(apiResponseHandler($application, '', 200), 200);
     }
 
-    public function storeAction($data){
-        $application = Application::updateOrCreate(['unique_id' => $data['unique_id']],$data);
+    public function storeAction($data)
+    {
+        $application = Application::updateOrCreate(['unique_id' => $data['unique_id']], $data);
 
         return $application;
     }
 
-    public function storeOwners($data){
-        $appId = Application::where('unique_id',$data['unique_id'])->first();
+    public function storeOwners($data)
+    {
+        $appId = Application::where('unique_id', $data['unique_id'])->first();
 
-        Owner::where('application_id',$appId->id)->delete();
+        Owner::where('application_id', $appId->id)->delete();
 
         Owner::create([
             'application_id' => $appId->id,
@@ -186,10 +192,11 @@ class ApplicationController extends Controller
         return $appId;
     }
 
-    public function storeBank($data){
-        $appId = Application::where('unique_id',$data['unique_id'])->first();
+    public function storeBank($data)
+    {
+        $appId = Application::where('unique_id', $data['unique_id'])->first();
 
-        BankAccount::where('application_id',$appId->id)->delete();
+        BankAccount::where('application_id', $appId->id)->delete();
 
         BankAccount::create([
             'application_id' => $appId->id,
@@ -199,7 +206,8 @@ class ApplicationController extends Controller
         return $appId;
     }
 
-    public function view($id){
+    public function view($id)
+    {
         $application = Application::with([
             'state',
             'stateOfIncorporation',
@@ -208,9 +216,9 @@ class ApplicationController extends Controller
             'bid' => function ($query) {
                 $query->where('user_id', Auth::user()->id);
             }
-        ])->where('unique_id',$id)->first();
-        if($application){
-            return view('application.single',['application' => $application]);
+        ])->where('unique_id', $id)->first();
+        if ($application) {
+            return view('application.single', ['application' => $application]);
         }
         return redirect()->to('dashboard');
     }

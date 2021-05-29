@@ -16,13 +16,14 @@ class DashboardController extends Controller
         if (Auth::user()->user_type === 'Broker' || Auth::user()->user_type === 'Borrower') {
             $application = Application::with(['state'])
                 ->where('user_id', Auth::user()->id)
+                ->orderBy('id', 'DESC')
                 ->get();
             $data = ['applications' => $application];
         }
         if (Auth::user()->user_type === 'Lender') {
             $application = Application::with(['state', 'bid' => function ($query) {
                 $query->where('user_id', Auth::user()->id);
-            }])->where('status', 3)->get();
+            }])->orderBy('id', 'DESC')->where('status', 3)->get();
 
             $wonBid = Bid::leftJoin('applications', 'applications.id', 'bids.application_id')
                 ->where('applications.status', 5)

@@ -98,5 +98,6 @@
 <script src="{{ asset('js/aos-animation.js') }}" defer></script>
 <script src="{{ asset('js/api.services.js') }}" defer></script>
 <script src="{{ asset('js/custom.js') }}" defer></script>
+<script src="{{ asset('js/plaid.js') }}" defer></script>
 </body>
 </html>

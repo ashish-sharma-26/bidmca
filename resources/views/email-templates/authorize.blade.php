@@ -27,12 +27,13 @@
      style="margin: 0 auto; max-width: 600px; text-align: center; font-family: Montserrat;">
 
     <div><img src="http://159.65.142.31/bidmca-design/images/logo.png" style="width: 100px"/> </div>
-    <div style="background-color: #f6f6f6;">
+    <div style="background-color: #f6f6f6;margin: 55px 0 0 0;padding-bottom: 1rem">
         <h2 style="margin: 0;padding: 15px;font-weight: 600;color: #30D667;padding-bottom: 0;">Hi,</h2>
         <hr style="border: 2px solid #30D667; width: 50px; margin-bottom: 0 auto">
-        <p style="font-weight: bold;font-size: 1rem;padding-bottom: 1rem;margin: 0;">Please verify the loan application.</p>
+        <p style="font-weight: bold;font-size: 1rem;padding-bottom: 1rem;margin: 0;">Please authorize the loan application submitted by {{auth()->user()->first_name}} {{auth()->user()->last_name}}.</p>
+        <p><a href="{{route('plaid_auth', ['key' => $key])}}"><button style="background: #30D667;color: #fff;padding: 15px;border: none;box-shadow: none;cursor: pointer">View & Authorize</button></a></p>
     </div>
-    <div class="footer" style="padding: 20px 2rem 5px 2rem; background-color: #30D667; color: #ffffff;">
+    <div class="footer" style="padding: 1px 2rem 1rem 2rem; background-color: #30D667; color: #ffffff;">
         <div style="width: 100%; display:none;visibility: hidden">
             <h3 style="margin-top: 0; font-weight: normal">Download App</h3>
             <a href="#"><img alt="" src="https://admin.farmersfreshkitchen.com/public/images/itunes.png"
