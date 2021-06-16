@@ -14,15 +14,19 @@
 </ul>
 <div class="tab-content" id="myTabContent">
     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-        <div class="text-center" id="acc-button">
-            <button class="btn btn-primary" type="button" onclick="fetchAccountData('{{$appId}}')">Fetch Latest Information</button>
-        </div>
-        <div class="text-center" id="acc-loader" style="display: none;">
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
+        @if(!sizeof($accounts))
+            <div class="text-center" id="acc-button">
+                <button class="btn btn-primary" type="button" onclick="fetchAccountData('{{$appId}}')">Fetch Latest
+                    Information
+                </button>
             </div>
-        </div>
-        <table class="table table-striped" id="acc-table" style="display: none;">
+            <div class="text-center" id="acc-loader" style="display: none;">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        @endif
+        <table class="table table-striped" id="acc-table" style="{{sizeof($accounts) ? '' : 'display: none'}}">
             <thead>
             <th>Account Name</th>
             <th>Type</th>
@@ -32,23 +36,42 @@
             <th>Limit</th>
             </thead>
             <tbody id="plaidAccountData">
+            @if(sizeof($accounts))
+                @foreach($accounts AS $account)
+                    <tr>
+                        <td><p>{{customDecrypt($account->account_name)}} <i class="fa fa-info" data-toggle="tooltip"
+                                                                            data-placement="top"
+                                                                            title="{{customDecrypt($account->account_name_alias)}}"></i>
+                            </p></td>
+                        <td><label class="badge badge-primary">{{customDecrypt($account->account_type)}}</label></td>
+                        <td><label class="badge badge-info">{{customDecrypt($account->account_subtype)}}</label></td>
+                        <td>{{customDecrypt($account->account_available_balance)}}</td>
+                        <td>{{customDecrypt($account->account_current_balance)}}</td>
+                        <td>{{customDecrypt($account->account_limit)}}</td>
+                    </tr>
+                @endforeach
+            @endif
             </tbody>
         </table>
     </div>
     <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-        <div class="form-group w-50 m-auto">
-            <input type="text" name="trx_date" class="form-control">
-        </div>
-        <div class="text-center mt-3 mb-3">
-            <input type="hidden" id="appId" value="{{$appId}}">
-            <button class="btn btn-primary" id="trx-button" disabled="disabled" type="button" onclick="fetchTrxData('{{$appId}}')">Fetch Latest Information</button>
-        </div>
-        <div class="text-center" id="trx-loader" style="display: none;">
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
+        @if(!sizeof($transactions))
+            <div class="form-group w-50 m-auto">
+                <input type="text" name="trx_date" class="form-control">
             </div>
-        </div>
-        <table class="table table-striped" id="trx-table" style="display: none;">
+            <div class="text-center mt-3 mb-3">
+                <input type="hidden" id="appId" value="{{$appId}}">
+                <button class="btn btn-primary" id="trx-button" disabled="disabled" type="button"
+                        onclick="fetchTrxData('{{$appId}}')">Fetch Latest Information
+                </button>
+            </div>
+            <div class="text-center" id="trx-loader" style="display: none;">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        @endif
+        <table class="table table-striped" id="trx-table" style="{{sizeof($transactions) ? '' : 'display: none'}}">
             <thead>
             <th>Account</th>
             <th>Amount</th>
@@ -57,20 +80,38 @@
             <th>Date</th>
             </thead>
             <tbody id="plaidTrxData">
+            @if(sizeof($transactions))
+                @foreach($transactions AS $transaction)
+                    <tr>
+                        <td>{{customDecrypt($transaction->account_name)}}</td>
+                        <td>{{customDecrypt($transaction->amount)}}</td>
+                        <td><p>{{customDecrypt($transaction->merchant_name)}} <i class="fa fa-info"
+                                                                                 data-toggle="tooltip"
+                                                                                 data-placement="top"
+                                                                                 title="{{customDecrypt($transaction->merchant_name_alias)}}"></i>
+                        </td>
+                        <td>{{customDecrypt($transaction->category)}}</td>
+                        <td>{{customDecrypt($transaction->date)}}</td>
+                    </tr>
+                @endforeach
+            @endif
             </tbody>
         </table>
     </div>
     <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        <div class="text-center" id="lbt-button">
-            <button class="btn btn-primary" type="button" onclick="fetchLiabilityData('{{$appId}}')">Fetch Latest Information</button>
-        </div>
-        <div class="text-center" id="lbt-loader" style="display: none;">
-            <div class="spinner-border" role="status">
-                <span class="sr-only">Loading...</span>
+        @if(!sizeof($credits) && !sizeof($mortgages) && !sizeof($students))
+            <div class="text-center" id="lbt-button">
+                <button class="btn btn-primary" type="button" onclick="fetchLiabilityData('{{$appId}}')">Fetch Latest
+                    Information
+                </button>
             </div>
-        </div>
-
-        <div class="row" id="lbt-credit-table" style="display: none">
+            <div class="text-center" id="lbt-loader" style="display: none;">
+                <div class="spinner-border" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        @endif
+        <div class="row" id="lbt-credit-table" style="{{(sizeof($credits) || sizeof($mortgages) || sizeof($students)) ? '' : 'display: none'}}">
             <div class="col-12">
                 <h4>Credit</h4>
                 <table class="table table-striped">
@@ -83,10 +124,22 @@
                     <th>Last Statement Date</th>
                     </thead>
                     <tbody>
+                    @if(sizeof($credits))
+                        @foreach($credits AS $item)
+                            <tr>
+                                <td>{{customDecrypt($item->account_name)}}</td>
+                                <td>{{customDecrypt($item->overdue)}}</td>
+                                <td>{{customDecrypt($item->last_payment)}}</td>
+                                <td>{{customDecrypt($item->last_payment_date)}}</td>
+                                <td>{{customDecrypt($item->last_statement)}}</td>
+                                <td>{{customDecrypt($item->last_statement_date)}}</td>
+                            </tr>
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>
-            <div class="col-12" id="lbt-mortgage-table" style="display: none">
+            <div class="col-12" id="lbt-mortgage-table" style="{{(sizeof($credits) || sizeof($mortgages) || sizeof($students)) ? '' : 'display: none'}}">
                 <h4>Mortgage</h4>
                 <table class="table table-striped">
                     <thead>
@@ -99,10 +152,23 @@
                     <th>Last Payment Date</th>
                     </thead>
                     <tbody>
+                    @if(sizeof($mortgages))
+                        @foreach($mortgages AS $item)
+                            <tr>
+                                <td>{{customDecrypt($item->account_name)}}</td>
+                                <td>{{customDecrypt($item->principal_amount)}}</td>
+                                <td>{{customDecrypt($item->originate_date)}}</td>
+                                <td>{{customDecrypt($item->maturity_date)}}</td>
+                                <td>{{customDecrypt($item->ir)}}</td>
+                                <td>{{customDecrypt($item->last_payment)}}</td>
+                                <td>{{customDecrypt($item->last_payment_date)}}</td>
+                            </tr>
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>
-            <div class="col-12" id="lbt-student-table" style="display: none">
+            <div class="col-12" id="lbt-student-table" style="{{(sizeof($credits) || sizeof($mortgages) || sizeof($students)) ? '' : 'display: none'}}">
                 <h4>Student</h4>
                 <table class="table table-striped">
                     <thead>
@@ -117,6 +183,21 @@
                     <th>Last Payment Date</th>
                     </thead>
                     <tbody>
+                    @if(sizeof($students))
+                        @foreach($students AS $item)
+                            <tr>
+                                <td>{{customDecrypt($item->account_name)}}</td>
+                                <td>{{customDecrypt($item->overdue)}}</td>
+                                <td>{{customDecrypt($item->guarantor)}}</td>
+                                <td>{{customDecrypt($item->principal_amount)}}</td>
+                                <td>{{customDecrypt($item->originate_date)}}</td>
+                                <td>{{customDecrypt($item->maturity_date)}}</td>
+                                <td>{{customDecrypt($item->ir)}}</td>
+                                <td>{{customDecrypt($item->last_payment)}}</td>
+                                <td>{{customDecrypt($item->last_payment_date)}}</td>
+                            </tr>
+                        @endforeach
+                    @endif
                     </tbody>
                 </table>
             </div>

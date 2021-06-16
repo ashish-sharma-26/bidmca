@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Application\Application;
 use App\Models\Application\Owner;
+use App\Models\Plaid\Account;
+use App\Models\Plaid\Liability;
+use App\Models\Plaid\Transaction;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -54,13 +57,13 @@ class PlaidController extends Controller
         // APPLICATION
         $application = Application::where('unique_id', $appId)->first();
 
-        if($application->plaid_access_token){
+        if ($application->plaid_access_token) {
             return response()->json(apiResponseHandler([], 'Application already authorized.', 400), 400);
         }
 
         // APP Owners
         $owners = Owner::where('application_id', $application->id)->first();
-        if(!$owners){
+        if (!$owners) {
             return response()->json(apiResponseHandler([], 'Application not completed.', 400), 400);
         }
         // USER ENTITY PLAID
@@ -142,6 +145,17 @@ class PlaidController extends Controller
                             $html .= '<td>' . $currentBalance . '</td>';
                             $html .= '<td>' . $limit . '</td>';
                             $html .= '</tr>';
+
+                            Account::create([
+                                'application_id' => $id,
+                                'account_name' => customEncrypt($account->name),
+                                'account_name_alias' => customEncrypt($account->official_name),
+                                'account_type' => customEncrypt($account->type),
+                                'account_subtype' => customEncrypt($account->subtype),
+                                'account_available_balance' => customEncrypt($avilableBalance),
+                                'account_current_balance' => customEncrypt($currentBalance),
+                                'account_limit' => customEncrypt($limit),
+                            ]);
                         }
                     }
                 } else {
@@ -183,6 +197,8 @@ class PlaidController extends Controller
                     if (count($transactions)) {
                         foreach ($transactions as $transaction) {
                             $merchantName = $transaction->merchant_name ? '<p>' . $transaction->merchant_name . ' ' . '<i class="fa fa-info" data-toggle="tooltip" data-placement="top" title="' . $transaction->name . '"></i></p>' : 'N/A';
+                            $merchantNamePlain = $transaction->merchant_name ? $transaction->merchant_name : 'N/A';
+                            $merchantNameAlias = $transaction->merchant_name ? $transaction->name : 'N/A';
                             $html .= '<tr>';
                             $html .= '<td>' . $accountArray[$transaction->account_id] . '</td>';
                             $html .= '<td>' . $transaction->iso_currency_code . ' ' . $transaction->amount . '</td>';
@@ -190,6 +206,16 @@ class PlaidController extends Controller
                             $html .= '<td>' . implode(',', $transaction->category) . '</td>';
                             $html .= '<td>' . $transaction->date . '</td>';
                             $html .= '</tr>';
+
+                            Transaction::create([
+                                'application_id' => $id,
+                                'account_name' => customEncrypt($accountArray[$transaction->account_id]),
+                                'amount' => customEncrypt($transaction->iso_currency_code . ' ' . $transaction->amount),
+                                'merchant_name' => customEncrypt($merchantNamePlain),
+                                'merchant_name_alias' => customEncrypt($merchantNameAlias),
+                                'category' => customEncrypt(implode(',', $transaction->category)),
+                                'date' => customEncrypt($transaction->date ),
+                            ]);
                         }
                     }
                 } else {
@@ -217,7 +243,7 @@ class PlaidController extends Controller
                 $mortgage = '';
                 $student = '';
 
-                if($liability->liabilities){
+                if ($liability->liabilities) {
                     if ($liability->accounts) {
                         $accounts = $liability->accounts;
                         $accountArray = [];
@@ -239,6 +265,19 @@ class PlaidController extends Controller
                                 $credit .= '<td>' . $item->last_payment_date . '</td>';
                                 $credit .= '<td>USD ' . $item->last_statement_balance . '</td>';
                                 $credit .= '<td>' . $item->last_statement_issue_date . '</td>';
+
+                                $data = [
+                                    'application_id' => $application->id,
+                                    'type' => 1,
+                                    'account_name' => customEncrypt($accountArray[$item->account_id]),
+                                    'overdue' => customEncrypt($overdue),
+                                    'last_payment' => customEncrypt('USD '.$item->last_payment_amount),
+                                    'last_payment_date' => customEncrypt($item->last_payment_date),
+                                    'last_statement' => customEncrypt('USD '.$item->last_statement_balance),
+                                    'last_statement_date' => customEncrypt($item->last_statement_issue_date),
+                                ];
+
+                                $this->storeLiabilityData($data);
                             }
                         }
                     }
@@ -254,6 +293,20 @@ class PlaidController extends Controller
                                 $mortgage .= '<td>' . $item->interest_rate->percentage . '% (' . $item->interest_rate->type . ')' . '</td>';
                                 $mortgage .= '<td>USD ' . $item->last_payment_amount . '</td>';
                                 $mortgage .= '<td>' . $item->last_payment_date . '</td>';
+
+                                $data = [
+                                    'application_id' => $application->id,
+                                    'type' => 2,
+                                    'account_name' => customEncrypt($accountArray[$item->account_id]),
+                                    'principal_amount' => customEncrypt('USD '.$item->origination_principal_amount),
+                                    'originate_date' => customEncrypt($item->origination_date),
+                                    'maturity_date' => customEncrypt($item->maturity_date),
+                                    'ir' => customEncrypt($item->interest_rate->percentage . '% (' . $item->interest_rate->type . ')'),
+                                    'last_payment' => customEncrypt('USD '.$item->last_payment_amount),
+                                    'last_payment_date' => customEncrypt($item->last_payment_date),
+                                ];
+
+                                $this->storeLiabilityData($data);
                             }
                         }
                     }
@@ -272,6 +325,22 @@ class PlaidController extends Controller
                                 $student .= '<td>' . $item->interest_rate_percentage . '%' . '</td>';
                                 $student .= '<td>USD ' . $item->last_payment_amount . '</td>';
                                 $student .= '<td>' . $item->last_payment_date . '</td>';
+
+                                $data = [
+                                    'application_id' => $application->id,
+                                    'type' => 3,
+                                    'account_name' => customEncrypt($accountArray[$item->account_id]),
+                                    'overdue' => customEncrypt($overdue),
+                                    'guarantor' => customEncrypt($item->guarantor),
+                                    'principal_amount' => customEncrypt('USD '.$item->origination_principal_amount),
+                                    'originate_date' => customEncrypt($item->origination_date),
+                                    'maturity_date' => customEncrypt($item->loan_status->end_date),
+                                    'ir' => customEncrypt($item->interest_rate_percentage),
+                                    'last_payment' => customEncrypt('USD '.$item->last_payment_amount),
+                                    'last_payment_date' => customEncrypt($item->last_payment_date),
+                                ];
+
+                                $this->storeLiabilityData($data);
                             }
                         }
                     }
@@ -283,21 +352,26 @@ class PlaidController extends Controller
         }
     }
 
-    public function appBankAuthorize($key){
+    public function appBankAuthorize($key)
+    {
         try {
             $application = Crypt::decryptString($key);
-            $application = Application::where('unique_id',$application)->first();
+            $application = Application::where('unique_id', $application)->first();
             return view('application.plaid-auth', compact('application'));
         } catch (DecryptException $e) {
             return redirect()->route('index');
         }
     }
 
+    public function storeLiabilityData($data){
+        Liability::create($data);
+        return true;
+    }
+
     /**
      * @return Plaid
      */
-    public
-    function getPlaidClient()
+    public function getPlaidClient()
     {
         return new Plaid(env('PLAID_CLIENT_ID'), env('PLAID_SECRET'), env('PLAID_ENV'));
     }

@@ -49,3 +49,19 @@ function sendSMS($number, $message){
     $twilio->message('+1'.$number, $message);
     return true;
 }
+
+/**
+ * @param $string
+ * @return string
+ */
+function customEncrypt($string){
+    return \Illuminate\Support\Facades\Crypt::encryptString($string);
+}
+
+/**
+ * @param $string
+ * @return string
+ */
+function customDecrypt($string){
+    return \Illuminate\Support\Facades\Crypt::decryptString($string);
+}

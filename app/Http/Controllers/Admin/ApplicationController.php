@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Application\Application;
 use App\Models\Application\Bid;
+use App\Models\Plaid\Account;
+use App\Models\Plaid\Liability;
+use App\Models\Plaid\Transaction;
 use Illuminate\Http\Request;
 
 class ApplicationController extends Controller
@@ -44,12 +47,18 @@ class ApplicationController extends Controller
             'bankAccount'
         ])->where('id', $id)->first();
 
+        $accounts = Account::where('application_id',$id)->get();
+        $transactions = Transaction::where('application_id',$id)->get();
+        $credits = Liability::where('application_id',$id)->where('type',1)->get();
+        $mortgages = Liability::where('application_id',$id)->where('type',2)->get();
+        $students = Liability::where('application_id',$id)->where('type',3)->get();
+
         $bids = Bid::with(['user'])
             ->where('application_id', $id)
             ->orderBy('score', 'DESC')
             ->orderBy('amount', 'DESC')
             ->orderBy('updated_at', 'ASC')
             ->get();
-        return view('admin.application.application-view', compact('application', 'bids'));
+        return view('admin.application.application-view', compact('application', 'bids','accounts','transactions','credits','mortgages','students'));
     }
 }
