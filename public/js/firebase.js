@@ -77,7 +77,7 @@ function setBidStatus(data) {
                 if(bid.status == 1){
                     $('#bid_'+bid.id).append(`<label class="badge badge-success">Winning</label>`);
                 }else if(bid.status == 2){
-                    $('#bid_'+bid.id).append(`<label class="badge badge-danger">Loosing</label>`);
+                    $('#bid_'+bid.id).append(`<label class="badge badge-danger">Losing</label>`);
                 }
             }
             if($('#user_'+bid.user_id).length){

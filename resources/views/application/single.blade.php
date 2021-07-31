@@ -39,8 +39,8 @@
                                     </div>
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                                         <div class="loan-details">
-                                            <h6>${{$application->due_amount ? $application->due_amount : 0 }}</h6>
-                                            <p>Current Debt.</p>
+                                            <h6>{{$application->lender_names ? count(explode(',',$application->lender_names)).' @ ' : ''}} ${{$application->due_amount ? $application->due_amount : 0 }}</h6>
+                                            <p>Current Balance</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4">
@@ -367,15 +367,20 @@
                                     >
                                 </div>
 
-                                <div class="form-group col-md-12">
-                                    <label for="inputPassword4">Amount:</label>
-                                    <input type="text"
-                                           class="form-control"
-                                           id="bidAmount"
-                                           name="bid_amount"
-                                           placeholder="$"
-                                           value="{{$application->bid ? $application->bid->amount : ''}}"
-                                    >
+                                <div class="col-md-12">
+                                    <label for="bidAmount">Amount:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                        </div>
+                                        <input type="text"
+                                               class="form-control"
+                                               id="bidAmount"
+                                               name="bid_amount"
+                                               placeholder="$"
+                                               value="{{$application->bid ? $application->bid->amount : ''}}"
+                                        >
+                                    </div>
                                 </div>
 
                                 <div>
@@ -395,7 +400,7 @@
                                 <div class="profile-button step-button">
                                     <div>
                                         <button type="button" onclick="validateBidScore()" id="placeBid"
-                                                class="btn btn-getauto mt-3 ml-0 w-100">Submit My Application
+                                                class="btn btn-getauto mt-3 ml-0 w-100">Submit my Bid
                                         </button>
                                     </div>
                                 </div>

@@ -9,6 +9,7 @@ use App\Models\Plaid\Account;
 use App\Models\Plaid\Liability;
 use App\Models\Plaid\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ApplicationController extends Controller
 {
@@ -27,11 +28,93 @@ class ApplicationController extends Controller
     {
         if ($request->status == '3') {
             Application::where('id', $request->application)->update(['status' => $request->status, 'reject_reason' => $request->reason, 'closing_date' => $request->closing_date]);
+
+            $score = round($request->bid_term / $request->bid_factor, 2);
+            Bid::create([
+                'application_id' => $request->application,
+                'user_id' => 0,
+                'interest_rate' => $request->bid_factor,
+                'duration' => $request->bid_term,
+                'amount' => str_replace(',', '', $request->bid_amount),
+                'score' => $score,
+                'is_admin_bid' => 1
+            ]);
+
+            /**
+             * filter bids with score and decide win/lost
+             */
+            $application = Application::find($request->application);
+            $this->bidFilter($application);
         }
         if ($request->status == '4') {
             Application::where('id', $request->application)->update(['reject_reason' => $request->reason, 'status' => $request->status]);
         }
         return redirect()->back();
+    }
+
+    /**
+     * @param $application
+     * @return mixed
+     */
+    public function bidFilter($application)
+    {
+
+        $bids = Bid::with(['user'])
+            ->where('application_id', $application->id)
+            ->orderBy('score', 'DESC')
+            ->orderBy('amount', 'DESC')
+            ->orderBy('updated_at', 'ASC')
+            ->get();
+        if (count($bids)) {
+            $targetAmount = floatval(preg_replace('/[^\d.]/', '', $application->loan_amount));;
+            $bidsAmount = 0;
+            $wonBids = [];
+            $minScore = 0;
+            $maxScore = $bids[0]->score;
+            $totalTerms = 0;
+            $totalFactor = 0;
+            foreach ($bids AS $bid) {
+                if (count($bids) > 0) {
+                    if ($bidsAmount >= $targetAmount) {
+                        break;
+                    } else {
+                        array_push($wonBids, $bid->id);
+                        $totalTerms += $bid->duration;
+                        $totalFactor += $bid->interest_rate;
+                        $bidsAmount += floatval(preg_replace('/[^\d.]/', '', $bid->amount));
+                    }
+                    $minScore = $bid->score;
+                }
+            }
+
+            // UPDATE WON BIDS
+            DB::table('bids')->where('application_id', $application->id)
+                ->whereIn('id', $wonBids)
+                ->update([
+                    'status' => 1
+                ]);
+
+            // UPDATE LOST BIDS
+            DB::table('bids')->where('application_id', $application->id)
+                ->whereNotIn('id', $wonBids)
+                ->update([
+                    'status' => 2
+                ]);
+
+            // UPDATE APPLICATION MIN/MAX SCORE AND AVG TERM/FACTOR
+            $avgFactor = $totalFactor / count($wonBids);
+            $avgTerm = $totalTerms / count($wonBids);
+            $data = [
+                'min_bid_score' => $minScore,
+                'max_bid_score' => $maxScore,
+                'avg_term' => $avgTerm,
+                'avg_factor' => $avgFactor,
+            ];
+            Application::where('id', $application->id)
+                ->update($data);
+        }
+
+        return $data;
     }
 
     /**

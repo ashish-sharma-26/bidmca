@@ -19,7 +19,8 @@ class Bid extends Model
         'duration',
         'amount',
         'score',
-        'status'
+        'status',
+        'is_admin_bid',
     ];
     public function getAmountAttribute($value)
     {

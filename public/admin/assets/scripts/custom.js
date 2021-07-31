@@ -56,11 +56,13 @@ function changeStatus(id, status) {
     $('#applicationId').val(id);
     if (status == '3') {
         $('#dateField').show();
+        $('#initBid').show();
         $('#labelNote').text('Note');
         $('#rejectModal').modal('show');
     }
     if (status == '4') {
         $('#dateField').hide();
+        $('#initBid').hide();
         $('#labelNote').text('Reason for rejection');
         $('#rejectModal').modal('show');
     }

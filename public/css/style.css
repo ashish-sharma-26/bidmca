@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
 body{
-	
+
 }
 .mobile-header{
     display: none;
@@ -18,7 +18,7 @@ div#side-bar {
 #page-content {
     width: calc(100% - 460px);
     margin-left: 535px;
-    margin-right: 125px;
+    margin-right: 25px;
 }
 #side-bar-content {
     width: 460px;
@@ -168,7 +168,7 @@ div#side-bar {
     padding-bottom: 5px;
 }
 .application-row .application-details p{
-	font-size: 12px;	
+	font-size: 12px;
 	color: #00405C;
 	font-weight:400;
 	margin-bottom:0;
@@ -1039,7 +1039,7 @@ border-radius:3px;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     font-size:14px;
-} 
+}
 .quotes-author .author-address  h6{
     font-family: 'Montserrat', sans-serif;
     font-weight:800;
@@ -1142,7 +1142,7 @@ border-radius:3px;
     border-radius: 5px 10px 10px 5px;
         font-weight: 400;
     background: #F6FBFF;
-   
+
     color: #2D8DD6;
     text-align: center;
 }
@@ -1276,7 +1276,7 @@ border-radius:3px;
     border-top: 0;
     border-bottom: 3px solid #30D667!important;
     padding-bottom: 3px;
-    
+
 }
 .profile-tabs ul {
     display: flex;
@@ -1510,7 +1510,7 @@ button.btn.btn-red {
   -o-transition: .5s ease-in-out;
   transition: .5s ease-in-out;
   cursor: pointer;
-      
+
 }
 
 #nav-icon1 span, #nav-icon3 span, #nav-icon4 span {

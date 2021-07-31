@@ -11,7 +11,7 @@
                 <p id="bid_{{$application->bid->id}}">Your Bid Status :<label class="badge badge-success">Winning</label></p>
             @endif
             @if($application->bid->status == 2)
-                <p id="bid_{{$application->bid->id}}">Your Bid Status :<label class="badge badge-danger">Loosing</label></p>
+                <p id="bid_{{$application->bid->id}}">Your Bid Status :<label class="badge badge-danger">Losing</label></p>
             @endif
             <h6 class="required4">
                 <span>

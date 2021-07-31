@@ -28,6 +28,29 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row" id="initBid">
+                        <div class="col-md-12">
+                            <h5>Initial Bid</h5>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Factor</label>
+                                <input class="form-control" placeholder="0.000" type="text" name="bid_factor"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Term</label>
+                                <input class="form-control" placeholder="Months" type="text" name="bid_term"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Amount</label>
+                                <input class="form-control" placeholder="$" type="text" name="bid_amount"/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success">Update</button>

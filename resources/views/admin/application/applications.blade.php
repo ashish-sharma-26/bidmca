@@ -61,11 +61,11 @@
                         <div class="col-12">
                             <div class="main-card mb-3 p-0 card col-12">
                                 <div class="card-body">
-                                    <h5 class="card-title">Application list</h5>
+                                    <h5 class="card-title">Submission list</h5>
                                     <table class="mb-0 table">
                                         <thead>
                                         <tr>
-                                            <th>Applied By</th>
+                                            <th>Submit By</th>
                                             <th>Business Name</th>
                                             <th>Loan Amount</th>
                                             <th>Status</th>
@@ -83,14 +83,13 @@
                                                 <td>{{ $application['business_name'] }}</td>
                                                 <td>${{ $application['loan_amount'] }}
                                                 <td>{!! $application['status'] !!}</td>
-                                                <td>{{ $application['created_at'] }}</td>
-                                                <td>{{ $application['closing_date'] ? date('Y-m-d h:i a', strtotime($application['closing_date'])) : '--' }}</td>
+                                                <td>{{ date('m/d/Y', strtotime($application['created_at'])) }}</td>
+                                                <td>{{ $application['closing_date'] ? date('m/d/Y h:m a', strtotime($application['closing_date'])) : '--' }}</td>
                                                 <td>
                                                     <ul class="list-inline m-0">
                                                         <li class="list-inline-item">
                                                             @if($application['status'] == '<label class="badge badge-warning">Pending for Approval</label>')
-                                                                <a href="javascript:void(0)"
-                                                                   onclick="changeStatus('{{$application->id}}','3')"
+                                                                <a href="{{route('admin_application', $application->id)}}"
                                                                    class="btn btn-success btn-sm rounded-0"
                                                                 >Approve</a>
                                                             @endif

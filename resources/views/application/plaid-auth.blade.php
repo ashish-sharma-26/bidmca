@@ -24,8 +24,8 @@
                                     </div>
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                                         <div class="loan-details">
-                                            <h6>${{$application->due_amount ? $application->due_amount : 0 }}</h6>
-                                            <p>Current Debt.</p>
+                                            <h6>{{$application->lender_names ? count(explode(',',$application->lender_names)).' @ ' : ''}} ${{$application->due_amount ? $application->due_amount : 0 }}</h6>
+                                            <p>Current Balance</p>
                                         </div>
                                     </div>
                                     <div class="col-12 col-md-4 col-lg-4 col-xl-4">

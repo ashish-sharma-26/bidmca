@@ -62,6 +62,7 @@ class BidController extends Controller
 
         $allBids = Bid::leftJoin('users','users.id','bids.user_id')
             ->where('application_id', $application->id)
+            ->where('is_admin_bid', 0)
             ->select('bids.id', 'bids.status', 'bids.amount', 'bids.score', 'bids.interest_rate', 'bids.duration', 'bids.user_id','users.first_name','users.last_name')
             ->orderBy('bids.score','DESC')
             ->get();

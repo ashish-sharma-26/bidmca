@@ -64,7 +64,7 @@
                                                                     <li><span>Loan Amount</span><span
                                                                             class="value">${{$application->loan_amount}}</span>
                                                                     </li>
-                                                                    <li><span>Current Debt.</span><span
+                                                                    <li><span>Current Balance</span><span
                                                                             class="value">${{$application->due_amount ? $application->due_amount : 0 }}</span>
                                                                     </li>
                                                                     <li><span>Business Status</span><span
@@ -221,7 +221,11 @@
                                                     <tbody id="bidWrap">
                                                     @foreach($bids AS $bid)
                                                         <tr>
+                                                            @if($bid->user)
                                                             <td>{{$bid->user->first_name}} {{$bid->user->last_name}}</td>
+                                                            @else
+                                                                <td>Admin</td>
+                                                            @endif
                                                             <td>{{$bid->interest_rate}}</td>
                                                             <td>{{$bid->duration}}</td>
                                                             <td>${{$bid->amount}}</td>
