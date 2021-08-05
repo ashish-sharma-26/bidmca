@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap');
 body{
-
+    overflow: hidden;
 }
 .mobile-header{
     display: none;
@@ -11,20 +11,25 @@ body{
     color: #00405C;
 }
 div#side-bar {
-    margin-left: 125px;
-    margin-top: 25px;
+    padding-top: 25px;
+    height:100%;
+    min-height:100vh;
 }
 
 #page-content {
-    width: calc(100% - 460px);
-    margin-left: 535px;
-    margin-right: 25px;
+    max-width:60%;
+    overflow: auto;
+    height: 100vh;
+    overflow-x: hidden;
+    flex: 0 0 60%;
+    padding: 0 50px;
 }
+
 #side-bar-content {
-    width: 460px;
+    max-width:40%;
     background: #F1F6F9;
-    position: fixed;
-    height: 100%;
+    flex: 0 0 40%;
+    
 }
 .btn.focus, .btn:focus {
     box-shadow: none!important;
@@ -665,12 +670,11 @@ input[type=checkbox]:checked ~ label{
 .bottom-quotes {
     position: absolute;
     bottom: 1rem;
-    margin-right: 35px;
+    /*margin-right: 35px;*/
 }
 .card1 {
     margin-left: 42px;
     z-index: 0;
-    min-height:80vh;
 }
 
 .card2 {
@@ -959,7 +963,7 @@ h6.details2 {
 }
 .nxt-details{
     float: right;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 
 }
 .nxt-details .btn{
@@ -1318,9 +1322,9 @@ border-radius:3px;
 /*========================/dashboard broker===========================*/
 
 /*================dashboard broker loan application css===========*/
-.position-sidebar #progressbar {
+/*.position-sidebar #progressbar {
     left: 90px;
-}
+}*/
 .card1.position-sidebar {
     margin-top: 2rem;
 }

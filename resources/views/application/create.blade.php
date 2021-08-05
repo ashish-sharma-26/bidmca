@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <div id="page-content" class="content">
+    <div id="page-content" class="content col-12 col-md-8 col-lg-8 col-xl-7 mx-auto">
         <div id="main-content">
             <!--------------------------business details--------------------------->
             <div class="card2 first-screen show">

@@ -44,8 +44,10 @@
         <div class="row">
             <!--================start left side bar for web==================-->
             @if (Route::currentRouteName() != 'app_view')
-            <div id="side-bar-content" class=" mobile-hide">
-                <div id="side-bar">
+            <div id="side-bar-content" class="col-12 col-md-4 col-lg-4 col-xl-4 mobile-hide">
+                <div class="row">
+                    <div class="col-lg-12 col-xl-10 offset-xl-2">
+                    <div id="side-bar">
                     <a href="{{url('/')}}"><img src="images/logo.png" data-aos="zoom-in"></a>
 
                     @if (Request::path() == 'application')
@@ -64,6 +66,9 @@
                         </div>
                     </div>
                 </div>
+                    </div>
+                </div>
+                
             </div>
             @endif
             @yield('content')
