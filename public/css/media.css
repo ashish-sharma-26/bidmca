@@ -13,9 +13,12 @@
     text-align: left;
     margin-top: 1rem;
 	}
+
 	/*=====================/header responsiveness=====================*/
 
-
+	body {
+		overflow: auto;
+	}
 	.funding-row .funding-details p {
     font-size: 18px;
 	}
@@ -38,10 +41,19 @@
 
 	/*=================sidebar css================*/
 
+	#page-content.content {
+		max-width: 100%;
+		flex: 0 0 100%;
+		
+	}
+
 	#page-content {
-    margin-left: 15px;
-    margin-right: 15px;
-    width: 100%;
+		padding: 0 15px;
+		max-width:100%;
+		flex:0 0 100%;
+	}
+	.signin-col {
+		text-align: left;
 	}	
 	#side-bar-content.mobile-hide {
     display: none;
@@ -56,7 +68,7 @@
     display: block;
 	}
 	#side-bar-content {
-    width: 100%;
+		max-width: 100%;
     background: transparent;
     position: unset;
     height: 100%;
@@ -223,11 +235,11 @@ and (orientation: landscape){
 	.view-height {
     min-height: calc(100vh - 110px);
 	}
+	
 	/*=================sidebar css================*/
 	#page-content {
-    margin-left: 15px;
-    margin-right: 15px;
-    width: 100%;
+    flex:0 0 100%;
+    max-width: 100%;
 	}
 	.mobile-header{
     display: block;
@@ -242,7 +254,7 @@ and (orientation: landscape){
     margin-top: 1rem;
 	}
 	#side-bar-content {
-    width: 50%;
+    max-width:100%;
     background: transparent;
     position: unset;
     height: 100%;
@@ -267,9 +279,8 @@ and (orientation: landscape){
         width:280px;
 	}
 	#page-content.content {
-    width: calc(100% - 280px);
-    margin-left: 335px;
-    margin-right: 15px;
+		max-width: 100%;
+		flex: 0 0 100%;
 	}
 	.step-button button.btn.btn-getauto {
     margin-top: 1rem;
@@ -281,19 +292,18 @@ and (orientation: landscape){
 	#header nav .navbar-nav.menu li.nav-item {
     margin-left: 20px;
 	}
-	#page-content {
+	/*#page-content {
     width: calc(100% - 380px);
     margin-left: 460px;
     margin-right: 70px;
-	}
-	#side-bar-content {
+	}*/
+	/*#side-bar-content {
     width: 385px;
-	}
-	div#side-bar {
-    margin-left: 70px;
-	}
+	}*/
+	
 	.position-sidebar #progressbar {
-    left: 40px;
+		left: 18px;
+		padding-left: 0;
 	}
 	/*=========dashboard(broker) profile===============*/
 	.profile-button button.btn {
