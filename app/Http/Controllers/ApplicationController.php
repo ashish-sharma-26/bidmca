@@ -139,11 +139,14 @@ class ApplicationController extends Controller
                 }
 
                 $key = Crypt::encryptString($inputData['unique_id']);
-                $message = view('email-templates.authorize', ['key' => $key])->render();
-
-                sendEmail($message, $request->input('account_email'), 'BIDMCA Application');
 
                 $application = Application::where('unique_id', $inputData['unique_id'])->first();
+
+                $owners = Owner::where('application_id',$application->id)->first();
+
+                $message = view('email-templates.authorize', ['key' => $key,'owner' => $owners->owner])->render();
+
+                sendEmail($message, $request->input('account_email'), 'BIDMCA Application');
             }
         }
 

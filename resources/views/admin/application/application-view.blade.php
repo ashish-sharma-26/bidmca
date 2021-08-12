@@ -13,17 +13,29 @@
                         </div>
                     </div>
                     <div class="page-title-actions">
-                        @if($application['status'] == '<label class="badge badge-warning">Pending for Approval</label>')
+                        @if($application['status'] == '<label class="badge badge-warning">Pending Review</label>')
                             <a href="javascript:void(0)"
                                onclick="changeStatus('{{$application->id}}','3')"
                                class="btn btn-success btn-sm rounded-0"
                             >Approve</a>
                         @endif
-                        @if($application['status'] == '<label class="badge badge-warning">Pending for Approval</label>')
+                        @if($application['status'] == '<label class="badge badge-warning">Pending Review</label>')
                             <a href="javascript:void(0)"
                                onclick="changeStatus('{{$application->id}}','4')"
                                class="btn btn-danger btn-sm rounded-0"
                             > Reject </a>
+                        @endif
+                        @if($application['status'] == '<label class="badge badge-success">Approved</label>')
+                            <a href="javascript:void(0)"
+                               onclick="closeApplication('{{route("close-application",[$application->id])}}')"
+                               class="btn btn-danger btn-sm rounded-0"
+                            > Close </a>
+                        @endif
+                        @if($bidCount == 0 && $adminBid && $application['status'] == '<label class="badge badge-success">Approved</label>')
+                            <a href="javascript:void(0)"
+                               onclick="editBidModal('{{$adminBid->amount}}','{{$adminBid->duration}}','{{$adminBid->interest_rate}}')"
+                               class="btn btn-warning btn-sm rounded-0"
+                            > Edit Bid </a>
                         @endif
                     </div>
                 </div>
@@ -215,7 +227,6 @@
                                                     <th>Factor</th>
                                                     <th>Terms</th>
                                                     <th>Amount</th>
-                                                    <th>Score</th>
                                                     <th>Status</th>
                                                     </thead>
                                                     <tbody id="bidWrap">
@@ -229,7 +240,6 @@
                                                             <td>{{$bid->interest_rate}}</td>
                                                             <td>{{$bid->duration}}</td>
                                                             <td>${{$bid->amount}}</td>
-                                                            <td>{{$bid->score}}</td>
                                                             <td>
                                                                 @if($bid->status == 1)
                                                                     <label class="badge badge-success">Winning</label>
@@ -264,6 +274,20 @@
             if (status == '4') {
                 $('#applicationId').val(id);
                 $('#rejectModal').modal('show');
+            }
+        }
+        function editBidModal(amount,term,factor) {
+            $('#editBidModal').modal('show');
+            $('input[name="edit_bid_factor"]').val(factor);
+            $('input[name="edit_bid_term"]').val(term);
+            $('input[name="edit_bid_amount"]').val(amount);
+            $('input[name="application"]').val('{{$application->id}}');
+        }
+
+        function closeApplication(url) {
+            var r = confirm('Are you sure?');
+            if (r == true) {
+                window.location.href = url;
             }
         }
     </script>

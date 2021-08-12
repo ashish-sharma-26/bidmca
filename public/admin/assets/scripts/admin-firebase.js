@@ -67,7 +67,6 @@ function setBidStatus(data) {
                 <td>${bid.interest_rate}</td>
                 <td>${bid.duration}</td>
                 <td>$${bid.amount}</td>
-                <td>${bid.score}</td>
                 <td>
                     ${bid.status == 1 ? '<label class="badge badge-success">Winning</label>' : '<label class="badge badge-danger">Lost</label>'}
                 </td>

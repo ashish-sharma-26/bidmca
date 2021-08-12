@@ -23,6 +23,8 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/applications', [ApplicationController::class, 'applications'])->name('admin_applications');
     Route::get('/application/{id}', [ApplicationController::class, 'viewApplication'])->name('admin_application');
     Route::get('/application-status', [ApplicationController::class, 'applicationStatus']);
+    Route::get('/update-bid', [ApplicationController::class, 'updateBid']);
+    Route::get('/close-application/{id}', [ApplicationController::class, 'closeApplication'])->name('close-application');
     Route::get('/plaid/fetch-account-data/{id}',[PlaidController::class,'fetchAccountData']);
     Route::get('/plaid/fetch-liability-data/{id}',[PlaidController::class,'fetchLiabilityData']);
     Route::get('/plaid/fetch-transaction-data/{id}',[PlaidController::class,'fetchTransactionData']);

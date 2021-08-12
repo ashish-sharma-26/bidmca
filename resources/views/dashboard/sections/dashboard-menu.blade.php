@@ -23,7 +23,7 @@
                 data-aos="fade-right"
                 data-aos-duration="700"
                 data-aos-easing="linear">
-                Apply Applications</h6>
+                New Application</h6>
         </a>
     @endif
     @if(auth()->user()->user_type == 'Lender')

@@ -423,7 +423,7 @@
                                         <p class="text-danger">{{$application->reject_reason}}</p>
                                     @endif
                                 @else
-                                    <h6 class="required1">Banking Folio Pending</h6>
+                                    <h6 class="required1">Pending Bank Varification</h6>
                                 @endif
                             </div>
                         </div>

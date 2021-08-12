@@ -44,7 +44,7 @@ class CloseApplication extends Command
         if (count($applications) > 0) {
             foreach ($applications AS $application) {
                 Application::where('id', $application->id)->update(['status' => 5]);
-                $this->sendEmailtoWonUsers($application->id);
+                //$this->sendEmailtoWonUsers($application->id);
             }
         }
         return 0;

@@ -142,6 +142,36 @@ class ApplicationController extends Controller
             ->orderBy('amount', 'DESC')
             ->orderBy('updated_at', 'ASC')
             ->get();
-        return view('admin.application.application-view', compact('application', 'bids','accounts','transactions','credits','mortgages','students'));
+
+        $adminBid = Bid::where('application_id', $id)
+            ->where('is_admin_bid',1)
+            ->first();
+
+        $bidCount = Bid::where('application_id', $id)->where('is_admin_bid',0)->count();
+        return view('admin.application.application-view', compact('application', 'bids','accounts','transactions','credits','mortgages','students','bidCount','adminBid'));
+    }
+
+    public function updateBid(Request $request){
+        $score = round($request->edit_bid_term / $request->edit_bid_factor, 2);
+        Bid::where('application_id',$request->application)
+            ->where('is_admin_bid',1)
+            ->update([
+            'interest_rate' => $request->edit_bid_factor,
+            'duration' => $request->edit_bid_term,
+            'amount' => str_replace(',', '', $request->edit_bid_amount),
+            'score' => $score
+        ]);
+
+        /**
+         * filter bids with score and decide win/lost
+         */
+        $application = Application::find($request->application);
+        $this->bidFilter($application);
+        return redirect()->back();
+    }
+
+    public function closeApplication($id){
+        Application::where('id', $id)->update(['status' => 5]);
+        return redirect()->back();
     }
 }

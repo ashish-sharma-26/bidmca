@@ -145,7 +145,7 @@ function storeApplication(action) {
             $('#business_status').html(is_business_operating ? 'Operating' : 'Closed');
         }
         if(action === 'step5'){
-            window.location.href = webUrl + '/dashboard';
+            window.location.href = webUrl + '/application/' + $('#unique_id').val();
         }
     }).catch((error) => {
         // nextStep(action);

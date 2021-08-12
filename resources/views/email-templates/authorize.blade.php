@@ -28,7 +28,7 @@
 
     <div><img src="http://159.65.142.31/bidmca-design/images/logo.png" style="width: 100px"/> </div>
     <div style="background-color: #f6f6f6;margin: 55px 0 0 0;padding-bottom: 1rem">
-        <h2 style="margin: 0;padding: 15px;font-weight: 600;color: #30D667;padding-bottom: 0;">Hi,</h2>
+        <h2 style="margin: 0;padding: 15px;font-weight: 600;color: #30D667;padding-bottom: 0;">Hi {{$owner}},</h2>
         <hr style="border: 2px solid #30D667; width: 50px; margin-bottom: 0 auto">
         <p style="font-weight: bold;font-size: 1rem;padding-bottom: 1rem;margin: 0;">Please authorize the loan application submitted by {{auth()->user()->first_name}} {{auth()->user()->last_name}}.</p>
         <p><a href="{{route('plaid_auth', ['key' => $key])}}"><button style="background: #30D667;color: #fff;padding: 15px;border: none;box-shadow: none;cursor: pointer">View & Authorize</button></a></p>

@@ -83,7 +83,7 @@ class Application extends Model
             return '<label class="badge badge-primary">Drafted</label>';
         }
         if($value == 2){
-            return '<label class="badge badge-warning">Pending for Approval</label>';
+            return '<label class="badge badge-warning">Pending Review</label>';
         }
         if($value == 3){
             return '<label class="badge badge-success">Approved</label>';

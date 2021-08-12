@@ -129,15 +129,15 @@
                                             </select>
                                             <!--<span class="select-highlight"></span>-->
                                             <span class="select-bar"></span>
-                                            <label class="">Does Business have current dues?</label>
+                                            <label class="">Any current debt?</label>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-5 due-wrap d-none">
                                         <div class="datainput">
                                             <input class="validate" id="due_amount" name="due_amount" required=""
-                                                   type="tel" value='' placeholder="Due Amount"/>
+                                                   type="tel" value='' placeholder="Amount outstanding"/>
                                             <span class="bar"></span>
-                                            <label>Due Amount in $</label>
+                                            <label>Amount outstanding in $</label>
                                         </div>
                                     </div>
                                 </div>
@@ -164,7 +164,7 @@
                                             </select>
                                             <!--<span class="select-highlight"></span>-->
                                             <span class="select-bar"></span>
-                                            <label class="">Do you’ve any contract?</label>
+                                            <label class="">Contract to bid?</label>
                                         </div>
                                     </div>
                                 </div>
@@ -349,17 +349,17 @@
                                     </div>
                                 </div>
 
-                                <div class="relation-details custom-check step-check">
-                                    <ul class="list-group-horizontal aos-init">
-                                        <li>
-                                            <input type="checkbox" id="check-option" name="selector1"
-                                                   onchange="addressCheck(this)">
-                                            <label for="check-option">Billing details same as physical address
-                                                details</label>
-                                            <div class="check"></div>
-                                        </li>
-                                    </ul>
-                                </div>
+{{--                                <div class="relation-details custom-check step-check">--}}
+{{--                                    <ul class="list-group-horizontal aos-init">--}}
+{{--                                        <li>--}}
+{{--                                            <input type="checkbox" id="check-option" name="selector1"--}}
+{{--                                                   onchange="addressCheck(this)">--}}
+{{--                                            <label for="check-option">Billing details same as physical address--}}
+{{--                                                details</label>--}}
+{{--                                            <div class="check"></div>--}}
+{{--                                        </li>--}}
+{{--                                    </ul>--}}
+{{--                                </div>--}}
 
                                 <div id="billingAddressWrap" class="d-none">
                                     <div class="form-row">

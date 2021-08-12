@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command(CloseApplication::class)->everyMinute();
-        $schedule->command(FilterBids::class)->everyMinute();
+//        $schedule->command(FilterBids::class)->everyMinute();
     }
 
     /**

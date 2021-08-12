@@ -37,7 +37,7 @@
                                                 Drafted
                                             </option>
                                             <option value="2" {{ request()->get("status") == 2 ? 'selected' : '' }}>
-                                                Pending for Approval
+                                                Pending Review
                                             </option>
                                             <option value="3" {{ request()->get("status") == 3 ? 'selected' : '' }}>
                                                 Approved
@@ -88,12 +88,12 @@
                                                 <td>
                                                     <ul class="list-inline m-0">
                                                         <li class="list-inline-item">
-                                                            @if($application['status'] == '<label class="badge badge-warning">Pending for Approval</label>')
+                                                            @if($application['status'] == '<label class="badge badge-warning">Pending Review</label>')
                                                                 <a href="{{route('admin_application', $application->id)}}"
                                                                    class="btn btn-success btn-sm rounded-0"
                                                                 >Approve</a>
                                                             @endif
-                                                            @if($application['status'] == '<label class="badge badge-warning">Pending for Approval</label>')
+                                                            @if($application['status'] == '<label class="badge badge-warning">Pending Review</label>')
                                                                 <a href="javascript:void(0)"
                                                                    onclick="changeStatus('{{$application->id}}','4')"
                                                                    class="btn btn-danger btn-sm rounded-0"

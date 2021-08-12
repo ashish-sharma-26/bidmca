@@ -13,8 +13,8 @@
             @if($application->getStatusIdAttribute() == 'Approved')
                 <h6 class="required3">Inviting proposals</h6>
             @endif
-            @if($application->getStatusIdAttribute() == 'Pending for Approval')
-                <h6 class="required1">Under Review</h6>
+            @if($application->getStatusIdAttribute() == 'Pending Review')
+                <h6 class="required1">Pending Review</h6>
             @endif
             @if($application->getStatusIdAttribute() == 'Drafted')
                 <h6 class="text-primary">Drafted</h6>
@@ -28,7 +28,7 @@
                 </div>
             @endif
         @else
-            <h6 class="required1">Banking Folio Pending</h6>
+            <h6 class="required1">Pending Bank Varification</h6>
         @endif
     </div>
     <div class="nxt-details view-button">
