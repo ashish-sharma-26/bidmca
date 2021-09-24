@@ -84,6 +84,16 @@ class ApplicationController extends Controller
                 return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);
             }
 
+            $billingPhone = $request->input('billing_phone');
+            $billingPhone = str_replace(' ','', $billingPhone);
+            $billingPhone = str_replace('(','', $billingPhone);
+            $billingPhone = str_replace(')','', $billingPhone);
+            $billingPhone = str_replace('-','', $billingPhone);
+
+            if(strlen($billingPhone) != 10){
+                return response()->json(apiResponseHandler([], 'The phone number should be 10 digit.', 400), 400);
+            }
+
             if ($request->input('mode') == 'Rented') {
                 $validator = Validator::make($request->all(), [
                     'amount_per_year' => 'required',
@@ -98,7 +108,6 @@ class ApplicationController extends Controller
 
         if ($request->input('action') === 'step3') {
             $validator = Validator::make($request->all(), [
-                'owner' => 'required',
                 'ownership_percent' => 'required',
                 'title' => 'required',
                 'last_name' => 'required',
@@ -108,6 +117,16 @@ class ApplicationController extends Controller
                 'email' => 'required|email',
                 'phone' => 'required',
             ]);
+
+            $billingPhone = $request->input('phone');
+            $billingPhone = str_replace(' ','', $billingPhone);
+            $billingPhone = str_replace('(','', $billingPhone);
+            $billingPhone = str_replace(')','', $billingPhone);
+            $billingPhone = str_replace('-','', $billingPhone);
+
+            if(strlen($billingPhone) != 10){
+                return response()->json(apiResponseHandler([], 'The phone number should be 10 digit.', 400), 400);
+            }
 
             if ($validator->fails()) {
                 return response()->json(apiResponseHandler([], $validator->errors()->first(), 400), 400);

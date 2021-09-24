@@ -315,7 +315,7 @@
                                     </div>
                                     <div class="form-group col-md-5">
                                         <div class="datainput">
-                                            <input class="validate" id="billing_phone" name="billing_phone" required=""
+                                            <input class="validate" onkeydown="phoneNumberFormatter('billing_phone')" id="billing_phone" name="billing_phone" required=""
                                                    placeholder="Phone Number"/>
                                             <span class="bar"></span>
                                             <label>Phone Number</label>
@@ -490,13 +490,32 @@
                     <div class="step-form">
                         <div class="form-bg">
                             <form>
-                                <div class="form-row">
+                                <div class="form-row d-none">
                                     <div class="form-group col-md-10">
                                         <div class="datainput">
                                             <input class="validate" id="owner" name="owner" required="" type="text"
                                                    value='' placeholder="Owner/Officer"/>
                                             <span class="bar"></span>
                                             <label>Owner/Officer</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-5">
+                                        <div class="datainput">
+                                            <input class="validate" id="first_name" name="first_name" required=""
+                                                   type="text" value='' placeholder="Legal First Name"/>
+                                            <span class="bar"></span>
+                                            <label>Legal First Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-5">
+                                        <div class="datainput">
+                                            <input class="validate" id="last_name" name="last_name" required=""
+                                                   type="text" value='' placeholder="Legal Last Name"/>
+                                            <span class="bar"></span>
+                                            <label>Legal Last Name</label>
                                         </div>
                                     </div>
                                 </div>
@@ -517,26 +536,6 @@
                                                    value='' placeholder="Title"/>
                                             <span class="bar"></span>
                                             <label>Title</label>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <div class="form-row">
-                                    <div class="form-group col-md-5">
-                                        <div class="datainput">
-                                            <input class="validate" id="last_name" name="last_name" required=""
-                                                   type="text" value='' placeholder="Legal Last Name"/>
-                                            <span class="bar"></span>
-                                            <label>Legal Last Name</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-5">
-                                        <div class="datainput">
-                                            <input class="validate" id="first_name" name="first_name" required=""
-                                                   type="text" value='' placeholder="Legal First Name"/>
-                                            <span class="bar"></span>
-                                            <label>Legal First Name</label>
                                         </div>
                                     </div>
                                 </div>
@@ -571,7 +570,7 @@
                                     </div>
                                     <div class="form-group col-md-5">
                                         <div class="datainput">
-                                            <input class="validate" id="phone" name="phone" required="" type="text"
+                                            <input class="validate" onkeydown="phoneNumberFormatter('phone')" id="phone" name="phone" required="" type="text"
                                                    value='' placeholder="Cell#"/>
                                             <span class="bar"></span>
                                             <label>Cell#</label>

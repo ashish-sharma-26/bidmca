@@ -81,7 +81,7 @@
                                                 <td>{{ $user['phone'] }}</td>
                                                 <td>{{ $user['user_type'] }}
                                                 <td>{{ $user['is_active'] }}</td>
-                                                <td>{{ $user['created_at'] }}</td>
+                                                <td>{{ date('m/d/Y', strtotime($user['created_at'])) }}</td>
                                                 <td>
                                                     <ul class="list-inline m-0">
                                                         <li class="list-inline-item">

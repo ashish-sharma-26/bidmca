@@ -80,7 +80,7 @@ class Application extends Model
 
     public function getStatusAttribute($value){
         if($value == 1){
-            return '<label class="badge badge-primary">Drafted</label>';
+            return '<label class="badge badge-primary">Draft</label>';
         }
         if($value == 2){
             return '<label class="badge badge-warning">Pending Review</label>';

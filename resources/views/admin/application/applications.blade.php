@@ -34,7 +34,7 @@
                                         <select class="form-control" name="status">
                                             <option value="">All</option>
                                             <option value="1" {{ request()->get("status") == 1 ? 'selected' : '' }}>
-                                                Drafted
+                                                Draft
                                             </option>
                                             <option value="2" {{ request()->get("status") == 2 ? 'selected' : '' }}>
                                                 Pending Review

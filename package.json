@@ -22,6 +22,7 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
-        "cleave.js": "^1.6.0"
+        "cleave.js": "^1.6.0",
+        "libphonenumber-js": "^1.9.34"
     }
 }

@@ -274,7 +274,7 @@
                     <div class="closes-details">
                         <div class="business-title current-details">
                             <p>Applied on</p>
-                            <h6>{{date('F d, Y', strtotime($application->created_at))}}</h6>
+                            <h6>{{date('m/d/Y', strtotime($application->created_at))}}</h6>
                         </div>
                         <div class="business-title current-details">
                             <p>Current Status</p>

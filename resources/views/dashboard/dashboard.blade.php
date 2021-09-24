@@ -20,7 +20,7 @@
                         <h5 class="mb-1">Welcome, {{ auth()->user()->first_name}}!</h5>
                     </div>
                     <div class="business-title form-title">
-                        <p>Last login, {{date('F d, Y', time())}}</p>
+                        <p>Last login, {{date('m/d/Y', time())}}</p>
                     </div>
                 </div>
 

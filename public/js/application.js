@@ -1,7 +1,7 @@
 $(function() {
     $('#dob').daterangepicker({
         locale: {
-            format: 'YYYY-MM-DD'
+            format: 'MM/DD/YYYY'
         },
         singleDatePicker: true,
         showDropdowns: true,
@@ -130,7 +130,7 @@ function storeApplication(action) {
     api.storeApplication(data).then((res) => {
         $('#unique_id').val(res.data.response.unique_id);
         if(action === 'draft'){
-            showNotification('Application drafted successfully.','success');
+            showNotification('Application draft successfully.','success');
         }
         if(action !== 'draft'){
             nextStep(action);

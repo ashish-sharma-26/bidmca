@@ -58,7 +58,7 @@
 
                     <div class="bottom-quotes signature-details">
                         <h6>Call us at:</h6>
-                        <h6>(876) 987 678</h6>
+                        <h6>(212) 365 8423</h6>
                         <div class="loan-application follow-details">
                             <h5>follow:</h5>
                             <i class="fa fa-facebook"></i>
@@ -68,7 +68,7 @@
                 </div>
                     </div>
                 </div>
-                
+
             </div>
             @endif
             @yield('content')
@@ -167,7 +167,7 @@
 
                         <div class="bottom-quotes signature-details">
                             <h6>Call us at:</h6>
-                            <h6>(876) 987 678</h6>
+                            <h6>(212) 365 8423</h6>
                             <div class="loan-application follow-details">
                                 <h5>follow:</h5>
                                 <i class="fa fa-facebook"></i>

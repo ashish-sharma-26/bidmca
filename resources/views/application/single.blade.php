@@ -290,7 +290,7 @@
                         <div class="closes-details">
                             <div class="business-title current-details">
                                 <p>Proposal closes on</p>
-                                <h6>{{date('F d, Y', strtotime($application->closing_date))}}</h6>
+                                <h6>{{date('m/d/Y', strtotime($application->closing_date))}}</h6>
                             </div>
                             @if($application->bid)
                                 <div class="business-title current-details" id="bid_{{$application->bid->id}}">
@@ -413,7 +413,7 @@
                         <div class="closes-details">
                             <div class="business-title current-details">
                                 <p>Applied on</p>
-                                <h6>{{date('F d, Y', strtotime($application->created_at))}}</h6>
+                                <h6>{{date('m/d/Y', strtotime($application->created_at))}}</h6>
                             </div>
                             <div class="business-title current-details">
                                 <p>Current Status</p>
@@ -423,7 +423,7 @@
                                         <p class="text-danger">{{$application->reject_reason}}</p>
                                     @endif
                                 @else
-                                    <h6 class="required1">Pending Bank Varification</h6>
+                                    <h6 class="required1">Pending Bank Verification</h6>
                                 @endif
                             </div>
                         </div>

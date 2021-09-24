@@ -75,7 +75,7 @@
             <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                 <div class="call-details">
                     <h6>Call us at:</h6>
-                    <h6>(876) 987 678</h6>
+                    <h6>(212) 365 8423</h6>
                 </div>
             </div>
             <div class="col-12 col-md-4 col-lg-4 col-xl-4 copyright-col">

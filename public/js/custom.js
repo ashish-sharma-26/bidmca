@@ -97,25 +97,25 @@ $(document).ready(function () {
     });
 });
 
-if($('#phone').length){
-    new Cleave('#phone', {
-        phone: true,
-        phoneRegionCode: 'US'
-    });
-}
+// if($('#phone').length){
+//     new Cleave('#phone', {
+//         phone: true,
+//         phoneRegionCode: 'US'
+//     });
+// }
 
-if($('#billing_phone').length){
-    new Cleave('#billing_phone', {
-        phone: true,
-        phoneRegionCode: 'US'
-    });
-}
-if($('#billing_phone2').length){
-    new Cleave('#billing_phone', {
-        phone: true,
-        phoneRegionCode: 'US'
-    });
-}
+// if($('#billing_phone').length){
+//     new Cleave('#billing_phone', {
+//         phone: true,
+//         phoneRegionCode: 'US'
+//     });
+// }
+// if($('#billing_phone2').length){
+//     new Cleave('#billing_phone', {
+//         phone: true,
+//         phoneRegionCode: 'US'
+//     });
+// }
 var loan_amount;
 if($('#loan_amount').length){
     loan_amount = new Cleave('#loan_amount', {
@@ -247,4 +247,35 @@ if (!window.Notification) {
             console.error(err);
         });
     }
+}
+
+// CUSTOM PHONE NUMBER FORMATTER
+function formatPhoneNumber(phone) {
+    if (!phone) return phone;
+    // const phoneNumber = value.replace(/[^\d]/g, "");
+    // const phoneNumberLength = phoneNumber.length;
+    // if (phoneNumberLength < 4) return phoneNumber;
+    // if (phoneNumberLength < 7) {
+    //     return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+    // }
+    // return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(
+    //     3,
+    //     6
+    // )}-${phoneNumber.slice(6, 10)}`;
+    var cleaned = ('' + phone).replace(/\D/g, '')
+    var match = cleaned.match(/^(\d{3})(\d{3})(\d{3})$/)
+    if (match) {
+        return '(' + match[1] + ') ' + match[2] + '-' + match[3]
+    }
+    return phone
+}
+
+function phoneNumberFormatter(id) {
+    const inputField = document.getElementById(id);
+    if(inputField.value.length > 14){
+        console.log(inputField.value.length);
+        return false;
+    }
+    const formattedInputValue = formatPhoneNumber(inputField.value);
+    inputField.value = formattedInputValue;
 }

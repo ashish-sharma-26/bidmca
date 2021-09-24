@@ -118,16 +118,16 @@
                                                                             class="value">{{$application->billing_zipcode}}</span>
                                                                     </li>
                                                                     <li><span>Billing Phone</span><span
-                                                                            class="value">{{$application->	billing_phone}}</span>
+                                                                            class="value">{{$application->billing_phone}}</span>
                                                                     </li>
                                                                     <li><span>Mode</span><span
                                                                             class="value">{{$application->mode}}</span>
                                                                     </li>
                                                                     <li><span>Submitted On</span><span
-                                                                            class="value">{{$application->created_at}}</span>
+                                                                            class="value">{{date('m/d/Y h:m a', strtotime($application->created_at))}}</span>
                                                                     </li>
                                                                     <li><span>Last Updated</span><span
-                                                                            class="value">{{$application->updated_at}}</span>
+                                                                            class="value">{{date('m/d/Y h:m a', strtotime($application->updated_at))}}</span>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -157,6 +157,12 @@
                                                                             </li>
                                                                             <li><span>SSN</span><span
                                                                                     class="value">{{$owner->ssn}}</span>
+                                                                            </li>
+                                                                            <li><span>Email</span><span
+                                                                                    class="value">{{$owner->email}}</span>
+                                                                            </li>
+                                                                            <li><span>Phone</span><span
+                                                                                    class="value">{{$owner->phone}}</span>
                                                                             </li>
                                                                         @endforeach
                                                                     </ul>

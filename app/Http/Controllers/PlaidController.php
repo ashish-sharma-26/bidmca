@@ -34,7 +34,7 @@ class PlaidController extends Controller
         try {
             // GENERATING TOKEN
             $token = $plaid->tokens->create(
-                'bidmca plaid',
+                'bidmca',
                 'en',
                 ['US'],
                 $tokenUser,
@@ -73,7 +73,7 @@ class PlaidController extends Controller
         try {
             // GENERATING TOKEN
             $token = $plaid->tokens->create(
-                'bidmca plaid',
+                'bidmca',
                 'en',
                 ['US'],
                 $tokenUser,
