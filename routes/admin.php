@@ -23,6 +23,11 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/applications', [ApplicationController::class, 'applications'])->name('admin_applications');
     Route::get('/application/{id}', [ApplicationController::class, 'viewApplication'])->name('admin_application');
     Route::get('/application-status', [ApplicationController::class, 'applicationStatus']);
+
+
+    Route::post('/createAssetReport', [ApplicationController::class, 'createAssetReport'])->name('create_report_action');
+
+
     Route::get('/update-bid', [ApplicationController::class, 'updateBid']);
     Route::get('/close-application/{id}', [ApplicationController::class, 'closeApplication'])->name('close-application');
     Route::get('/plaid/fetch-account-data/{id}',[PlaidController::class,'fetchAccountData']);

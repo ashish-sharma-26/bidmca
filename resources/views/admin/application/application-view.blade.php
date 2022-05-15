@@ -1,5 +1,11 @@
 @extends('admin.layout')
 @section('content')
+<?php 
+// echo "Hello"; 
+// echo "<pre>";
+// print_r($application);
+// die; 
+?>
     <div class="app-main__outer">
         <div class="app-main__inner">
             <div class="app-page-title">

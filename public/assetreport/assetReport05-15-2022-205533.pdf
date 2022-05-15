@@ -1,0 +1,9 @@
+{
+  "display_message": null,
+  "documentation_url": "https://plaid.com/docs/?ref=error#asset-report-errors-and-warnings",
+  "error_code": "PRODUCT_NOT_READY",
+  "error_message": "the requested product is not yet ready. please provide a webhook or try the request again later",
+  "error_type": "ASSET_REPORT_ERROR",
+  "request_id": "DHB1ZmQBKhMX4Rf",
+  "suggested_action": null
+}

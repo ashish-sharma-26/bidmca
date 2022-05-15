@@ -1,3 +1,14 @@
+<?php 
+
+// echo "<pre>";
+// print_r($accounts);
+// die;
+?>
+
+
+
+
+
 <ul class="nav nav-tabs" id="myTab" role="tablist">
     <li class="nav-item">
         <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
@@ -10,6 +21,10 @@
     <li class="nav-item">
         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact"
            aria-selected="false">Liability(s)</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="asset-tab" data-toggle="tab" href="#asset" role="tab" aria-controls="asset"
+           aria-selected="false">Assets</a>
     </li>
 </ul>
 <div class="tab-content" id="myTabContent">
@@ -203,4 +218,104 @@
             </div>
         </div>
     </div>
+
+<!-- Assets Start -->
+
+<div class="tab-pane fade" id="asset" role="tabpanel" aria-labelledby="asset-tab">
+        
+ <p>Assets Data Here</p>
+ <p>{{$application->business_name}}</p>
+ <p>{{$application->plaid_access_token}}</p>
+<p>{{ env('PLAID_ENV')}}</p>
+<p>{{ env('PLAID_CLIENT_ID')}}</p>
+<p>{{ env('PLAID_SECRET')}}</p>
+
+
+
+
+
+
+
+
+<form method="post" name="assetreport" action="{{ route('create_report_action') }}" id="createReportForm" autocomplete="off">
+@csrf
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="middleName">Middle Name</label>
+      <input type="text" class="form-control" id="middleName" name="middleName" placeholder="Middle Name">
+    </div>
+  </div>
+
+  <div class="form-row">
+  <div class="form-group col-md-6">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Email</label>
+      <input type="email" name="email" id="email" class="form-control" placeholder="Email">
+    </div>
+    
+  </div>
+  
+  <!-- <div class="form-group">
+    <label for="inputAddress2">Address 2</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputCity">City</label>
+      <input type="text" class="form-control" id="inputCity">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control">
+        <option selected>Choose...</option>
+        <option>...</option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputZip">Zip</label>
+      <input type="text" class="form-control" id="inputZip">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label" for="gridCheck">
+        Check me out
+      </label>
+    </div>
+  </div> -->
+  <button type="submit" class="btn btn-primary">Create Report</button>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+<!-- Assets End -->
+
+
+
+
+
 </div>
+
+

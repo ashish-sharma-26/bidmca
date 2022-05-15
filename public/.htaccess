@@ -19,3 +19,7 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+#AuthType Basic
+#AuthName "Restricted Content"
+#AuthUserFile /var/www/html/.htpasswd
+#Require valid-user

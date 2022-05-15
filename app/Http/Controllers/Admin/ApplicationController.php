@@ -175,4 +175,209 @@ class ApplicationController extends Controller
         Application::where('id', $id)->update(['status' => 5]);
         return redirect()->back();
     }
+
+    public function createAssetReport(Request $request)
+    {
+        //echo "hello";
+        //echo $config_path = __DIR__.'/../config/settings.php';
+        
+
+        $fname = $request->firstName;
+        $mname = $request->middleName;
+        $lname = $request->lastName;
+        $email = $request->email;
+        $clientid = env('PLAID_CLIENT_ID');
+        $secret = env('PLAID_SECRET');
+
+        $ptoken = $this->createPublicToken($clientid,$secret);
+        $atoken = $this->createAccessToken($clientid,$secret,$ptoken);
+        $assetReportToken = $this->generateAssetReport($clientid,$secret,$atoken,$fname,$mname,$lname,$email);
+        echo $assetReportPdf = $this->createAssetReportPdf($clientid,$secret,$assetReportToken,$atoken);
+
+    }
+
+    public function createPublicToken($client,$secret)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://sandbox.plaid.com/sandbox/public_token/create',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS =>'{
+        "client_id": "'.$client.'",
+        "secret": "'.$secret.'",
+        "institution_id": "ins_3",
+        "initial_products": ["auth","transactions","identity","assets","liabilities"],
+        "options": {
+            "webhook": "https://www.genericwebhookurl.com/webhook"
+        }
+        }',
+        CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+        ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $object = json_decode($response);
+        return $object->public_token;        
+       
+    }
+
+    public function createAccessToken($client,$secret,$ptoken)
+    {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://sandbox.plaid.com/item/public_token/exchange',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS =>'{
+            "client_id": "'.$client.'",
+            "secret": "'.$secret.'",
+        "public_token": "'.$ptoken.'"
+        }',
+        CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+        ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $object2 = json_decode($response);
+        return $object2->access_token;
+    }
+
+    public function generateAssetReport($client,$secret,$atoken,$fname,$mname,$lname,$email)
+    {
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => 'https://sandbox.plaid.com/asset_report/create',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'POST',
+          CURLOPT_POSTFIELDS =>'{
+            "client_id": "'.$client.'",
+            "secret": "'.$secret.'",
+           "access_tokens": ["'.$atoken.'"],
+           "days_requested": 10,
+           "options": {
+              "client_report_id": "123456",
+              "webhook": "https://www.wirelessciti.com/webhook",
+              "user": {
+                "client_user_id": "user123456",
+                "first_name": "'.$fname.'",
+                "middle_name": "'.$mname.'",
+                "last_name": "'.$lname.'",
+                "ssn": "111-22-1234",
+                "phone_number": "1-415-867-5309",
+                "email": "'.$email.'"
+              }
+           }
+         }',
+          CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+          ),
+        ));
+        
+        $response = curl_exec($curl);        
+        curl_close($curl);        
+        $object3 = json_decode($response);
+        return $object3->asset_report_token;
+    }
+
+    public function createAssetReportPdf($client,$secret,$assetReportToken,$atoken)
+    {
+        $fileD = "assetReport".date('m-d-Y-His').".pdf";
+        //echo $path = $_SERVER['DOCUMENT_ROOT'].'/assetreport/'.$fileD;
+        $path = 'D:/xampp/htdocs/bidmca/public/assetreport/'.$fileD;
+
+        //die;
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://sandbox.plaid.com/asset_report/pdf/get',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS =>'{
+            "client_id": "'.$client.'",
+            "secret": "'.$secret.'",
+        "asset_report_token": "'.$assetReportToken.'"
+        }',
+        CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+
+        $object4 = json_decode($response);
+        $err = $object4->error_code;
+        $webhookResult = $this->fireWebhook($client,$secret,$atoken);
+
+        if($err!='')
+        {            
+            return $err;
+        }
+        else{
+            file_put_contents($path, $response);
+            return $response;
+        }
+
+    }
+
+    public function fireWebhook($client,$secret,$atoken)
+    {
+                
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+        CURLOPT_URL => 'https://sandbox.plaid.com/sandbox/item/fire_webhook',
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_ENCODING => '',
+        CURLOPT_MAXREDIRS => 10,
+        CURLOPT_TIMEOUT => 0,
+        CURLOPT_FOLLOWLOCATION => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => 'POST',
+        CURLOPT_POSTFIELDS =>'{
+            "client_id": "'.$client.'",
+            "secret": "'.$secret.'",
+            "access_token": "'.$atoken.'",
+            "webhook_code": "DEFAULT_UPDATE"
+        }',
+        CURLOPT_HTTPHEADER => array(
+            'Content-Type: application/json'
+        ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        return $response;
+    }
+
+
+
+
 }
